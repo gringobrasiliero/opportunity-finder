@@ -3,9 +3,9 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-session.delete :email
-redirect_to root_path
-end
+    reset_session
+    redirect_to root_path
+  end
 
 
 end

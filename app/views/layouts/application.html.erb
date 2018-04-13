@@ -11,8 +11,8 @@
        <p class="alert"><%= alert %></p>
 
        <% if !current_user %>
-      <%= link_to "Sign-up",  new_user_registration_path %>
-      <%= link_to "Log In",  new_user_session_path %>
+      <%= link_to("Sign-up",  new_user_registration_path) %>
+      <%= link_to("Sign-in",  sign_in_path) %>
       <% end %>
 
       <% if current_user %>
