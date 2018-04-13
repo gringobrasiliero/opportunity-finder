@@ -1,6 +1,7 @@
 class SessionsController < ApplicationController
   def new
   end
+<<<<<<< HEAD
 
   def destroy
     reset_session
@@ -8,4 +9,6 @@ class SessionsController < ApplicationController
   end
 
 
+=======
+>>>>>>> parent of f420967... Able to Log out
 end

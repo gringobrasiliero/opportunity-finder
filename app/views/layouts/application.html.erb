@@ -16,7 +16,7 @@
       <% end %>
 
       <% if current_user %>
-       <%= link_to("Log Out", destroy_user_session_path, :method => 'delete') %>
+        <%= link_to "Log Out", destroy_user_session_path %>
       <% end %>
   </head>
 
