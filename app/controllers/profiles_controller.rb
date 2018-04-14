@@ -4,9 +4,14 @@ class ProfilesController < ApplicationController
   end
 
 def create
-  @profile = Profile.create(profile_params)
+  @user = current_user
+  @profile = @user.build_profile(profile_params)
+  @profile.save
+binding.pry
   redirect_to @profile
 end
+
+
 
 def index
   @user = current_user
