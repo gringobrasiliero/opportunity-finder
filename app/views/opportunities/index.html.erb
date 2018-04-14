@@ -1,0 +1,6 @@
+<% @opportunities.each do |opportunity| %>
+
+
+<h1> <%= link_to opportunity.title, opportunity_path(opportunity) %> </h1>
+<h2> <%= opportunity.description %> </h2>
+<% end %>
