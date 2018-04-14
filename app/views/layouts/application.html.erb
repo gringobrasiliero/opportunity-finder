@@ -13,11 +13,14 @@
        <% if !current_user %>
       <%= link_to("Sign-up",  new_user_registration_path) %>
       <%= link_to("Sign-in",  sign_in_path) %>
-      <% end %>
 
+      <% end %>
+  <%= link_to("View Opportunities", opportunities_path) %>
       <% if current_user %>
         <%= link_to("Create Profile", new_profile_path) %>
-    
+
+        <%= link_to("Create Opportunity", new_opportunity_path) %>
+
         <%= link_to("Log Out", destroy_user_session_path, :method => 'delete')%>
       <% end %>
 

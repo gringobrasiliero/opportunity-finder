@@ -13,10 +13,10 @@ def new
 end
 
 def create
-
-  @opportunity = Opportunity.create(opportunity_params)
-
-  redirect_to @opportunity
+  @user = current_user
+  @opportunity = @user.opportunities.build(opportunity_params)
+  @opportunity.save
+  redirect_to opportunity_path(@opportunity)
 end
 
 private
