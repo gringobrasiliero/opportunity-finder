@@ -11,8 +11,6 @@ binding.pry
   redirect_to @profile
 end
 
-
-
 def index
   @user = current_user
   @profile = @user.profile
@@ -22,6 +20,18 @@ def show
   @user = current_user
   @profile = @user.profile
 end
+
+def edit
+  @user = current_user
+  @profile = @user.profile
+end
+
+def update
+  @user = current_user
+  @profile = @user.profile
+  @profile.update(profile_params)
+end
+
 
 private
 
