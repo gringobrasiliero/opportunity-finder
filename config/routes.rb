@@ -5,9 +5,11 @@ Rails.application.routes.draw do
       end
 
   get 'sessions/new'
-resources :profiles
-patch 'profiles/:id', to: 'profiles#update'
 
+
+# get 'profiles/:id/edit', to: 'profiles#edit', as: :edit_profile
+# patch 'profiles/:id', to: 'profiles#update'
+resources :profiles
 
 resources :opportunities
   devise_for :users

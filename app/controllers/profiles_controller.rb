@@ -23,14 +23,14 @@ end
 
 def edit
   @user = current_user
-  @profile = @user.profile
+  @profile = Profile.find(params[:id])
 end
 
 def update
   @user = current_user
-  @profile = @user.profile
-  @user.save_profile(profile_params)
-
+  @profile = Profile.find(params[:id])
+  @profile.update(profile_params)
+redirect_to profile_path(@profile)
 end
 
 

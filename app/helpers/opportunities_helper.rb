@@ -1,0 +1,2 @@
+module Opportunitieshelper
+end
