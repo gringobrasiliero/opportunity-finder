@@ -9,12 +9,13 @@
 
     <p class="notice"><%= notice %></p>
        <p class="alert"><%= alert %></p>
-
+<%= link_to("Home", root_path) %>
        <% if !current_user %>
       <%= link_to("Sign-up",  new_user_registration_path) %>
       <%= link_to("Sign-in",  sign_in_path) %>
 
       <% end %>
+
   <%= link_to("View Opportunities", opportunities_path) %>
       <% if current_user %>
         <%= link_to("Create Profile", new_profile_path) %>
