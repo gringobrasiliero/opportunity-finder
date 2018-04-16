@@ -18,7 +18,7 @@ end
 
 def show
   @user = current_user
-  @profile = @user.profile
+  @profile = Profile.find(params[:id])
 end
 
 def edit
@@ -29,7 +29,7 @@ end
 def update
   @user = current_user
   @profile = @user.profile
-  @profile.update(profile_params)
+  @user.save_profile(profile_params)
 
 end
 
