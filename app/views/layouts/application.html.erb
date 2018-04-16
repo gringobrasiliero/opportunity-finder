@@ -18,6 +18,7 @@
   <%= link_to("View Opportunities", opportunities_path) %>
       <% if current_user %>
         <%= link_to("Create Profile", new_profile_path) %>
+          <%= link_to("Edit Profile", edit_profile_path) %>
         <%= link_to("View Profile", profiles_path) %>
         <%= link_to("Create Opportunity", new_opportunity_path) %>
 

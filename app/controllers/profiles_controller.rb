@@ -7,9 +7,9 @@ def create
   @user = current_user
   @profile = @user.build_profile(profile_params)
   @profile.save
-binding.pry
   redirect_to @profile
 end
+
 
 def index
   @user = current_user
@@ -30,6 +30,7 @@ def update
   @user = current_user
   @profile = @user.profile
   @profile.update(profile_params)
+
 end
 
 

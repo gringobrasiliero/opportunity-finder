@@ -1,16 +1,16 @@
-<%= form_for(@profile), method: "put" do |f| %>
+<%= form_for(@profile) do |f| %>
 
 <%= f.label :first_name %>
-<%= f.text_field :first_name, @profile.first_name  %>
+<%= f.text_field :first_name, :placeholder => @profile.first_name  %>
 
 <%= f.label :last_name %>
-<%= f.text_field :last_name, @profile.last_name %>
+<%= f.text_field :last_name, :placeholder => @profile.last_name %>
 
 <%= f.label :location %>
-<%= f.text_field :location, @profile.location %>
+<%= f.text_field :location, :placeholder =>  @profile.location %>
 
 <%= f.label :profession %>
-<%= f.text_field :profession, @profile.profession %>
+<%= f.text_field :profession, :placeholder => @profile.profession %>
 
 <%= f.submit %>
 
