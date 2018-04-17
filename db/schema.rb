@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180416233530) do
+ActiveRecord::Schema.define(version: 20180417105055) do
+
+  create_table "applications", force: :cascade do |t|
+    t.boolean "qualified"
+    t.boolean "legal"
+    t.integer "month_commitment"
+    t.string "reason_for_interest"
+    t.integer "user_id"
+    t.integer "opportunity_id"
+  end
 
   create_table "opportunities", force: :cascade do |t|
     t.string "description"
