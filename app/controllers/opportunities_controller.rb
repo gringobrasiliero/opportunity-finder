@@ -9,6 +9,7 @@ def show
 end
 
 def new
+binding.pry
   @opportunity = Opportunity.new
 end
 
