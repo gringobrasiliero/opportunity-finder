@@ -3,4 +3,23 @@
 
 
 <!-- Application form goes here -->
-<%= render 'applications/form' %>
+
+
+<%= form_for(@opportunity) do |f| %>
+<%= f.fields_for :applications do |application| %>
+<input type='hidden' name='application[qualified]' value=false>
+<%= application.check_box :qualified %>
+
+<input type='hidden' name='application[legal]' value=false>
+<%= application.check_box :legal %>
+
+<%= application.label :month_commitment %>
+<%= application.text_field :month_commitment %>
+
+<%= application.label :reason_for_interest %>
+<%= application.text_field :reason_for_interest %>
+<% end %>
+
+<%= f.submit %>
+
+<% end %>

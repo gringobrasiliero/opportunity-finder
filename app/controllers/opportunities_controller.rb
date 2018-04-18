@@ -6,7 +6,7 @@ end
 
 def show
   @opportunity = Opportunity.find(params[:id])
-
+  @opportunity.applications.build()
 end
 
 def new
@@ -23,7 +23,7 @@ end
 private
 
 def opportunity_params
-  params.require(:opportunity).permit(:title, :description, :user_id)
+  params.require(:opportunity).permit(:title, :description, :user_id, applications_attributes: [:qualified, :legal, :month_commitment, :reason_for_interest, :user_id, :opportunity_id ])
 end
 
 end
