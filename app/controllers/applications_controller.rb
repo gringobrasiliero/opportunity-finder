@@ -10,6 +10,14 @@ class ApplicationsController < ApplicationController
     @application = Application.new
   end
 
+  def create
+    @user = current_user
+    @application = @user.application.build(application_params)
+    @opportunity.save
+    redirect_to opportunity_path(@opportunity)
+  end
+
+
   private
 
   def application_params
