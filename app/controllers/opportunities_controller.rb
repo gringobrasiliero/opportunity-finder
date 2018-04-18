@@ -20,6 +20,13 @@ def create
   redirect_to opportunity_path(@opportunity)
 end
 
+def update
+  @user = current_user
+  @opportunity = Opportunity.find(params[:id])
+  @opportunity.update(opportunity_params)
+redirect_to opportunity_path(@opportunity)
+end
+
 private
 
 def opportunity_params

@@ -7,9 +7,12 @@
 
 <%= form_for(@opportunity) do |f| %>
 <%= f.fields_for :applications do |application| %>
+
+<%= application.label :qualified %>
 <input type='hidden' name='application[qualified]' value=false>
 <%= application.check_box :qualified %>
 
+<%= application.label :legal %>
 <input type='hidden' name='application[legal]' value=false>
 <%= application.check_box :legal %>
 

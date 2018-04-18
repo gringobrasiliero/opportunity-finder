@@ -7,7 +7,7 @@ has_many :users, through: :applications
   accepts_nested_attributes_for :applications
 
 def applications_attributes=(application)
-  self.application = Application.find_or_create_by(reason_for_interest: application.reason_for_interest)
+  self.application = Application.find_or_create_by(reason_for_interest: reason_for_interest)
   self.application.update(application)
 end
 
