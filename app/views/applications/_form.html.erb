@@ -1,16 +1,16 @@
 <%= form_for(@application) do |f| %>
 
 <input type='hidden' name='application[qualified]' value=false>
-<%= f.check_box :qualified %>
+<%= f.check_box :qualified %><br>
 
 <input type='hidden' name='application[legal]' value=false>
-<%= f.check_box :legal %>
+<%= f.check_box :legal %><br>
 
-<%= f.label :month_commitment %>
-<%= f.text_field :month_commitment %>
+<%= f.label :month_commitment %><br>
+<%= f.text_field :month_commitment %><br>
 
-<%= f.label :reason_for_interest %>
-<%= f.text_field :reason_for_interest %>
+<%= f.label :reason_for_interest %><br>
+<%= f.text_field :reason_for_interest %><br>
 
 
 <%= f.submit %>

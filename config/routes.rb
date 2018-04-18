@@ -10,7 +10,7 @@ Rails.application.routes.draw do
 # get 'profiles/:id/edit', to: 'profiles#edit', as: :edit_profile
 # patch 'profiles/:id', to: 'profiles#update'
 resources :profiles
-
+resources :applications
 resources :opportunities
   devise_for :users
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

@@ -2,7 +2,8 @@ class ApplicationsController < ApplicationController
 
 #Show all current Applications applied for
   def index
-    @Applications = Application.all
+    @user = current_user
+    @applications = Application.all
   end
 
 #begin new Application to Opportunity
@@ -12,11 +13,11 @@ class ApplicationsController < ApplicationController
 
   def create
     @user = current_user
-    @application = @user.application.build(application_params)
-    @opportunity.save
-    redirect_to opportunity_path(@opportunity)
+    @application = @user.applications.build(application_params)
+    @application.save
+    # binding.pry
+    redirect_to applications_path(@application)
   end
-
 
   private
 

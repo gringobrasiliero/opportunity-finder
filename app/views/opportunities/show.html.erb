@@ -3,26 +3,4 @@
 
 
 <!-- Application form goes here -->
-
-
-<%= form_for(@opportunity) do |f| %>
-<%= f.fields_for :applications do |application| %>
-
-<%= application.label :qualified %>
-<input type='hidden' name='application[qualified]' value=false>
-<%= application.check_box :qualified %>
-
-<%= application.label :legal %>
-<input type='hidden' name='application[legal]' value=false>
-<%= application.check_box :legal %>
-
-<%= application.label :month_commitment %>
-<%= application.text_field :month_commitment %>
-
-<%= application.label :reason_for_interest %>
-<%= application.text_field :reason_for_interest %>
-<% end %>
-
-<%= f.submit %>
-
-<% end %>
+<%= link_to("Apply to this Opportunity", applications_path(@user.application)) %>
