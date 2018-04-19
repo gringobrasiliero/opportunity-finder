@@ -8,14 +8,15 @@ class ApplicationsController < ApplicationController
 
 #begin new Application to Opportunity
   def new
+    @opportunity = params{:opportunity_id}
     @application = Application.new
   end
 
   def create
     @user = current_user
-    @application = @user.applications.build(application_params)
+    @application = Application.new(application_params)
     @application.save
-    # binding.pry
+  
     redirect_to applications_path(@application)
   end
 
