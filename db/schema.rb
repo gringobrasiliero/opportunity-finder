@@ -19,10 +19,8 @@ ActiveRecord::Schema.define(version: 20180417105055) do
     t.string "reason_for_interest"
     t.integer "user_id"
     t.integer "opportunity_id"
-    t.integer "users_id"
-    t.integer "opportunities_id"
-    t.index ["opportunities_id"], name: "index_applications_on_opportunities_id"
-    t.index ["users_id"], name: "index_applications_on_users_id"
+    t.index ["opportunity_id"], name: "index_applications_on_opportunity_id"
+    t.index ["user_id"], name: "index_applications_on_user_id"
   end
 
   create_table "opportunities", force: :cascade do |t|

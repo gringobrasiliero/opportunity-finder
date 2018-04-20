@@ -5,7 +5,7 @@ RSpec.describe User, :type => :model do
     User.create(
       :email => "zurg@zurg.com",
       :password => "password",
-      :opportunity_provider => false
+    
     )
   }
 
@@ -19,9 +19,7 @@ RSpec.describe User, :type => :model do
        expect(User.new(email: "zurg@zurg.com")).not_to be_valid
      end
 
-     it "is valid with an opportunity_provider boolean" do
-   expect(opportunity_provider).to be_valid
- end
+
 
  it "defaults to opportunity_provider => false" do
      expect(user.opportunity_provider).to eq(false)
