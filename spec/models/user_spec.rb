@@ -38,4 +38,14 @@ it "has many opportunites" do
   expect(user.opportunities.first).to eq(first_op)
   expect(user.opportunities.last).to eq(second_op)
 end
+
+it "has many applications" do
+  first_app = Application.create(:user_id => user.id, :qualified => true, :legal => false, :month_commitment => 6, :reason_for_interest => "Defeat him")
+  second_app = Application.create(:user_id => user.id, :qualified => false, :legal => true, :month_commitment => 1, :reason_for_interest => "Defeat him fast")
+   expect(user.applications.first).to eq(first_app)
+  expect(user.applications.last).to eq(second_app)
+end
+
+
+
 end
