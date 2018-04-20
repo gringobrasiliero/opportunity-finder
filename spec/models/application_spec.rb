@@ -15,7 +15,7 @@ RSpec.describe Application, type: :model do
     User.create(
       :email => "zurg@zurg.com",
       :password => "password",
-      
+
     )
   }
 
@@ -31,7 +31,7 @@ RSpec.describe Application, type: :model do
     expect(application.users).to eq(user)
   end
 
-  it "belongs to opportunities" do
+  it "belongs to opportunity" do
     expect(application.opportunities).to eq(opportunity)
   end
 

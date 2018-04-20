@@ -14,15 +14,18 @@ class ApplicationsController < ApplicationController
 
   def create
     @user = current_user
-    @application = Application.new(application_params)
+    @application = @opportunity.applications.build(application_params)
     @application.save
-  
-    redirect_to applications_path(@application)
+
+    redirect_to application_path(@application)
   end
+
+
+
 
   private
 
   def application_params
-     params.require(:application).permit(:qualified, :legal, :month_commitment, :reason_for_interest, :user_id, :opportunity_id)
+     params.require(:application).permit(:id, :qualified, :legal, :month_commitment, :reason_for_interest, :user_id, :opportunity_id)
    end
 end

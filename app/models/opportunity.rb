@@ -1,8 +1,9 @@
 class Opportunity < ApplicationRecord
   validates :title, presence:true
 validates :description, presence:true
+belongs_to :user
 has_many :users, :through => :applications
-  belongs_to :user
+  
   has_many :applications
   accepts_nested_attributes_for :applications
 
