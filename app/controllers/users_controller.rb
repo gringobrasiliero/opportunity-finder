@@ -9,6 +9,7 @@ def destroy
   redirect_to root_path
 end
 def create
+
 end
 
 end
