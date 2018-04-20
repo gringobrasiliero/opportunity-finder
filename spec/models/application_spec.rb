@@ -4,6 +4,7 @@ RSpec.describe Application, type: :model do
   let(:application) {
     Application.create(
     :user_id => user.id,
+    :opportunity_id => opportunity.id,
     :qualified => true,
     :legal => false,
     :month_commitment => 6,
@@ -28,11 +29,11 @@ RSpec.describe Application, type: :model do
   }
 
   it "belongs to user" do
-    expect(application.users).to eq(user)
+    expect(application.user).to eq(user)
   end
 
   it "belongs to opportunity" do
-    expect(application.opportunities).to eq(opportunity)
+    expect(application.opportunity).to eq(opportunity)
   end
 
 end

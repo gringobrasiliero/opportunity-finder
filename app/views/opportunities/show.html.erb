@@ -3,7 +3,7 @@
 
 
 <!-- Application form goes here -->
-<%= form_for @opportunity do |f| %>
+<!-- <%= form_for @opportunity do |f| %>
 <%= f.fields_for :applications, @opportunity.applications.build do |application_fields| %>
 <input type='hidden' name='application[qualified]' value=false>
 <%= application_fields.check_box :qualified %><br>
@@ -24,7 +24,7 @@
 <% @opportunity.applications.each do |application|%>
 <%= application.month_commitment %>
 <%end%>
-</p>
+</p> -->
 
 
 

@@ -13,7 +13,7 @@ RSpec.describe Opportunity, type: :model do
     User.create(
       :email => "zurg@zurg.com",
       :password => "password",
-      
+
     )
   }
   let(:user_one) {
@@ -30,8 +30,8 @@ end
 
 it "has many users through applications" do
 opportunity.users << [user, user_one]
-expect(opportunity.user.first).to eq(user)
-expect(opportunity.user.last).to eq(user_one)
+expect(opportunity.users.first).to eq(user)
+expect(opportunity.users.last).to eq(user_one)
 
 end
 

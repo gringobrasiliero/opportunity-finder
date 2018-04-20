@@ -1,4 +1,5 @@
 class Application < ApplicationRecord
-  belongs_to :opportunities
- belongs_to :users
+belongs_to :user
+  belongs_to :opportunity
+
 end
