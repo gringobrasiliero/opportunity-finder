@@ -28,6 +28,15 @@ it "belongs to user" do
   expect(opportunity.user).to eq(user)
 end
 
+it "has many applications" do
+  first_app = Application.create( :user_id => user.id, :qualified => true, :legal => false, :month_commitment => 6, :reason_for_interest => "Defeat him")
+  second_app = Application.create( :user_id => user.id, :qualified => false, :legal => true, :month_commitment => 1, :reason_for_interest => "Defeat him fast")
+   expect(opportunity.applications.first).to eq(first_app)
+  expect(opportunity.applications.last).to eq(second_app)
+end
+
+
+
 it "has many users through applications" do
 opportunity.users << [user, user_one]
 expect(opportunity.users.first).to eq(user)
