@@ -3,16 +3,15 @@ class ApplicationsController < ApplicationController
   #begin new Application to Opportunity
     def new
        @opportunity = params{:opportunity_id}
-       @user = current_user
       @application = Application.new
     end
 
     def create
       @user = current_user
-      @application = @user.applications.build(application_params)
+      @application = @user.build_application(application_params)
       @application.save
-
-      redirect_to root_path
+binding.pry
+      redirect_to application_path(@application)
     end
 
     def show

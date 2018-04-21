@@ -34,7 +34,7 @@ end
 private
 
 def opportunity_params
-  params.require(:opportunity).permit(:title, :description, :user_id, :application_id, :id ])
+  params.require(:opportunity).permit(:title, :description, :user_id, :application_id, :id )
 end
 
 end
