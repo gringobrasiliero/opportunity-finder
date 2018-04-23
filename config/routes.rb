@@ -11,7 +11,9 @@ Rails.application.routes.draw do
 # patch 'profiles/:id', to: 'profiles#update'
 resources :profiles
 resources :applications
-resources :opportunities
+resources :opportunities do
+  resources :applications
+end
 
   devise_for :users
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

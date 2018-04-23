@@ -2,29 +2,31 @@
 <h2> <%= @opportunity.description %> </h2>
 
 
-<!-- Application form goes here -->
-<!-- <%= form_for @opportunity do |f| %>
-<%= f.fields_for :applications, @opportunity.applications.build do |application_fields| %>
+<%= form_for @opportunity.applications.build do |f| %>
+ <%= select("application", "user_id", User.all.collect {|p| [ p.email, p.id ] }, {include_blank: true}) %>
+
 <input type='hidden' name='application[qualified]' value=false>
-<%= application_fields.check_box :qualified %><br>
+<%= f.check_box :qualified %><br>
 
 <input type='hidden' name='application[legal]' value=false>
-<%= application_fields.check_box :legal %><br>
+<%= f.check_box :legal %><br>
 
-<%= application_fields.label :month_commitment %><br>
-<%= application_fields.text_field :month_commitment %><br>
+<%= f.label :month_commitment %><br>
+<%= f.text_field :month_commitment %><br>
 
-<%= application_fields.label :reason_for_interest %><br>
-<%= application_fields.text_field :reason_for_interest %><br>
-<%end%>
+<%= f.label :reason_for_interest %><br>
+<%= f.text_field :reason_for_interest %><br>
+<%= f.hidden_field :opportunity_id %>
+
 <%=f.submit%>
 <%end%>
 
+
 <p>
 <% @opportunity.applications.each do |application|%>
-<%= application.month_commitment %>
+<%= application.month_commitment %><br>
 <%end%>
-</p> -->
+</p>
 
 
 

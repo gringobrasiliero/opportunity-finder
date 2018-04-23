@@ -9,6 +9,27 @@ RSpec.describe User, :type => :model do
     )
   }
 
+  let(:app_one) {
+    Application.create(
+    :user_id => user.id,
+    :opportunity_id => opportunity.id,
+    :qualified => true,
+    :legal => false,
+    :month_commitment => 6,
+    :reason_for_interest => "Defeat him"
+    )
+  }
+
+  let(:app_two) {
+    Application.create(
+    :user_id => user.id,
+    :opportunity_id => opportunity.id,
+    :qualified => false,
+    :legal => true,
+    :month_commitment => 6,
+    :reason_for_interest => "Defeat him nowwww"
+    )
+  }
 
   it "is valid with a name and password" do
      expect(user).to be_valid
@@ -41,7 +62,12 @@ it "has many applications" do
   second_app = Application.create( :user_id => user.id, :qualified => false, :legal => true, :month_commitment => 1, :reason_for_interest => "Defeat him fast")
    expect(user.applications.first).to eq(first_app)
   expect(user.applications.last).to eq(second_app)
-end
+
+
+  end
+
+
+
 
 
 

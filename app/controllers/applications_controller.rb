@@ -4,20 +4,24 @@ class ApplicationsController < ApplicationController
     def new
       # @opportunity = params{:opportunity_id}
       @application = Application.new
-      binding.pry
     end
 
     def create
       @user = current_user
-      @application = @user.applications.build(application_params)
-      @application.save
-
-      redirect_to application_path(@application)
+      @application = Application.create(application_params)
+      # @application.save
+ # binding.pry
+      redirect_to opportunities_path(@opportunity)
     end
 
     def show
       @application = Application.find(params[:id])
 
+    end
+
+    def show
+      @opportunity = Opportunity.find(params[:id])
+      @opportunity.applications.build()
     end
 
 #Show all current Applications applied for
@@ -33,6 +37,6 @@ class ApplicationsController < ApplicationController
   private
 
   def application_params
-     params.require(:application).permit( :qualified, :legal, :month_commitment, :reason_for_interest, :user_id, :opportunity_id, :id)
+     params.require(:application).permit( :qualified, :legal, :month_commitment, :reason_for_interest, :user_id, :opportunity_id, user_attributes:[:id])
    end
 end

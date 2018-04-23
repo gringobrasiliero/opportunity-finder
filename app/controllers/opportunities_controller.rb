@@ -17,8 +17,10 @@ def index
 end
 
 def show
+@user = current_user
   @opportunity = Opportunity.find(params[:id])
-  @opportunity.applications.build()
+
+
 end
 
 
@@ -26,6 +28,7 @@ end
 def update
   @user = current_user
   @opportunity = Opportunity.find(params[:id])
+
   @opportunity.update(opportunity_params)
 
 redirect_to opportunity_path(@opportunity)
@@ -34,7 +37,7 @@ end
 private
 
 def opportunity_params
-  params.require(:opportunity).permit(:title, :description, :user_id, :application_id, :id )
+  params.require(:opportunity).permit(:title, :description, :user_id, application_ids:[], applications_attributes: [ :qualified, :legal, :month_commitment, :reason_for_interest, :user_id, :opportunity_id, :id])
 end
 
 end
