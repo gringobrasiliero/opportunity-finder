@@ -1,5 +1,5 @@
 class ApplicationsController < ApplicationController
-
+before_action :authenticate_user!
   #begin new Application to Opportunity
     def new
       # @opportunity = params{:opportunity_id}
@@ -7,22 +7,20 @@ class ApplicationsController < ApplicationController
     end
 
     def create
-      @user = current_user
-      @application = Application.create(application_params)
-      # @application.save
+      # @opportunity = Opportunity.find(params[:id])
+      @application = current_user.applications.create(application_params)
+       @application.save
  # binding.pry
-      redirect_to opportunities_path(@opportunity)
+      redirect_to applications_path(@application)
     end
 
     def show
       @application = Application.find(params[:id])
-
-    end
-
-    def show
       @opportunity = Opportunity.find(params[:id])
-      @opportunity.applications.build()
+
     end
+
+
 
 #Show all current Applications applied for
   def index
