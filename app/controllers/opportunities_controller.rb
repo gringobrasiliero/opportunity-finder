@@ -6,7 +6,7 @@ class OpportunitiesController < ApplicationController
 
   def create
     @user = current_user
-      @opportunity = @user.opportunities.build(opportunity_params)
+      @opportunity = @user.opportunities.create(opportunity_params)
       @opportunity.save
       redirect_to opportunity_path(@opportunity)
     end
@@ -19,8 +19,8 @@ end
 def show
 @user = current_user
   @opportunity = Opportunity.find(params[:id])
-
-
+@application = Application.new
+# binding.pry
 end
 
 

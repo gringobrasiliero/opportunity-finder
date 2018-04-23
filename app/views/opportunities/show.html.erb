@@ -2,8 +2,7 @@
 <h2> <%= @opportunity.description %> </h2>
 
 
-<%= form_for @opportunity.applications.build do |f| %>
- <%= select("application", "user_id", User.all.collect {|p| [ p.email, p.id ] }, {include_blank: true} ) %>
+<%= form_for(@application) do |f| %>
 
 <input type='hidden' name='application[qualified]' value=false>
 <%= f.check_box :qualified %><br>
@@ -16,21 +15,8 @@
 
 <%= f.label :reason_for_interest %><br>
 <%= f.text_field :reason_for_interest %><br>
-<%= f.hidden_field :opportunity_id %>
-
+<%= f.hidden_field :opportunity_id , :value => @opportunity.id%>
+<%= f.hidden_field :user_id , :value => @user.id%>
 
 <%=f.submit%>
 <%end%>
-
-
-<p>
-
-<% @opportunity.applications.each do |application|%>
-<%= application.user %><br>
-<%= application.month_commitment %><br>
-<%= application.reason_for_interest %><br>
-<br>
-<%end%>
-
-
-</p>
