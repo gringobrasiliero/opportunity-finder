@@ -20,6 +20,11 @@ before_action :authenticate_user!
 
     end
 
+def destroy
+@application = Application.find(params[:id])
+@application.destroy
+redirect_to applications_path
+end
 
 
 #Show all current Applications applied for
