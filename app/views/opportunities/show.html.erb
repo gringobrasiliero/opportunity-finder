@@ -23,12 +23,20 @@
 
 
 <%@opportunity.applications.each do |application|%>
-<%=application.user.email%><br>
 
-<%=application.profile.first_name%><br>
+<% if application.user.profile != nil %>
+<%=application.profile.first_name%>
+<%=application.profile.last_name%><br>
+<%=application.profile.profession%><br>
+<%=application.profile.location%><br>
+
+<% end %>
+<%=application.user.email%><br>
+<%=application.qualified%><br>
+<%=application.legal%><br>
 
 <%=application.month_commitment%><br>
 <%=application.reason_for_interest%><br>
 
-
+<br>
 <% end %>
