@@ -2,6 +2,16 @@ class Ability
   include CanCan::Ability
 
   def initialize(user)
+
+if user.opportunity_provider?
+  can :manage, :opportunities
+  can [ :create, :update, :destroy], [Opportunities]
+else
+  can :manage, :applications
+    can [ :create, :update, :destroy], [Applications]
+end
+
+
     # Define abilities for the passed in user here. For example:
     #
     #   user ||= User.new # guest user (not logged in)
