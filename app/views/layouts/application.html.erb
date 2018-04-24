@@ -17,13 +17,15 @@
       <% end %>
 
   <%= link_to("View Opportunities", opportunities_path) %>
-      <% if current_user %>
+      <% if !current_user.profile %>
         <%= link_to("Create Profile", new_profile_path) %>
+<% end %>
+
 
       <% if current_user.profile %>
         <%= link_to("Edit Profile", edit_profile_path(current_user.profile)) %>
         <%= link_to("View Profile", profiles_path) %>
-      <% end %>
+
 
         <%= link_to("Create Opportunity", new_opportunity_path) %>
 
