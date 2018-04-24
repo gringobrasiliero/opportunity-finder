@@ -14,5 +14,13 @@ def users_attributes=(attr)
       user = User.find_or_create_by(a)
       self.user = user
     end
-  end
+end
+
+def legal_and_qualified?
+    if legal && qualified
+      return valid?
+    end
+end
+
+
 end

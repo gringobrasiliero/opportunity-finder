@@ -23,6 +23,7 @@
 
 
 <%@opportunity.applications.each do |application|%>
+<% if application.legal_and_qualified? %>
 
 <% if application.user.profile != nil %>
 <%=application.profile.first_name%>
@@ -39,4 +40,5 @@
 <%=application.reason_for_interest%><br>
 
 <br>
+<% end %>
 <% end %>
