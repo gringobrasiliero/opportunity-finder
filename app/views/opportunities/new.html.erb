@@ -6,6 +6,7 @@
 
 <%= f.label :description %> <br>
 <%= f.text_field :description %> <br>
+<%= f.hidden_field :user_id , :value => @user.id%>
 
 <%= f.submit %>
 

@@ -24,7 +24,9 @@
 
 <%@opportunity.applications.each do |application|%>
 <%=application.user.email%><br>
-<%=application.profile%><br>
+
+<%=application.profile.first_name%><br>
+
 <%=application.month_commitment%><br>
 <%=application.reason_for_interest%><br>
 

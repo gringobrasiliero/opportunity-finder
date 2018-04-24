@@ -3,9 +3,9 @@ class Opportunity < ApplicationRecord
 validates :description, presence:true
 belongs_to :user
 has_many :applications
-has_many :users, :through => :applications
+has_many :users, :through => :applications,  :source=>"user"
 
-has_many :profiles, :through => :users
+has_many :profiles, :through => :users,  :source=>"user"
   # has_many :applications
   # accepts_nested_attributes_for :applications
 

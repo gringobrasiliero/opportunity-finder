@@ -1,14 +1,15 @@
 class OpportunitiesController < ApplicationController
 
   def new
+@user = current_user
     @opportunity = Opportunity.new
   end
 
   def create
     @user = current_user
       @opportunity = @user.opportunities.create(opportunity_params)
-      @opportunity.save
-      redirect_to opportunity_path(@opportunity)
+
+      redirect_to opportunities_path(@opportunity)
     end
 
 
