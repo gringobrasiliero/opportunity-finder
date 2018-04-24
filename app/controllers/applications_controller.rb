@@ -2,12 +2,12 @@ class ApplicationsController < ApplicationController
 before_action :authenticate_user!
   #begin new Application to Opportunity
     def new
-      # @opportunity = params{:opportunity_id}
+      @opportunity = Opportunity.find(params[:id])
       @application = Application.new
     end
 
     def create
-      # @opportunity = Opportunity.find(params[:id])
+       # @opportunity =
       @application = current_user.applications.create(application_params)
        @application.save
  # binding.pry
