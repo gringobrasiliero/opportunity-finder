@@ -17,6 +17,7 @@
       <% end %>
 
   <%= link_to("View Opportunities", opportunities_path) %>
+  <%= link_to("My Applications", applications_path) %>
       <% if !current_user.profile %>
         <%= link_to("Create Profile", new_profile_path) %>
 <% end %>
