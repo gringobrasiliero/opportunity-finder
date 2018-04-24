@@ -1,0 +1,11 @@
+
+
+
+
+<% @user.applications.each do |application| %>
+<h1><%= application.opportunity.title %></h1><br>
+<h2><%= application.opportunity.description %><h2><br>
+<%= application.qualified %><br>
+<%= application.legal %><br>
+<%= application.month_commitment %><br>
+<%end%>
