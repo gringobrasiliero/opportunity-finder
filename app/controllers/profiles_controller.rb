@@ -1,7 +1,7 @@
 class ProfilesController < ApplicationController
   def new
     @profile = Profile.new
-    @opportunity = Opportunity.find(params[:id])
+    
   end
 
 def create
