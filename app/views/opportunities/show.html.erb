@@ -4,9 +4,11 @@
 
 <%= form_for(@application) do |f| %>
 
+<%= f.label :qualified %><br>
 <input type='hidden' name='application[qualified]' value=false>
 <%= f.check_box :qualified %><br>
 
+<%= f.label :legal %><br>
 <input type='hidden' name='application[legal]' value=false>
 <%= f.check_box :legal %><br>
 
@@ -26,14 +28,19 @@
 <% if application.legal_and_qualified? %>
 
 <% if application.user.profile != nil %>
+
 <%=application.profile.first_name%>
 <%=application.profile.last_name%><br>
+
 <%=application.profile.profession%><br>
+
 <%=application.profile.location%><br>
 
 <% end %>
 <%=application.user.email%><br>
+
 <%=application.qualified%><br>
+
 <%=application.legal%><br>
 
 <%=application.month_commitment%><br>
