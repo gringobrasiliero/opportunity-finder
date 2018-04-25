@@ -13,7 +13,7 @@ def create
     u.first_name = auth['info']['first_name']
     u.last_name = auth['info']['last_name']
      u.picture_url = auth['info']['image']
-
+  
    end
 
 
