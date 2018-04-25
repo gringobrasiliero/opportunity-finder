@@ -1,14 +1,16 @@
 class Ability
   include CanCan::Ability
 
-  def initialize(user)
+  def initialize(current_user)
 
-if user.opportunity_provider?
+if current_user.opportunity_provider?
   can :manage, :opportunities
-  can [ :create, :update, :destroy], [Opportunities]
+  can :read, :opportunities
+
 else
   can :manage, :applications
-    can [ :create, :update, :destroy], [Applications]
+  can :read, :applications
+
 end
 
 

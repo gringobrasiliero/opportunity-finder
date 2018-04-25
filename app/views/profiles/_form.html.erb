@@ -1,5 +1,9 @@
 <%= form_for(@profile) do |f| %>
 
+<%= f.label :business_name %>
+<%= f.text_field :business_name, :placeholder => @profile.business_name  %><br>
+
+
 <%= f.label :first_name %>
 <%= f.text_field :first_name, :placeholder => @profile.first_name  %><br>
 

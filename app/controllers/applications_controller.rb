@@ -1,5 +1,6 @@
 class ApplicationsController < ApplicationController
 before_action :authenticate_user!
+
   #begin new Application to Opportunity
     def new
       @opportunity = Opportunity.find(params[:id])

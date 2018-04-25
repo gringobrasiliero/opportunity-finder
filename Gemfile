@@ -7,6 +7,7 @@ end
 gem 'cancancan', '~> 2.0'
 gem 'rspec-rails'
 gem 'omniauth'
+gem 'omniauth-linkedin'
 gem 'pry'
 gem 'dotenv-rails'
 gem 'devise'
