@@ -10,29 +10,30 @@
     <p class="notice"><%= notice %></p>
        <p class="alert"><%= alert %></p>
 <%= link_to("Home", root_path) %>
-       <% if !current_user %>
+       <% if !logged_in? %>
       <%= link_to("Sign-up",  new_user_registration_path) %>
       <%= link_to("Sign-in",  sign_in_path) %>
 
       <% end %>
 
+ <% if logged_in? %>
   <%= link_to("View Opportunities", opportunities_path) %>
   <%= link_to("My Applications", applications_path) %>
-      <% if !current_user.profile %>
+      <% if !has_profile? %>
         <%= link_to("Create Profile", new_profile_path) %>
 <% end %>
 
 
-      <% if current_user.profile %>
+      <% if has_profile? %>
         <%= link_to("Edit Profile", edit_profile_path(current_user.profile)) %>
         <%= link_to("View Profile", profiles_path) %>
-
+<% end %>
 
         <%= link_to("Create Opportunity", new_opportunity_path) %>
 
         <%= link_to("Log Out", destroy_user_session_path, :method => 'delete')%>
-      <% end %>
 
+<% end %>
   <%= content_tag(:div, flash[:error], :id => "flash_error") if flash[:error] %>
   <%= content_tag(:div, flash[:notice], :id => "flash_notice") if flash[:notice] %>
   <%= content_tag(:div, flash[:alert], :id => "flash_alert") if flash[:alert] %>
