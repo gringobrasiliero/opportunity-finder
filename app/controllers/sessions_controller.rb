@@ -1,20 +1,26 @@
 class SessionsController < ApplicationController
   def new
-
-    if auth = request.env["omniauth.auth"]
-     @user = User.find_or_create_by(uid: auth['uid']) do |u|
-        u.name = auth['info']['name']
-       u.email = auth['info']['email-address']
-       u.first_name = auth['info']['first-name']
-       u.last_name = auth['info']['last-name']
-       u.image = auth['info']['picture-url']
-     end
-
-     session[:user_id] = @user.id
-
-     render 'welcome/home'
-
   end
+
+def create
+  if auth = request.env["omniauth.auth"]
+   @user = User.find_or_create_by(uid: auth['uid']) do |u|
+      u.email = auth['info']['email']
+
+   end
+
+  @profile = Profile.find_or_create_by(uid: auth['uid']) do |u|
+    u.first_name = auth['info']['first_name']
+    u.last_name = auth['info']['last_name']
+     u.picture_url = auth['info']['image']
+
+   end
+
+
+   session[:user_id] = @user.uid
+binding.pry
+   render 'welcome/home'
+ end
 
 
   def destroy
@@ -22,10 +28,12 @@ class SessionsController < ApplicationController
     redirect_to root_path
   end
 
-  private
 
-  def auth
-    request.env['omniauth.auth']
-  end
+end
+private
+
+def auth
+  request.env['omniauth.auth']
+end
 
 end

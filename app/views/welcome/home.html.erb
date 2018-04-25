@@ -8,3 +8,13 @@
 <br>
 <br>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/QH2-TGUlwu4" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
+
+<% if  session[:user_id] %>
+
+  <h2>Email: <%= @user.email %></h2>
+  <h2>Linkedin UID: <%= @user.uid %></h2>
+
+<% else %>
+  <%= link_to('Log in with Linkedin', '/auth/linkedin') %>
+<% end %>

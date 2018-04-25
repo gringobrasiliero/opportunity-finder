@@ -5,7 +5,7 @@ Rails.application.routes.draw do
       end
 
   get 'sessions/new'
-
+ get '/auth/linkedin/callback' => 'sessions#create'
 
 # get 'profiles/:id/edit', to: 'profiles#edit', as: :edit_profile
 # patch 'profiles/:id', to: 'profiles#update'

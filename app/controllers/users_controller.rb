@@ -8,8 +8,18 @@ def destroy
   reset_session
   redirect_to root_path
 end
-def create
 
+def new
+  @user = User.new
+end
+
+
+def create
+  @user = user.new(params[:id])
+    if user.save
+      session[:user_id] = @user.id
+      redirect to user_path(@user)
+    end
 end
 
 def user_params

@@ -39,6 +39,7 @@ ActiveRecord::Schema.define(version: 20180425111314) do
     t.string "location"
     t.string "picture_url"
     t.string "profession"
+    t.string "uid"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "business_name"
@@ -64,6 +65,7 @@ ActiveRecord::Schema.define(version: 20180425111314) do
     t.string "picture_url"
     t.string "profession"
     t.boolean "opportunity_provider", default: false
+    t.string "uid"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
