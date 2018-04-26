@@ -17,13 +17,15 @@ before_action :authenticate_user!
 def index
   @user = current_user
   @opportunities = Opportunity.all
+
 end
 
 def show
 @user = current_user
+
   @opportunity = Opportunity.find(params[:id])
 @application = Application.new
-# binding.pry
+
 end
 
 

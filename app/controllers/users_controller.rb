@@ -5,6 +5,7 @@ def show
 end
 
 def destroy
+
   reset_session
   redirect_to root_path
 end
@@ -23,7 +24,7 @@ def create
 end
 
 def user_params
-  params.require(:user).permit(:name, :email, :password, :password_confirmation, :opportunity_provider, :uid, :id)
+  params.require(:user).permit(:name, :email, :password, :password_confirmation, :opportunity_provider, :uid, :id, :provider, :first_name, :last_name)
 end
 
 end

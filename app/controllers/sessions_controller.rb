@@ -3,24 +3,26 @@ class SessionsController < ApplicationController
   end
 
 def create
-  # if auth = request.env["omniauth.auth"]
-  #  @user = User.find_or_create_by(uid: auth['uid']) do |u|
-  #     u.email = auth['info']['email']
-  #
-  #  end
-linkedin
-  @profile = Profile.find_or_create_by(uid: auth['uid']) do |u|
+  if auth = request.env["omniauth.auth"]
+   @user = User.find_or_create_by(uid: auth['uid']) do |u|
+      u.email = auth['info']['email']
+      u.first_name = auth['info']['first_name']
+      u.last_name = auth['info']['last_name']
+    end
+  @profile = @user.profile.from_omniauth(uid: auth['uid']) do |u|
     u.first_name = auth['info']['first_name']
     u.last_name = auth['info']['last_name']
      u.picture_url = auth['info']['image']
-
    end
-
+    end
+  linkedin
+  if auth = request.env["omniauth.auth"]
 
    current_user = @user.uid
-# binding.pry
+
    render 'welcome/home'
- end
+end
+
 
 
   def destroy
@@ -29,7 +31,7 @@ linkedin
   end
 
 
-end
+
 private
 
 def auth
