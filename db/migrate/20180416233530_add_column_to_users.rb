@@ -3,6 +3,7 @@ class AddColumnToUsers < ActiveRecord::Migration[5.1]
     change_table :users do |t|
      t.boolean :opportunity_provider, :default => false
      t.string :uid
+     t.string :provider
    end
   end
 end
