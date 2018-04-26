@@ -7,5 +7,5 @@ has_many :applications
 has_many :opportunities, :through => :applications
 
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
+         :recoverable, :rememberable, :trackable, :validatable, :uid, :confirmable
 end
