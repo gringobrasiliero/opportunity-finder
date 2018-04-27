@@ -16,6 +16,12 @@ has_many :opportunities, :through => :applications
            where(provider: auth.linkedin, uid: auth.uid).first_or_create do |user|
              user.email = auth.info.email
              user.first_name = auth.info.first_name
+             user.last_name = auth.info.last_name
+              user.picture_url = auth.info.image
+                user.location = auth.info.location(name)
+                user.profession = auth.info.profession
+                user.positions = auth.info.positions
+
              user.password = Devise.friendly_token[0,20]
              end
          end

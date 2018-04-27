@@ -13,6 +13,7 @@ resources :profiles
 resources :applications
 resources :opportunities do
   resources :applications
+  resources :users
 end
 
   # devise_for :users

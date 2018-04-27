@@ -24,7 +24,7 @@ def create
 end
 
 def user_params
-  params.require(:user).permit(:name, :email, :password, :password_confirmation, :opportunity_provider, :uid, :id, :provider, :first_name, :last_name)
+  params.require(:user).permit(:name, :email, :password, :password_confirmation, :opportunity_provider, :uid, :id, :provider, :first_name, :last_name, :location, :picture_url, :profession, :positions )
 end
 
 end
