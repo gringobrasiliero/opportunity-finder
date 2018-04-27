@@ -32,13 +32,14 @@ def update
   @profile = Profile.find(params[:id])
   @profile.update(profile_params)
 redirect_to profile_path(@profile)
+
 end
 
 
 private
 
 def profile_params
-   params.require(:profile).permit(:user_id, :first_name, :last_name, :location, :profession, :uid)
+   params.require(:profile).permit(:user_id, :first_name, :last_name, :location, :profession, :uid, :picture_url, :provider)
  end
 
 

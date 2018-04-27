@@ -8,6 +8,8 @@ class CreateProfiles < ActiveRecord::Migration[5.1]
       t.string :picture_url
       t.string :profession
       t.string :uid
+      t.string :provider
+      t.string :email
       t.timestamps
     end
   end
