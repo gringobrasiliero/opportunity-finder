@@ -6,7 +6,7 @@ belongs_to :user
 accepts_nested_attributes_for :user
   belongs_to :opportunity
 has_many :users
-has_one :profile, :through => :user
+
 
 
 def users_attributes=(attr)
