@@ -8,14 +8,14 @@
 <%@opportunity.applications.each do |application|%>
 <% if application.legal_and_qualified? %>
 
-<% if application.user.profile != nil %>
+<% if application.user != nil %>
 
-<%=application.profile.first_name%>
-<%=application.profile.last_name%><br>
+<%=application.user.first_name%>
+<%=application.user.last_name%><br>
 
-<%=application.profile.profession%><br>
+<%=application.user.profession%><br>
 
-<%=application.profile.location%><br>
+<%=application.user.location%><br>
 
 <% end %>
 <%=application.user.email%><br>

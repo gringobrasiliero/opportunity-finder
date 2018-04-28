@@ -3,11 +3,17 @@
 
 
 <% @user.applications.each do |application| %>
-<h1><%= application.opportunity.title %></h1><br>
-<h2><%= application.opportunity.description %><h2><br>
-<%= application.qualified %><br>
-<%= application.legal %><br>
-<%= application.month_commitment %><br>
+<h1>Opportunity Title: <%= application.opportunity.title %></h1><br>
+<h2>Opportunity Description: <%= application.opportunity.description %><h2><br>
+
+
+<div class="field">
+Applicant Qualified: <%= application.qualified %></div>
+<div class="field">
+Appliant Legal: <%= application.legal %></div>
+<div class="field">
+Applicant Month Commitment: <%= application.month_commitment %></div>
+
 <%= link_to 'Delete',
              application_path(application),
                          method: :delete,
