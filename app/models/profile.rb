@@ -11,7 +11,7 @@ class Profile < ApplicationRecord
       profile.last_name = auth.info.last_name
        profile.picture_url = auth.info.image
        profile.save
-binding.pry
+
       end
   end
 end

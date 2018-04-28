@@ -8,6 +8,10 @@ def create
       u.email = auth['info']['email']
       u.first_name = auth['info']['first_name']
       u.last_name = auth['info']['last_name']
+      u.profession = auth['info']['profession']
+      u.picture_url = auth['info']['image']
+      u.location = auth ['info']['location']
+      u.positions = auth['info']['positions']
     end
   @profile = @user.profile.from_omniauth(uid: auth['uid']) do |u|
     u.first_name = auth['info']['first_name']
@@ -22,7 +26,6 @@ def create
 
    render 'welcome/home'
 end
-
 
 
   def destroy

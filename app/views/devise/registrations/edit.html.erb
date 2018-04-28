@@ -12,18 +12,18 @@
     <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
   <% end %>
 
-
+<div class="field">
   <%= f.label :first_name %>
-  <%= f.text_field :first_name, :placeholder => @user.first_name  %><br>
-
+  <%= f.text_field :first_name, :placeholder => @user.first_name  %>  </div>
+<div class="field">
   <%= f.label :last_name %>
-  <%= f.text_field :last_name, :placeholder => @user.last_name %><br>
-
+  <%= f.text_field :last_name, :placeholder => @user.last_name %>  </div>
+<div class="field">
   <%= f.label :location %>
-  <%= f.text_field :location, :placeholder =>  @user.location %><br>
-
+  <%= f.text_field :location, :placeholder =>  @user.location %>  </div>
+<div class="field">
   <%= f.label :profession %>
-  <%= f.text_field :profession, :placeholder => @user.profession %><br>
+  <%= f.text_field :profession, :placeholder => @user.profession %>  </div>
 
 
 

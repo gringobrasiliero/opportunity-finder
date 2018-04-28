@@ -13,6 +13,7 @@
 <%= link_to("Edit Profile",  edit_user_registration_path(current_user)) %>
     <% if !logged_in? %>
       <%= link_to("Sign-up",  new_user_registration_path) %>
+      <%= link_to('Log in with Linkedin', 'users/auth/linkedin') %>
       <%= link_to("Sign-in",  sign_in_path) %>
       <%= link_to("Log Out", destroy_user_session_path, :method => 'delete')%>
     <% end %>
@@ -23,15 +24,15 @@
     <%= link_to("My Applications", applications_path) %>
     <%= link_to("Log Out", destroy_user_session_path, :method => 'delete')%>
 
-  <% if !has_profile? %>
-      <%= link_to("Create Profile", new_profile_path) %>
-  <% end %>
+
+    <%= link_to("Create Profile", new_profile_path) %>
+
+<br>
+ <img src="<%=current_user.picture_url %>">
 
 
-  <% if has_profile? %>
-    <%= link_to("Edit Profile", edit_profile_path(current_user.profile)) %>
-    <%= link_to("View Profile", profiles_path) %>
-  <% end %>
+
+
 <% end %>
   <%= content_tag(:div, flash[:error], :id => "flash_error") if flash[:error] %>
   <%= content_tag(:div, flash[:notice], :id => "flash_notice") if flash[:notice] %>
