@@ -19,11 +19,11 @@
 <div class="field">
 <%= f.label :criminal_record %>
 <input type='hidden' name='application[criminal_record]' value=false>
-<%= f.check_box :legal, :placeholder => @application.criminal_record %><br></div>
+<%= f.check_box :criminal_record, :placeholder => @application.criminal_record %><br></div>
 
 <div class="field">
 <%= f.label :description_of_criminal_record %>
-<%= f.text_box :month_commitment, :placeholder => @application.description_of_criminal_record %><br></div>
+<%= f.text_area :description_of_criminal_record, :placeholder => @application.description_of_criminal_record %><br></div>
 
 
 <div class="field">

@@ -1,10 +1,11 @@
 <h1> <%= @opportunity.title %> </h1>
 <h2> <%= @opportunity.description %> </h2>
 
-
+<% if searcher? %>
 <%= render 'applications/form' %>
+<%end%>
 
-
+<% if provider? %>
 <%@opportunity.applications.each do |application|%>
 <% if application.legal_and_qualified? %>
 
@@ -29,6 +30,6 @@
 <div class="field">
 <%=application.reason_for_interest%></div>
 
-
+<% end %>
 <% end %>
 <% end %>
