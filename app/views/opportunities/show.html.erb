@@ -8,25 +8,27 @@
 <%@opportunity.applications.each do |application|%>
 <% if application.legal_and_qualified? %>
 
-<% if application.user != nil %>
 
-<%=application.user.first_name%>
-<%=application.user.last_name%><br>
+<div class="field">
+<%=application.user.first_name%></div>
+<div class="field">
+<%=application.user.last_name%></div>
+<div class="field">
+<%=application.user.profession%></div>
+<div class="field">
+<%=application.user.location%></div>
 
-<%=application.user.profession%><br>
+<div class="field">
+<%=application.user.email%></div>
+<div class="field">
+<%=application.qualified%></div>
+<div class="field">
+<%=application.legal%></div>
+<div class="field">
+<%=application.month_commitment%></div>
+<div class="field">
+<%=application.reason_for_interest%></div>
 
-<%=application.user.location%><br>
 
-<% end %>
-<%=application.user.email%><br>
-
-<%=application.qualified%><br>
-
-<%=application.legal%><br>
-
-<%=application.month_commitment%><br>
-<%=application.reason_for_interest%><br>
-
-<br>
 <% end %>
 <% end %>

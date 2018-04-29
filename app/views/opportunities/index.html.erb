@@ -1,13 +1,13 @@
-<% @opportunities.each do |opportunity| %>
 
 
+<h1>My Job Postings </h1>
+<% @user.opportunities.each do |opportunity| %>
 <h1> <%= link_to opportunity.user.first_name, opportunity_path(opportunity) %> </h1>
 <h2> <%= opportunity.title %> </h2>
 <h2> <%= opportunity.description %> </h2>
 <% end %>
 
-<h1>My Job Postings </h1>
-<% @user.opportunities.each do |opportunity| %>
+<% @opportunities.each do |opportunity| %>
 
 <h1> <%= link_to opportunity.user.first_name, opportunity_path(opportunity) %> </h1>
 <h2> <%= opportunity.title %> </h2>

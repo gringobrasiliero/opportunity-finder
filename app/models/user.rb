@@ -10,8 +10,6 @@ has_many :opportunities, :through => :applications
          :recoverable, :rememberable, :trackable, :validatable, :uid,
          :omniauthable, omniauth_providers: %i[linkedin]
 
-
-
          def self.from_omniauth(auth)
            where(provider: auth.linkedin, uid: auth.uid).first_or_create do |user|
              user.email = auth.info.email

@@ -11,7 +11,7 @@ before_action :authenticate_user!
        # @opportunity =
       @application = current_user.applications.create(application_params)
        @application.save
- # binding.pry
+
       redirect_to applications_path(@application)
     end
 

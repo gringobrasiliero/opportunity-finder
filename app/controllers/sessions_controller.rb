@@ -13,11 +13,7 @@ def create
       u.location = auth ['info']['location']
       u.positions = auth['info']['positions']
     end
-  @profile = @user.profile.from_omniauth(uid: auth['uid']) do |u|
-    u.first_name = auth['info']['first_name']
-    u.last_name = auth['info']['last_name']
-     u.picture_url = auth['info']['image']
-   end
+
     end
   linkedin
   if auth = request.env["omniauth.auth"]
