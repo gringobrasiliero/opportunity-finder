@@ -19,13 +19,19 @@
     <% end %>
 
    <% if logged_in? %>
-    <%= link_to("Create Opportunity", new_opportunity_path) %>
+    <% if provider? %>
+      <%= link_to("Create Opportunity", new_opportunity_path) %>
+        <%= link_to("My Opportunities", opportunities_path) %>
+    <%end%>
+
+
+
+    <% if searcher? %>
     <%= link_to("View Opportunities", opportunities_path) %>
-    <%= link_to("My Applications", applications_path) %>
+      <%= link_to("My Applications", applications_path) %>
+    <%end%>
+
     <%= link_to("Log Out", destroy_user_session_path, :method => 'delete')%>
-
-
-  
 
 <br>
  <img src="<%=current_user.picture_url %>">

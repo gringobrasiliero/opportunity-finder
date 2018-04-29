@@ -7,10 +7,6 @@ module ApplicationsHelper
       end
   end
 
-  def legal_and_qualified?
-      if legal && qualified
-        return valid?
-      end
-  end
+
 
 end

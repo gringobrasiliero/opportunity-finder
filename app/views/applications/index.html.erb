@@ -1,21 +1,10 @@
 
-
+<h1> My Applications </h1>
 
 
 <% @user.applications.each do |application| %>
-<h1>Opportunity Title: <%= application.opportunity.title %></h1><br>
+<h1>Opportunity Title: <%= link_to application.opportunity.title, edit_application_path(application) %></h1><br>
 <h2>Opportunity Description: <%= application.opportunity.description %><h2><br>
 
 
-<div class="field">
-<h3>Applicant Qualified: <%= application.qualified %></h3></div>
-<div class="field">
-<h3>Applicant Legal: <%= application.legal %></h3></div>
-<div class="field">
-<h3>Applicant Month Commitment: <%= application.month_commitment %></h3></div>
-
-<%= link_to 'Delete',
-             application_path(application),
-                         method: :delete,
-                         data: { confirm: 'Are you sure?' } %>
 <%end%>

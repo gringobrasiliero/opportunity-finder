@@ -15,6 +15,19 @@ before_action :authenticate_user!
       redirect_to applications_path(@application)
     end
 
+def edit
+    @user = current_user
+      @application = Application.find(params[:id])
+
+  end
+
+  def update
+    @user = current_user
+      @application = Application.find(params[:id])
+    @application.update(profile_params)
+  redirect_to application_path(@application)
+end
+
     def show
       @application = Application.find(params[:id])
       @opportunity = Opportunity.find(params[:id])
