@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180426100446) do
+ActiveRecord::Schema.define(version: 20180429121802) do
 
   create_table "applications", force: :cascade do |t|
     t.boolean "qualified"
@@ -19,6 +19,9 @@ ActiveRecord::Schema.define(version: 20180426100446) do
     t.string "reason_for_interest"
     t.integer "user_id"
     t.integer "opportunity_id"
+    t.boolean "transportation"
+    t.boolean "criminal_record"
+    t.text "description_of_criminal_record"
     t.index ["opportunity_id"], name: "index_applications_on_opportunity_id"
     t.index ["user_id"], name: "index_applications_on_user_id"
   end

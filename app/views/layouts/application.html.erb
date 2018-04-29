@@ -11,6 +11,7 @@
        <p class="alert"><%= alert %></p>
 <%= link_to("Home", root_path) %>
 <%= link_to("Edit Profile",  edit_user_registration_path(current_user)) %>
+
     <% if !logged_in? %>
       <%= link_to("Sign-up",  new_user_registration_path) %>
       <%= link_to('Log in with Linkedin', 'users/auth/linkedin') %>
