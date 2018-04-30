@@ -1,0 +1,33 @@
+<%= form_for(@profile) do |f| %>
+
+<div class="field">
+<%= f.label :business_name %>
+<%= f.text_field :business_name,   @profile.business_name  %></div>
+
+
+<div class="field">
+  <%= f.label :first_name %>
+  <%= f.text_field :first_name,   @profile.first_name  %>  </div>
+<div class="field">
+  <%= f.label :last_name %>
+  <%= f.text_field :last_name,   @profile.last_name %>  </div>
+<div class="field">
+  <%= f.label :location %>
+  <%= f.text_field :location,    @profile.location %>  </div>
+<div class="field">
+  <%= f.label :profession %>
+  <%= f.text_field :profession,   @profile.profession %>  </div>
+  <div class="field">
+    <%= f.label :picture_url %>
+    <%= f.text_field :picture_url,   @profile.profession %>  </div>
+
+  <div class="field">
+    <input type='hidden' name='user[opportunity_provider]' value=false>
+    <%= f.label :opportunity_provider %>
+    <%= f.check_box :opportunity_provider %></div>
+
+    <div class="actions">
+      <%= f.submit "Submit" %>
+    </div>
+
+<%end%>
