@@ -11,30 +11,30 @@
 
 
 <div class="field">
-<%=application.user.first_name%></div>
-<div class="field">
-<%=application.user.last_name%></div>
-<div class="field">
-<%=application.user.profession%></div>
-<div class="field">
-<%=application.user.location%></div>
+Name: <%=application.user.profile.first_name%>
+<%=application.user.profile.last_name%></div>
 
 <div class="field">
-<%=application.user.email%></div>
+Profession: <%=application.user.profile.profession%></div>
 <div class="field">
-<%=application.qualified%></div>
+Location: <%=application.user.profile.location%></div>
+
 <div class="field">
-<%=application.transportation%></div>
+Email: <%=application.user.email%></div>
 <div class="field">
-<%=application.criminal_record%></div>
+Qualified for Position: <%=application.qualified%></div>
 <div class="field">
-<%=application.description_of_criminal_record%></div>
+Reliable Transportation: <%=application.transportation%></div>
 <div class="field">
-<%=application.legal%></div>
+Has a Criminal Record: <%=application.criminal_record%></div>
 <div class="field">
-<%=application.month_commitment%></div>
+Description of Criminal Record: <%=application.description_of_criminal_record%></div>
 <div class="field">
-<%=application.reason_for_interest%></div>
+Legally allowed to work: <%=application.legal%></div>
+<div class="field">
+Month Commitment: <%=application.month_commitment%></div>
+<div class="field">
+Reason for Interest: <%=application.reason_for_interest%></div>
 
 <% end %>
 <% end %>

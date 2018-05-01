@@ -7,10 +7,10 @@
 
 <div class="field">
   <%= f.label :first_name %>
-  <%= f.text_field :first_name, :placeholder => @user.first_name  %>  </div>
+  <%= f.text_field :first_name, :value => @user.first_name  %>  </div>
 <div class="field">
   <%= f.label :last_name %>
-  <%= f.text_field :last_name, :placeholder => @user.last_name %>  </div>
+  <%= f.text_field :last_name, :value => @user.last_name %>  </div>
 <div class="field">
   <%= f.label :location %>
   <%= f.text_field :location, :placeholder =>  @user.location %></div>
@@ -19,7 +19,7 @@
   <%= f.text_field :profession, :placeholder => @user.profession %>  </div>
   <div class="field">
     <%= f.label :picture_url %>
-    <%= f.text_field :picture_url, :placeholder => @user.picture_url %>  </div>
+    <%= f.text_field :picture_url, :value => @user.picture_url %>  </div>
 
 <%= f.hidden_field :user_id , :value => @user.id%>
 <%= f.hidden_field :id , :value => @user.id%>

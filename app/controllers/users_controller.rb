@@ -12,11 +12,17 @@ end
 
 def new
   @user = User.new
+
 end
 
+def index
+  @user = current_user
+
+end
 
 def create
   @user = user.new(params[:id])
+
     if user.save
       session[:user_id] = @user.id
       redirect to user_path(@user)
@@ -24,7 +30,7 @@ def create
 end
 
 def user_params
-  params.require(:user).permit(:name, :email, :password, :password_confirmation, :opportunity_provider, :uid, :id, :provider, :first_name, :last_name, :location, :picture_url, :profession, :positions )
+  params.require(:user).permit(:name, :email, :password, :password_confirmation, :opportunity_provider, :uid, :id, :provider )
 end
 
 end

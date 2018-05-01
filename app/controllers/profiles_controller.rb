@@ -7,9 +7,9 @@ class ProfilesController < ApplicationController
 
 def create
   @user = current_user
-  @profile = @user.profile.create(profile_params)
-
-redirect_to profile_path(@profile)
+  @profile = @user.build_profile(profile_params)
+  @profile.save
+  redirect_to @profile
 end
 
 
@@ -20,18 +20,19 @@ end
 
 def show
   @user = current_user
-  @profile = Profile.find(params[:id])
+@profile = Profile.find(params[:id])
 end
 
 def edit
   @user = current_user
-  @profile = Profile.find(params[:id])
+   @profile = @user.profile
 end
 
 def update
   @user = current_user
-  @profile = Profile.find(params[:id])
-  @profile.update(profile_params)
+@profile = @user.profile
+   @profile.update(profile_params)
+
 redirect_to profile_path(@profile)
 
 end
@@ -40,7 +41,7 @@ end
 private
 
 def profile_params
-   params.require(:profile).permit(:user_id, :first_name, :last_name, :location, :profession, :uid, :picture_url, :provider, :business_name, :id, user_attributes:[:id])
+   params.require(:profile).permit(:user_id, :first_name, :last_name, :location, :profession, :uid, :picture_url, :business_name, :id)
  end
 
 

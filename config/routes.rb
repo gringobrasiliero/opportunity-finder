@@ -12,6 +12,10 @@ get 'profiles/:id/edit', to: 'profiles#edit', as: :edit_profile
 # patch 'profiles/:id', to: 'profiles#update'
 resources :profiles
 resources :applications
+
+
+
+
 resources :opportunities do
   resources :applications
 

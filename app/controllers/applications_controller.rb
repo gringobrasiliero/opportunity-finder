@@ -54,6 +54,6 @@ end
   private
 
   def application_params
-     params.require(:application).permit( :qualified, :legal, :month_commitment, :reason_for_interest, :user_id, :opportunity_id, user_attributes:[:id])
+     params.require(:application).permit( :qualified, :legal, :criminal_record, :description_of_criminal_record, :transportation, :month_commitment, :reason_for_interest, :user_id, :opportunity_id, user_attributes:[:id])
    end
 end
