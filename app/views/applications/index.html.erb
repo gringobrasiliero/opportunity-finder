@@ -3,7 +3,8 @@
 
 
 <% @user.applications.each do |application| %>
-<h1>Opportunity Title: <%= link_to application.opportunity.title, edit_application_path(application) %></h1><br>
+<h1>Business Name: <%= link_to application.opportunity.user.profile.business_name, edit_application_path(application) %></h1><br>
+<h1>Opportunity Title: <%= application.opportunity.title %></h1><br>
 <h2>Opportunity Description: <%= application.opportunity.description %><h2><br>
 
 

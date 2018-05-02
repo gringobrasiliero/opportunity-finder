@@ -6,8 +6,10 @@
 <%end%>
 
 <% if provider? %>
-<%@opportunity.applications.each do |application|%>
-<% if application.legal_and_qualified? %>
+<%@opportunity.applications.sort.each do |application|%>
+
+
+
 
 
 <div class="field">
@@ -36,6 +38,6 @@ Month Commitment: <%=application.month_commitment%></div>
 <div class="field">
 Reason for Interest: <%=application.reason_for_interest%></div>
 
-<% end %>
+
 <% end %>
 <% end %>

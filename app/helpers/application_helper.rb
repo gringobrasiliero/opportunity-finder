@@ -21,4 +21,11 @@ def has_profile?
  current_user.profile != nil
 end
 
+def sort
+  sort_by{ |t| [t.legal.to_i, t.created_at] }
+end
+
+
+
+
 end
