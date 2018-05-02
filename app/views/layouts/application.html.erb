@@ -9,51 +9,49 @@
 
     <p class="notice"><%= notice %></p>
        <p class="alert"><%= alert %></p>
-<%= link_to("Home", root_path) %>
 
 
 
+<div class="topnav">
+
+<a <%= link_to("Home", root_path) %> </a>
 
     <% if !logged_in? %>
-      <%= link_to("Sign-up",  new_user_registration_path) %>
-      <%= link_to('Log in with Linkedin', 'users/auth/linkedin') %>
-      <%= link_to("Sign-in",  sign_in_path) %>
-      <%= link_to("Log Out", destroy_user_session_path, :method => 'delete')%>
+    <a <%= link_to("Sign-up",  new_user_registration_path) %> </a>
+      <a <%= link_to('Log in with Linkedin', 'users/auth/linkedin') %> </a>
+      <a <%= link_to("Sign-in",  sign_in_path) %> </a>
+      <a <%= link_to("Log Out", destroy_user_session_path, :method => 'delete')%> </a>
     <% end %>
 
    <% if logged_in? %>
 
 <% if !has_profile? %>
-          <%= link_to("Create Profile", new_profile_path) %>
+      <a <%= link_to("Create Profile", new_profile_path) %> </a>
 <% end %>
 
 <% if has_profile? %>
-  <%= link_to("Edit Profile", edit_profile_path(current_user)) %>
+<a <%= link_to("Edit Profile", edit_profile_path(current_user)) %> </a>
  <% end %>
 
         <% if has_profile? %>
-          <%= link_to("Edit Account", edit_account_path(current_user)) %>
+    <a <%= link_to("Edit Account", edit_account_path(current_user)) %></a>
 
  <% end %>
 
 
-
-
-
     <% if provider? %>
-      <%= link_to("Create Opportunity", new_opportunity_path) %>
-        <%= link_to("My Opportunities", opportunities_path) %>
+    <a <%= link_to("Create Opportunity", new_opportunity_path) %> </a>
+      <a <%= link_to("My Opportunities", opportunities_path) %> </a>
     <%end%>
-
-
 
     <% if searcher? %>
-    <%= link_to("View Opportunities", opportunities_path) %>
-      <%= link_to("My Applications", applications_path) %>
+  <a <%= link_to("View Opportunities", opportunities_path) %> </a>
+    <a  <%= link_to("My Applications", applications_path) %> </a>
     <%end%>
 
-    <%= link_to("Log Out", destroy_user_session_path, :method => 'delete')%>
+  <a <%= link_to("Log Out", destroy_user_session_path, :method => 'delete')%> </a>
 
+</div>
 <br>
 
 <% if has_profile? %>
@@ -69,6 +67,7 @@
   </head>
 
   <body>
+    <br>
     <%= yield %>
   </body>
 </html>

@@ -1,9 +1,10 @@
 <%= form_for(@profile) do |f| %>
 
+<%if provider? %>
 <div class="field">
 <%= f.label :business_name %>
 <%= f.text_field :business_name, :placeholder => @profile.business_name  %></div>
-
+<%end%>
 
 <div class="field">
   <%= f.label :first_name %>

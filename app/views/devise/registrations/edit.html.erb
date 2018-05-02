@@ -56,6 +56,8 @@
     <%= f.password_field :current_password %>
   </div>
 
+  <!-- <%= f.hidden_field :current_password , :value => @user.encrypted_password%> -->
+
   <div class="actions">
     <%= f.submit "Update" %>
   </div>
