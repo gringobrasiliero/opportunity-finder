@@ -1,6 +1,8 @@
 class ApplicationsController < ApplicationController
 before_action :authenticate_user!
 
+
+
   #begin new Application to Opportunity
     def new
       @opportunity = Opportunity.find(params[:id])
@@ -9,8 +11,9 @@ before_action :authenticate_user!
 
     def create
        # @opportunity =
-      @application = current_user.applications.create(application_params)
-       @application.save
+      @application = current_user.applications.new(application_params)
+
+       @application.save!
 
       redirect_to applications_path(@application)
     end
@@ -24,6 +27,7 @@ def edit
   def update
     @user = current_user
       @application = Application.find(params[:id])
+      @application.valid?
     @application.update(application_params)
   redirect_to application_path(@application)
 end
