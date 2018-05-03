@@ -22,6 +22,8 @@ ActiveRecord::Schema.define(version: 20180502165932) do
     t.boolean "transportation"
     t.boolean "criminal_record"
     t.text "description_of_criminal_record"
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.index ["opportunity_id"], name: "index_applications_on_opportunity_id"
     t.index ["user_id"], name: "index_applications_on_user_id"
   end

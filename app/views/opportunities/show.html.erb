@@ -6,38 +6,41 @@
 <%end%>
 
 <% if provider? %>
-<%@opportunity.applications.sort.each do |application|%>
+
+
+<% best_candidates.each do |application|%>
 
 
 
 
 
 <div class="field">
-Name: <%=application.user.profile.first_name%>
-<%=application.user.profile.last_name%></div>
+<h2>Name: <%=application.user.profile.first_name%>
+<%=application.user.profile.last_name%></h2></div>
+<div class="field">
+<h3>Email: <%=application.user.email%></h3></div>
 
 <div class="field">
-Profession: <%=application.user.profile.profession%></div>
+<h3>Profession: <%=application.user.profile.profession%></h3></div>
 <div class="field">
-Location: <%=application.user.profile.location%></div>
+<h3>Location: <%=application.user.profile.location%></h3></div>
 
+<br>
 <div class="field">
-Email: <%=application.user.email%></div>
+<h3>Qualified for Position: <%=application.qualified%></h3></div>
 <div class="field">
-Qualified for Position: <%=application.qualified%></div>
+<h3>Reliable Transportation: <%=application.transportation%></h3></div>
 <div class="field">
-Reliable Transportation: <%=application.transportation%></div>
+<h3>Has a Criminal Record: <%=application.criminal_record%></h3></div>
 <div class="field">
-Has a Criminal Record: <%=application.criminal_record%></div>
+<h3>Description of Criminal Record: <%=application.description_of_criminal_record%></h3></div>
 <div class="field">
-Description of Criminal Record: <%=application.description_of_criminal_record%></div>
+<h3>Legally allowed to work: <%=application.legal%></h3></div>
 <div class="field">
-Legally allowed to work: <%=application.legal%></div>
+<h3>Month Commitment: <%=application.month_commitment%></h3></div>
 <div class="field">
-Month Commitment: <%=application.month_commitment%></div>
-<div class="field">
-Reason for Interest: <%=application.reason_for_interest%></div>
+<h3>Reason for Interest: <%=application.reason_for_interest%></h3></div>
 
-
+<br>
 <% end %>
 <% end %>

@@ -24,13 +24,13 @@ def edit
   def update
     @user = current_user
       @application = Application.find(params[:id])
-    @application.update(profile_params)
+    @application.update(application_params)
   redirect_to application_path(@application)
 end
 
     def show
       @application = Application.find(params[:id])
-      @opportunity = Opportunity.find(params[:id])
+      # @opportunity = Opportunity.find(params[:id])
 
     end
 
