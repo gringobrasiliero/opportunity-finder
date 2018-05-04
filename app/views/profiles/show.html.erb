@@ -1,11 +1,14 @@
 
 <body>
-<h1><%= @profile.first_name %>
-<%= @profile.last_name %></h1><br>
-<h2><%= @profile.location %><br><h2>
-<h2><%= @profile.profession %><h2><br>
+  <h2>Name: <%=@user.profile.first_name%>
+  <%=@user.profile.last_name%></h2></div>
+  <div class="field">
+  <h3>Email: <%=@user.email%></h3></div>
 
-
+  <div class="field">
+  <h3>Profession: <%=@user.profile.profession%></h3></div>
+  <div class="field">
+  <h3>Location: <%=@user.profile.location%></h3></div>
 
 
 

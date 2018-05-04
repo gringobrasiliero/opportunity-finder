@@ -13,10 +13,5 @@
   </div>
 <% end %>
 
-<%= form_for(@application) do |f| %>
-<%= render 'form' %>
 
-
-
-<%=f.submit%>
-<%end%>
+<%= render partial: 'form', locals: {identifier: @application.opportunity} %>

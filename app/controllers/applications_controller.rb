@@ -11,13 +11,13 @@ before_action :authenticate_user!
 
     def create
       @application = current_user.applications.new(application_params)
-
+      @user = current_user
       if @application.valid?
         @application.save
         redirect_to applications_path(@application)
       else
-        render :new
-
+        render "new"
+end
     end
 
 def edit
@@ -29,13 +29,16 @@ def edit
   def update
     @user = current_user
       @application = Application.find(params[:id])
-      @application.valid?
+
     @application.update(application_params)
+
   redirect_to application_path(@application)
 end
 
+
     def show
-      @application = Application.find(params[:id])
+      @user = current_user
+      @application =  Application.find(params[:id])
       # @opportunity = Opportunity.find(params[:id])
 
     end
