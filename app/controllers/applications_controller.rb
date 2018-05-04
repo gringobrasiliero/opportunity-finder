@@ -10,12 +10,14 @@ before_action :authenticate_user!
     end
 
     def create
-       # @opportunity =
       @application = current_user.applications.new(application_params)
 
-       @application.save!
+      if @application.valid?
+        @application.save
+        redirect_to applications_path(@application)
+      else
+        render :new
 
-      redirect_to applications_path(@application)
     end
 
 def edit
