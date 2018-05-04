@@ -8,11 +8,14 @@ before_action :authenticate_user!
 
   def create
     @user = current_user
-      @opportunity = @user.opportunities.create(opportunity_params)
-
-      redirect_to opportunities_path(@opportunity)
+      @opportunity = @user.opportunities.new(opportunity_params)
+if @opportunity.valid?
+  @opportunity.save
+  redirect_to opportunities_path(@opportunity)
+else
+  render 'new'
     end
-
+end
 
 def index
   @user = current_user
@@ -22,6 +25,7 @@ end
 
 def show
 @user = current_user
+@opportunities = @user.opportunities.all
 
   @opportunity = Opportunity.find(params[:id])
 @application = Application.new

@@ -11,20 +11,24 @@
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
     <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
   <% end %>
-
+<br>
 
   <div class="field">
     <input type='hidden' name='user[opportunity_provider]' value=false>
     <%= f.label :opportunity_provider %>
     <%= f.check_box :opportunity_provider %></div>
-
-
-
+<br>
+    <div class="field">
+      <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
+      <%= f.password_field :current_password %>
+    </div>
+<br>
+<h3> Change my Password </h3>
   <div class="field">
     <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
     <%= f.password_field :password, autocomplete: "off" %>
     <% if @minimum_password_length %>
-      <br />
+      <br>
       <em><%= @minimum_password_length %> characters minimum</em>
     <% end %>
   </div>
@@ -33,20 +37,17 @@
     <%= f.label :password_confirmation %><br />
     <%= f.password_field :password_confirmation, autocomplete: "off" %>
   </div>
+<br>
 
 
 
-  <div class="field">
-    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-    <%= f.password_field :current_password %>
-  </div>
 
-  <!-- <%= f.hidden_field :current_password , :value => @user.encrypted_password%> -->
 
   <div class="actions">
     <%= f.submit "Update" %>
   </div>
 <% end %>
+<br>
 
 <h3>Cancel my account</h3>
 
