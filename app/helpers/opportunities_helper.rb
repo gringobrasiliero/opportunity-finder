@@ -9,7 +9,7 @@ module OpportunitiesHelper
   end
 
   def best_candidates
-  @opportunities.applications.order(legal: :desc, qualified: :desc, transportation: :desc, criminal_record: :asc, created_at: :desc)
+  @opportunity.applications.order(legal: :desc, qualified: :desc, transportation: :desc, criminal_record: :asc, created_at: :desc)
 
   end
 

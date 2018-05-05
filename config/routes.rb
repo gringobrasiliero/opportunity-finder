@@ -13,15 +13,11 @@ get 'profiles/:id/edit', to: 'profiles#edit', as: :edit_profile
 resources :profiles
 resources :applications
 
-
-
-
 resources :opportunities do
   resources :applications
-
 end
 
-  # devise_for :users
+
   devise_for :users, :controllers => { :omniauth_callbacks => "authentications"}
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

@@ -36,10 +36,13 @@ def edit
 end
 
 
+
     def show
+    
+
       @user = current_user
       @application =  Application.find(params[:id])
-      # @opportunity = Opportunity.find(params[:id])
+       @opportunity = Opportunity.find(params[:id])
 
     end
 

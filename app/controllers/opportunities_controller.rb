@@ -1,5 +1,6 @@
 class OpportunitiesController < ApplicationController
 before_action :authenticate_user!
+include ApplicationHelper
 
   def new
 @user = current_user
@@ -24,12 +25,16 @@ def index
 end
 
 def show
-@user = current_user
-@opportunities = @user.opportunities.all
-
   @opportunity = Opportunity.find(params[:id])
+  @user = current_user
+  @opportunities = @user.opportunities.all
+if searcher?
 @application = Application.new
+else
 
+
+
+end
 end
 
 
