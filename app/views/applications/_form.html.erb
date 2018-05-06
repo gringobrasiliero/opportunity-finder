@@ -18,39 +18,35 @@
 <div class="field<%= ' field_with_errors' if @application.errors[:qualified].any? %>">
 <%= f.label :qualified %>
 <input type='hidden' name='application[qualified]' value=false>
-<%= f.select :qualified,  [['', nil], ['True', true], ['False', false]], :value => @application.qualified %><br></div>
+<%= f.select :qualified,  [['', nil], ['True', true], ['False', false]], :placeholder => @application.qualified %><br></div>
 
 <div class="field<%= ' field_with_errors' if @application.errors[:legal].any? %>">
 <%= f.label :legal %>
 <input type='hidden' name='application[legal]' value=false>
-<%= f.select :legal,  [['', nil], ['True', true], ['False', false]], :value => @application.legal %><br></div>
+<%= f.select :legal,  [['', nil], ['True', true], ['False', false]], :placeholder => @application.legal %><br></div>
 
 <div class="field<%= ' field_with_errors' if @application.errors[:transportation].any? %>">
 <%= f.label :transportation %>
 <input type='hidden' name='application[transportation]' value=false>
-<%= f.select :transportation,  [['', nil], ['True', true], ['False', false]], :value => @application.transportation %><br></div>
+<%= f.select :transportation,  [['', nil], ['True', true], ['False', false]], :placeholder => @application.transportation %><br></div>
 
 <div class="field<%= ' field_with_errors' if @application.errors[:criminal_record].any? %>">
 <%= f.label :criminal_record %>
 <input type='hidden' name='application[criminal_record]' value=false>
-<%= f.select :criminal_record,  [['', nil], ['True', true], ['False', false]], :value => @application.criminal_record %><br></div>
+<%= f.select :criminal_record,  [['', nil], ['True', true], ['False', false]], :placeholder => @application.criminal_record %><br></div>
 
 <div class="field<%= ' field_with_errors' if @application.errors[:description_of_criminal_record].any? %>">
 <%= f.label :description_of_criminal_record %>
-<%= f.text_area :description_of_criminal_record, :value => @application.description_of_criminal_record %><br></div>
+<%= f.text_area :description_of_criminal_record, :placeholder => @application.description_of_criminal_record %><br></div>
 
 
 <div class="field<%= ' field_with_errors' if @application.errors[:month_commitment].any? %>">
 <%= f.label :month_commitment %>
-<%= f.text_field :month_commitment, :value => @application.month_commitment %><br></div>
+<%= f.text_field :month_commitment, :placeholder => @application.month_commitment %><br></div>
 
 <div class="field<%= ' field_with_errors' if @application.errors[:reason_for_interest].any? %>">
 <%= f.label :reason_for_interest %>
-<%= f.text_field :reason_for_interest, :value => @application.reason_for_interest %><br></div>
-
-<%= f.hidden_field :opportunity_id , :value => identifier.id%>
-<%= f.hidden_field :user_id , :value => @user.id%>
-
+<%= f.text_field :reason_for_interest, :placeholder => @application.reason_for_interest %><br></div>
 
 
 

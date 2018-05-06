@@ -18,7 +18,7 @@ before_action :authenticate_user!
       else
         render "new"
 end
-    end
+end
 
 def edit
     @user = current_user
@@ -38,7 +38,7 @@ end
 
 
     def show
-    
+
 
       @user = current_user
       @application =  Application.find(params[:id])

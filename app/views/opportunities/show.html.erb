@@ -11,22 +11,11 @@
 <% if provider? %>
 
 
-<% best_candidates.each do |application|%>
-
-
-
+<% @opportunity.applications.sort.each do |application|%>
 
 
 <div class="field">
-<h2>Name: <%=application.user.profile.first_name%>
-<%=application.user.profile.last_name%></h2></div>
-<div class="field">
-<h3>Email: <%=application.user.email%></h3></div>
-
-<div class="field">
-<h3>Profession: <%=application.user.profile.profession%></h3></div>
-<div class="field">
-<h3>Location: <%=application.user.profile.location%></h3></div>
+<h3>Email: <a href="<%=application.user.email%>"><%=application.user.email%></a> </h3></div>
 
 <br>
 <div class="field">

@@ -14,12 +14,11 @@ validates :reason_for_interest,:presence => { message: "Why are you interested i
 
 
 belongs_to :user
-accepts_nested_attributes_for :user
   belongs_to :opportunity
+accepts_nested_attributes_for :user
+
 has_many :users
-
-
-
+has_many :profiles, :through => :users
 
 
 
