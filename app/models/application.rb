@@ -9,16 +9,17 @@ validates :transportation,:presence => { message: "Do you have reliable transpor
 validates :month_commitment,:presence => { message: "How long of a commitment are you offering?"}
 validates :reason_for_interest,:presence => { message: "Why are you interested in this opportunity?"}
 
-
-
-
-
 belongs_to :user
-  belongs_to :opportunity
+belongs_to :opportunity
+has_one :profile, :through => :user
+
 accepts_nested_attributes_for :user
 
-has_many :users
-has_many :profiles, :through => :users
+
+
+
+
+
 
 
 

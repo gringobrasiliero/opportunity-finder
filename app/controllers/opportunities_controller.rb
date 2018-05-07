@@ -32,6 +32,7 @@ def show
   @opportunity = Opportunity.find(params[:id])
   @user = current_user
   @opportunities = @user.opportunities.all
+
 if searcher?
 @application = Application.new
 else

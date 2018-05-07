@@ -15,7 +15,13 @@
 
 
 <div class="field">
-<h3>Email: <a href="<%=application.profiles.first_name%>"><%=application.user.first_name%></a> </h3></div>
+<h3>Name: <%=application.profile.first_name%> <%=application.profile.last_name%> </h3></div>
+<img src="<%=application.profile.picture_url %>">
+<div class="field">
+<h3>Location: <%=application.profile.location%></h3></div>
+
+<div class="field">
+<h3>Profession: <%=application.profile.profession%></h3></div>
 
 <br>
 <div class="field">
