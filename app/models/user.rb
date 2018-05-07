@@ -4,7 +4,7 @@ class User < ApplicationRecord
 
 has_many :opportunities
 has_many :applications
-has_many :opportunities, :through => :applications
+# has_many :opportunities, :through => :applications
 has_one :profile, :dependent => :destroy
 
   devise :database_authenticatable, :registerable,

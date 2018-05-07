@@ -17,8 +17,8 @@ resources :opportunities do
   resources :applications
 end
 
-resources :users, only: [:show] do
-  resources :opportunities, only: [:show, :index]
+resources :users do
+  resources :opportunities
 end
 
   devise_for :users, :controllers => { :omniauth_callbacks => "authentications"}

@@ -41,7 +41,7 @@
 
     <% if provider? %>
     <a <%= link_to("Create Opportunity", new_opportunity_path) %> </a>
-      <a <%= link_to("My Opportunities", user_opportunities_path(@user)) %> </a>
+      <a <%= link_to("My Opportunities", user_opportunities_path(current_user.id)) %> </a>
     <%end%>
 
     <% if searcher? %>
