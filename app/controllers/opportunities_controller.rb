@@ -20,8 +20,11 @@ end
 
 def index
   @user = current_user
+if params[:user_id]
+  @opportunities = User.find(params[:user_id]).opportunities
+else
   @opportunities = Opportunity.all
-
+end
 end
 
 def show

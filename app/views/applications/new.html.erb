@@ -1,4 +1,8 @@
 
+<%= form_for(@application) do |f| %>
+<%= render 'form' %>
 
 
-<%= render partial: 'form', locals: {identifier: @application.opportunity} %>
+
+<%=f.submit%>
+<%end%>
