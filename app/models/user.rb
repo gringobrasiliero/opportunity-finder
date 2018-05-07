@@ -3,8 +3,9 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable and :omniauthable
 
 has_many :opportunities, :dependent => :destroy
-belongs_to :applications
+
 has_many :applications, :dependent => :destroy
+
 # has_many :opportunities, :through => :applications
 has_one :profile, :dependent => :destroy
 

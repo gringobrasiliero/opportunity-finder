@@ -17,11 +17,13 @@ resources :opportunities do
   resources :applications
 end
 
-resources :users do
-  resources :opportunities
-end
 
   devise_for :users, :controllers => { :omniauth_callbacks => "authentications"}
+
+
+  resources :users do
+    resources :opportunities
+  end
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 

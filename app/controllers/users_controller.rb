@@ -17,7 +17,7 @@ end
 
 def index
   @user = current_user
-
+  redirect_to root_path
 end
 
 def create
