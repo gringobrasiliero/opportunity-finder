@@ -1,6 +1,6 @@
 class ApplicationsController < ApplicationController
 before_action :authenticate_user!
-
+before_action :require_profile
 
 
   #begin new Application to Opportunity

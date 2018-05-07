@@ -25,7 +25,7 @@ def create
 
     if user.save
       session[:user_id] = @user.id
-      redirect to user_path(@user)
+      redirect to new_profile_path
     end
 end
 

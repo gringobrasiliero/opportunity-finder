@@ -1,5 +1,6 @@
 class OpportunitiesController < ApplicationController
 before_action :authenticate_user!
+before_action :require_profile
 include ApplicationHelper
 
   def new
