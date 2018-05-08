@@ -1,16 +1,15 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>OpportunityFinder</title>
+    <title>Opportunity Finder</title>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 
-    <p class="notice"><%= notice %></p>
-       <p class="alert"><%= alert %></p>
 
 
+<h1> Opportunity Finder </h1>
 
 <div class="topnav">
 
@@ -54,6 +53,10 @@
 </div>
 <br>
 
+   <%= content_tag(:div, flash[:error], :id => "flash_error") if flash[:error] %>
+   <%= content_tag(:div, flash[:notice], :id => "flash_notice") if flash[:notice] %>
+   <%= content_tag(:div, flash[:alert], :id => "flash_alert") if flash[:alert] %>
+<br>
 <% if has_profile? %>
  <img src="<%=current_user.profile.picture_url %>">
 <% end %>
@@ -61,9 +64,7 @@
 
 
 <% end %>
-  <%= content_tag(:div, flash[:error], :id => "flash_error") if flash[:error] %>
-  <%= content_tag(:div, flash[:notice], :id => "flash_notice") if flash[:notice] %>
-  <%= content_tag(:div, flash[:alert], :id => "flash_alert") if flash[:alert] %>
+
   </head>
 
   <body>
