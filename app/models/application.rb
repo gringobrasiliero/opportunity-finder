@@ -16,9 +16,13 @@ has_one :profile, :through => :user
 accepts_nested_attributes_for :user
 
 
+def self.from_today
+  where("created_at >=?", Time.zone.today.beginning_of_day)
+end
 
-
-
+def self.best_candidates
+order(legal: :desc, qualified: :desc, transportation: :desc, criminal_record: :asc, created_at: :desc)
+end
 
 
 

@@ -11,7 +11,7 @@
 <% if provider? %>
 
 
-<% @opportunity.applications.sort.each do |application|%>
+<% @opportunity.applications.best_candidates.each do |application|%>
 
 
 <div class="field">

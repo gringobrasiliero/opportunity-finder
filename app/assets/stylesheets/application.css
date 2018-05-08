@@ -45,3 +45,9 @@ body {
 .topnav a:hover {
     background-color: #111;
 }
+
+
+img{
+  height: 100px;
+  width: 100px;
+}
