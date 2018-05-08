@@ -11,7 +11,17 @@
 <% if provider? %>
 
 
-<% @opportunity.applications.best_candidates.each do |application|%>
+<div>
+  <h3>Filter Applications:</h3>
+  <%= form_tag( opportunity_path(@opportunity), method: "get") do %>
+      <%= select_tag "filter", options_for_select(["Best Qualified", "Most Recent", "Oldest"]), include_blank: true %>
+    <%= submit_tag "Filter" %>
+  <% end %>
+</div>
+
+
+
+<% @applications.each do |application|%>
 
 
 <div class="field">

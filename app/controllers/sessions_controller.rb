@@ -2,13 +2,10 @@ class SessionsController < ApplicationController
   def new
   end
 
-def create
-
-  linkedin
-
-
- end
-end
+  def create
+    linkedin
+    end
+  end
 
 
   def destroy
@@ -18,10 +15,10 @@ end
 
 
 
-private
+  private
 
-def auth
-  request.env['omniauth.auth']
-end
+  def auth
+    request.env['omniauth.auth']
+  end
 
 end

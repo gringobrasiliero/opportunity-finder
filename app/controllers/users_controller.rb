@@ -1,36 +1,33 @@
 class UsersController < ApplicationController
 
-def show
-@user = User.find(params[:id])
-end
+  def show
+    @user = User.find(params[:id])
+  end
 
-def destroy
+  def destroy
+    reset_session
+    redirect_to root_path
+  end
 
-  reset_session
-  redirect_to root_path
-end
+  def new
+    @user = User.new
+  end
 
-def new
-  @user = User.new
+  def index
+    @user = current_user
+    redirect_to root_path
+  end
 
-end
-
-def index
-  @user = current_user
-  redirect_to root_path
-end
-
-def create
-  @user = user.new(params[:id])
-
+  def create
+    @user = user.new(params[:id])
     if user.save
       session[:user_id] = @user.id
       redirect to new_profile_path
     end
-end
+  end
 
-def user_params
-  params.require(:user).permit(:name, :email, :password, :password_confirmation, :opportunity_provider, :uid, :id, :provider, opportunity_ids:[], opportunities_attributes: [:title, :description, :user_id]  )
-end
+  def user_params
+    params.require(:user).permit(:name, :email, :password, :password_confirmation, :opportunity_provider, :uid, :id, :provider, opportunity_ids:[], opportunities_attributes: [:title, :description, :user_id]  )
+  end
 
 end
