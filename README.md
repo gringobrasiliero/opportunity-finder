@@ -4,12 +4,13 @@ Opportunity finder is a web application where opportunity providers can post sho
 
 ## Getting Started
 Clone or Download Opportunity-Finder from this repo.
+Make sure to run Rake DB:Migrate.
+Use Bundle Install to have all of the Gems installed
 After downloading Opportunity-Finder, run "rails s" to start up your server, and visit localhost:3000 to visit the page.
 
 ### Prerequisites
 gem 'rails', '~> 5.1.6'
 gem 'devise_uid'
-gem 'cancancan', '~> 2.0'
 gem 'rspec-rails'
 gem 'omniauth'
 gem 'omniauth-linkedin'
@@ -18,35 +19,35 @@ gem 'devise'
 
 Run Bundle install to download all of the required Gems needed for this Application.
 
-### Installing
 
-A step by step series of examples that tell you have to get a development env running
-
-Say what the step will be
-
-```
-Give the example
-```
-
-And repeat
-
-```
-until finished
-```
-
-End with an example of getting some data out of the system or using it for a little demo
-
-## Deployment
-
-Add additional notes about how to deploy this on a live system
 
 ## Built With
 
 * [Rails](http://rubyonrails.org/) - The web framework used
 
+* [HTML] - Hyper Text Markup Language
+
+* [CSS] - Cascading Style Sheets
+
+
+
 ## Contributing
 
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
+When contributing to this repository, please first discuss the change you wish to make via issue,
+email, or any other method with the owners of this repository before making a change.
+
+Please note we have a code of conduct, please follow it in all your interactions with the project.
+
+## Pull Request Process
+
+1. Ensure any install or build dependencies are removed before the end of the layer when doing a
+   build.
+2. Update the README.md with details of changes to the interface, this includes new environment
+   variables, exposed ports, useful file locations and container parameters.
+3. Increase the version numbers in any examples files and the README.md to the new version that this
+   Pull Request would represent. The versioning scheme we use is [SemVer](http://semver.org/).
+4. You may merge the Pull Request in once you have the sign-off of two other developers, or if you
+   do not have permission to do that, you may request the second reviewer to merge it for you.
 
 ## Authors
 
@@ -61,5 +62,4 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 ## Acknowledgments
 
 * Flatiron School for getting me one step closer to achieving my dream career as a Full Stack Web Developer.
-*
-*
+* The Coder School- East Cobb for giving me emotional support through the many bugs I encountered while creating this project.
