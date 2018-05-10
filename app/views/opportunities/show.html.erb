@@ -4,6 +4,8 @@
 <h2> <%= @opportunity.title %> </h2>
 <h3> <%= @opportunity.description %> </h3>
 
+<%=link_to "Apply to this Opportunity", new_opportunity_application_path(@opportunity)%>
+
 
 <%= render partial: 'applications/form', locals: {identifier: @opportunity} %>
 <%end%>

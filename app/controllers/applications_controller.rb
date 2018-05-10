@@ -5,8 +5,7 @@ before_action :require_profile
 
 
   def new
-    @opportunity = Opportunity.find(params[:id])
-    @application = Application.new
+    @application = Application.new(opportunity_id: params[:opportunity_id])
   end
 
   def create
@@ -46,8 +45,8 @@ before_action :require_profile
 
   def index
     @user = current_user
-    @applications = Application.all
-  end
+    @applications = @user.applications.all
+    end
 
   private
 
