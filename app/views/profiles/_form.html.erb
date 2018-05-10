@@ -1,32 +1,43 @@
+
 <%= form_for(@profile) do |f| %>
 
-<%if provider? %>
-<div class="field">
-<%= f.label :business_name %>
-<%= f.text_field :business_name, :placeholder => @profile.business_name  %></div>
-<%end%>
+  <%if provider? %>
+    <div class="field">
+      <%= f.label :business_name %>
+      <%= f.text_field :business_name, :placeholder => @profile.business_name  %>
+    </div>
+  <%end%>
 
-<div class="field">
-  <%= f.label :first_name %>
-  <%= f.text_field :first_name, :placeholder => @profile.first_name  %>  </div>
-<div class="field">
-  <%= f.label :last_name %>
-  <%= f.text_field :last_name, :placeholder => @profile.last_name %>  </div>
-<div class="field">
-  <%= f.label :location %>
-  <%= f.text_field :location, :placeholder =>  @profile.location %>  </div>
-<div class="field">
-  <%= f.label :profession %>
-  <%= f.text_field :profession, :placeholder => @profile.profession %>  </div>
+  <div class="field">
+    <%= f.label :first_name %>
+    <%= f.text_field :first_name, :placeholder => @profile.first_name  %>
+  </div>
+
+  <div class="field">
+    <%= f.label :last_name %>
+    <%= f.text_field :last_name, :placeholder => @profile.last_name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :location %>
+    <%= f.text_field :location, :placeholder =>  @profile.location %>
+   </div>
+
+  <div class="field">
+    <%= f.label :profession %>
+    <%= f.text_field :profession, :placeholder => @profile.profession %>
+   </div>
+
   <div class="field">
     <%= f.label :picture_url %>
-    <%= f.text_field :picture_url, :placeholder => @profile.profession %>  </div>
+    <%= f.text_field :picture_url, :placeholder => @profile.profession %>
+  </div>
 
     <%= f.hidden_field :user_id , :value => @user.id%>
     <%= f.hidden_field :id , :value => @user.id%>
 
-    <div class="actions">
-      <%= f.submit "Submit" %>
-    </div>
+  <div class="actions">
+    <%= f.submit "Submit" %>
+  </div>
 
 <%end%>

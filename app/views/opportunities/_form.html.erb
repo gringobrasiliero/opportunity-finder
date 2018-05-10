@@ -1,13 +1,13 @@
 
 <%= form_for(@opportunity) do |f| %>
 
-<%= f.label :title %> <br>
-<%= f.text_field :title %> <br>
+  <%= f.label :title %> <br>
+  <%= f.text_field :title %> <br>
 
-<%= f.label :description %> <br>
-<%= f.text_field :description %> <br>
-<%= f.hidden_field :user_id , :value => @user.id%>
+  <%= f.label :description %> <br>
+  <%= f.text_field :description %> <br>
+  <%= f.hidden_field :user_id , :value => @user.id%>
 
-<%= f.submit %>
+  <%= f.submit %>
 
 <% end %>
