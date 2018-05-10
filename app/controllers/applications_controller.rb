@@ -21,7 +21,22 @@ before_action :require_profile
 
   def edit
     @user = current_user
-    @application = Application.find(params[:id])
+
+    if params[:opportunity_id]
+      opportunity = Opportunity.find_by(id: params[:opportunity_id])
+      if opportunity.nil?
+        redirect_to opportunities_path, alert: "Opportunity not found."
+      else
+        @application = opportunity.applications.find_by(id: params[:id])
+        redirect_to applications_path(@application), alert: "Application not found." if @application.nil?
+      end
+    else
+      @application = Application.find(params[:id])
+end
+
+
+
+
   end
 
   def update
