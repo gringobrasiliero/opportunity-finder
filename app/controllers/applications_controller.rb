@@ -2,8 +2,6 @@ class ApplicationsController < ApplicationController
 before_action :authenticate_user!
 before_action :require_profile
 
-
-
   def new
     @application = Application.new(opportunity_id: params[:opportunity_id])
   end
@@ -21,7 +19,6 @@ before_action :require_profile
 
   def edit
     @user = current_user
-
     if params[:opportunity_id]
       opportunity = Opportunity.find_by(id: params[:opportunity_id])
       if opportunity.nil?
@@ -32,11 +29,7 @@ before_action :require_profile
       end
     else
       @application = Application.find(params[:id])
-end
-
-
-
-
+    end
   end
 
   def update
