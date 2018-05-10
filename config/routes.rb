@@ -11,22 +11,17 @@ Rails.application.routes.draw do
 get 'profiles/:id/edit', to: 'profiles#edit', as: :edit_profile
 # patch 'profiles/:id', to: 'profiles#update'
 resources :profiles, only: [:show, :new, :edit]
+
 resources :applications, only: [:edit, :index, :new, :show]
 
 resources :opportunities do
   resources :applications, only: [:new, :edit]
 end
 
+devise_for :users, :controllers => { :omniauth_callbacks => "authentications"}
 
-  devise_for :users, :controllers => { :omniauth_callbacks => "authentications"}
-
-
-  resources :users do
-    resources :opportunities, only: [:show, :index]
-  end
-
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-
-
+resources :users do
+  resources :opportunities, only: [:show, :index]
+end
 
 end
