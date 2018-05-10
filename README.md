@@ -62,4 +62,5 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 ## Acknowledgments
 
 * Flatiron School for getting me one step closer to achieving my dream career as a Full Stack Web Developer.
+* My Girlfriend for supporting and believing in me through the struggles of the project. 
 * The Coder School- East Cobb for giving me emotional support through the many bugs I encountered while creating this project.
