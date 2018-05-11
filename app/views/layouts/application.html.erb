@@ -29,6 +29,7 @@
 <% end %>
 
 <% if has_profile? %>
+<a <%= link_to("View Profile", profile_path(current_user)) %> </a>
 <a <%= link_to("Edit Profile", edit_profile_path(current_user)) %> </a>
  <% end %>
 

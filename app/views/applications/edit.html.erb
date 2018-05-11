@@ -1,7 +1,9 @@
 
 <%= render partial: 'form', locals: {identifier: @application.opportunity} %>
 
-<%= link_to 'Delete',
+<br>
+
+<%= button_to 'Delete Application',
              application_path(@application),
                          method: :delete,
                          data: { confirm: 'Are you sure?' } %>

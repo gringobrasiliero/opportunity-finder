@@ -10,18 +10,18 @@ Rails.application.routes.draw do
 
 get 'profiles/:id/edit', to: 'profiles#edit', as: :edit_profile
 # patch 'profiles/:id', to: 'profiles#update'
-resources :profiles, only: [:show, :new, :edit]
+resources :profiles
 
-resources :applications, only: [:edit, :index, :new, :show]
+resources :applications
 
 resources :opportunities do
-  resources :applications, only: [:new, :edit]
+  resources :applications
 end
 
 devise_for :users, :controllers => { :omniauth_callbacks => "authentications"}
 
 resources :users do
-  resources :opportunities, only: [:show, :index]
+  resources :opportunities
 end
 
 end
