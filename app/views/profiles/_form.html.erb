@@ -10,12 +10,12 @@
 
   <div class="field">
     <%= f.label :first_name %>
-    <%= f.text_field :first_name, :placeholder => @profile.first_name  %>
+    <%= f.text_field :first_name, :value => identifier.first_name  %>
   </div>
 
   <div class="field">
     <%= f.label :last_name %>
-    <%= f.text_field :last_name, :placeholder => @profile.last_name %>
+    <%= f.text_field :last_name, :value => identifier.last_name %>
   </div>
 
   <div class="field">
@@ -30,7 +30,7 @@
 
   <div class="field">
     <%= f.label :picture_url %>
-    <%= f.text_field :picture_url, :placeholder => @profile.profession %>
+    <%= f.text_field :picture_url, :value => identifier.picture_url %>
   </div>
 
     <%= f.hidden_field :user_id , :value => @user.id%>
