@@ -24,7 +24,15 @@
     <h3>Name: <%=application.profile.first_name%> <%=application.profile.last_name%> </h3>
   </div>
 
-  <img src="<%=application.profile.picture_url %>">
+  <div class="field">
+    <h3>Email:
+      <a href= "mailto:<%=application.user.email%>"> <%=application.user.email%> </a>
+    </h3>
+  </div>
+
+  <div class="field">
+    <img src="<%=application.profile.picture_url %>">
+  </div>
 
   <div class="field">
     <h3>Location: <%=application.profile.location%></h3>
