@@ -20,6 +20,11 @@
 <% end %>
 
 <% @applications.each do |application|%>
+<section>
+<div class="photo">
+  <img src="<%=application.profile.picture_url %>">
+</div>
+<div class = "Application">
   <div class="field">
     <h3>Name: <%=application.profile.first_name%> <%=application.profile.last_name%> </h3>
   </div>
@@ -28,11 +33,9 @@
     <h3>Email:
       <a href= "mailto:<%=application.user.email%>"> <%=application.user.email%> </a>
     </h3>
+
   </div>
 
-  <div class="field">
-    <img src="<%=application.profile.picture_url %>">
-  </div>
 
   <div class="field">
     <h3>Location: <%=application.profile.location%></h3>
@@ -42,7 +45,7 @@
     <h3>Profession: <%=application.profile.profession%></h3>
   </div>
 
-  <br>
+<h2> Application </h2>
 
   <div class="field">
     <h3>Qualified for Position: <%=application.qualified%></h3>
@@ -71,7 +74,8 @@
   <div class="field">
     <h3>Reason for Interest: <%=application.reason_for_interest%></h3>
   </div>
-
+</section>
+</div>
   <br>
   <% end %>
 <% end %>
