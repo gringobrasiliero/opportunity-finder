@@ -12,21 +12,22 @@
 <% if provider? %>
 
   <div>
-    <h3>Filter Applications:</h3>
+
     <%= form_tag( opportunity_path(@opportunity), method: "get") do %>
-        <%= select_tag "filter", options_for_select(["Best Qualified", "Most Recent", "Oldest"]), include_blank: true %>
-      <%= submit_tag "Filter" %>
+        <h3>Filter Applications By:  <%= select_tag "filter", options_for_select(["Best Qualified", "Most Recent", "Oldest"]), include_blank: true %>
+      <%= submit_tag "Filter" %></h3>
   </div>
 <% end %>
 
 <% @applications.each do |application|%>
+<div class = "Container">
 <section>
 <div class="photo">
   <img src="<%=application.profile.picture_url %>">
 </div>
 <div class = "Application">
   <div class="field">
-    <h3>Name: <%=application.profile.first_name%> <%=application.profile.last_name%> </h3>
+    <h2>Name: <%=application.profile.first_name%> <%=application.profile.last_name%> </h2>
   </div>
 
   <div class="field">
@@ -75,6 +76,7 @@
     <h3>Reason for Interest: <%=application.reason_for_interest%></h3>
   </div>
 </section>
+</div>
 </div>
   <br>
   <% end %>
