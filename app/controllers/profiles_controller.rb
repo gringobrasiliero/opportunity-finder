@@ -1,4 +1,5 @@
 class ProfilesController < ApplicationController
+
   def new
     @user = current_user
     @profile = Profile.new
@@ -7,9 +8,13 @@ class ProfilesController < ApplicationController
   def create
     @user = current_user
     @profile = @user.build_profile(profile_params)
-    @profile.save
+    if @profile.valid?
+      @profile.save
     redirect_to @profile
-  end
+  else
+    render "new"
+end
+end
 
   def index
     @user = current_user

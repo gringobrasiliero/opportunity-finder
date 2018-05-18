@@ -13,6 +13,7 @@ before_action :require_profile
       @application.save
       redirect_to applications_path(@application)
     else
+      # If Application is not valid, redirects to application/new
       render "new"
     end
   end

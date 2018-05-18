@@ -1,7 +1,6 @@
 class AuthenticationsController < Devise::OmniauthCallbacksController
   def linkedin
     omniauth = request.env["omniauth.auth"]
-    # You need to implement the method below in your model (e.g. app/models/user.rb)
     @user = User.from_omniauth(omniauth)
     if @user.persisted?
       sign_in_and_redirect @user, event: :authentication #this will throw if @user is not activated

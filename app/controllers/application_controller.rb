@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
 
   protected
 
+# Requires a profile in order to view sections. Redirects to create profile if no profile. 
   def require_profile
     @user = current_user
     if @user.profile == nil
