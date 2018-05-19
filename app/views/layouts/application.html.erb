@@ -9,14 +9,14 @@
 
 
 
-<h1> Opportunity Finder </h1>
+    <h1> Opportunity Finder </h1>
 
-<div class="topnav">
+    <div class="topnav">
 
-<a <%= link_to("Home", root_path) %> </a>
+    <a <%= link_to("Home", root_path) %> </a>
 
     <% if !logged_in? %>
-    <a <%= link_to("Sign-up",  new_user_registration_path) %> </a>
+      <a <%= link_to("Sign-up",  new_user_registration_path) %> </a>
       <a <%= link_to('Log in with Linkedin', 'users/auth/linkedin') %> </a>
       <a <%= link_to("Sign-in",  sign_in_path) %> </a>
       <a <%= link_to("Log Out", destroy_user_session_path, :method => 'delete')%> </a>
@@ -24,47 +24,39 @@
 
    <% if logged_in? %>
 
-<% if !has_profile? %>
-      <a <%= link_to("Create Profile", new_profile_path) %> </a>
-<% end %>
+     <% if !has_profile? %>
+        <a <%= link_to("Create Profile", new_profile_path) %> </a>
+     <% end %>
 
-<% if has_profile? %>
-<a <%= link_to("View Profile", profile_path(current_user)) %> </a>
-<a <%= link_to("Edit Profile", edit_profile_path(current_user)) %> </a>
- <% end %>
+     <% if has_profile? %>
+        <a <%= link_to("View Profile", profile_path(current_user)) %> </a>
+        <a <%= link_to("Edit Profile", edit_profile_path(current_user)) %> </a>
+        <a <%= link_to("Edit Account", edit_account_path(current_user)) %></a>
+     <% end %>
 
-        <% if has_profile? %>
-    <a <%= link_to("Edit Account", edit_account_path(current_user)) %></a>
+     <% if provider? %>
+        <a <%= link_to("Create Opportunity", new_opportunity_path) %> </a>
+        <a <%= link_to("My Opportunities", user_opportunities_path(current_user.id)) %> </a>
+     <%end%>
 
- <% end %>
+     <% if searcher? %>
+        <a <%= link_to("View Opportunities", opportunities_path) %> </a>
+        <a  <%= link_to("My Applications", applications_path) %> </a>
+     <%end%>
 
+     <a <%= link_to("Log Out", destroy_user_session_path, :method => 'delete')%> </a>
 
-    <% if provider? %>
-    <a <%= link_to("Create Opportunity", new_opportunity_path) %> </a>
-      <a <%= link_to("My Opportunities", user_opportunities_path(current_user.id)) %> </a>
-    <%end%>
+    </div>
+  <br>
+     <%= content_tag(:div, flash[:error], :id => "flash_error") if flash[:error] %>
+     <%= content_tag(:div, flash[:notice], :id => "flash_notice") if flash[:notice] %>
+     <%= content_tag(:div, flash[:alert], :id => "flash_alert") if flash[:alert] %>
+  <br>
+      <% if has_profile? %>
+        <img src="<%=current_user.profile.picture_url %>">
+      <% end %>
 
-    <% if searcher? %>
-  <a <%= link_to("View Opportunities", opportunities_path) %> </a>
-    <a  <%= link_to("My Applications", applications_path) %> </a>
-    <%end%>
-
-  <a <%= link_to("Log Out", destroy_user_session_path, :method => 'delete')%> </a>
-
-</div>
-<br>
-
-   <%= content_tag(:div, flash[:error], :id => "flash_error") if flash[:error] %>
-   <%= content_tag(:div, flash[:notice], :id => "flash_notice") if flash[:notice] %>
-   <%= content_tag(:div, flash[:alert], :id => "flash_alert") if flash[:alert] %>
-<br>
-<% if has_profile? %>
- <img src="<%=current_user.profile.picture_url %>">
-<% end %>
-
-
-
-<% end %>
+  <% end %>
 
   </head>
 
