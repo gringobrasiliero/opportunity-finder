@@ -7,7 +7,7 @@ class ProfilesController < ApplicationController
 
   def create
     @user = current_user
-    @profile = @user.build_profile(profile_params)
+    @profile = @user.build_profile(profile_params) #.build_profile automatically sets foreign key
     if @profile.valid?
       @profile.save
     redirect_to @profile
