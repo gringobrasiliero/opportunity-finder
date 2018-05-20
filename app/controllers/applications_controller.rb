@@ -21,6 +21,7 @@ before_action :require_profile
 
   def edit
     @user = current_user
+    authorize! :edit, @application, :message => "Access Denied."
     if params[:opportunity_id]
       opportunity = Opportunity.find_by(id: params[:opportunity_id])
       if opportunity.nil?
@@ -31,7 +32,7 @@ before_action :require_profile
       end
     else
       @application = Application.find(params[:id])
-      authorize! :edit, @application, :message => "Access Denied."
+
     end
   end
 
