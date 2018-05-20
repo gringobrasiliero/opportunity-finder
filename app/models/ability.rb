@@ -4,8 +4,8 @@ class Ability
   def initialize(current_user)
 
 if current_user.opportunity_provider?
-  can :manage, :opportunities
-  can :read, :opportunities
+  can :manage, :all
+  can :read, :all
 
 else
   can :manage, :applications

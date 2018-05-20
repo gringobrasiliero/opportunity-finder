@@ -4,6 +4,7 @@ before_action :require_profile
 
   def new
     @application = Application.new(opportunity_id: params[:opportunity_id])
+    authorize! :new, @application, :message => "Access Denied."
   end
 
   def create
@@ -30,6 +31,7 @@ before_action :require_profile
       end
     else
       @application = Application.find(params[:id])
+      authorize! :edit, @application, :message => "Access Denied."
     end
   end
 
