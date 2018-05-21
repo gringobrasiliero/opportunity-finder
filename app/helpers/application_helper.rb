@@ -17,4 +17,5 @@ module ApplicationHelper
    current_user.profile != nil
   end
 
+
 end

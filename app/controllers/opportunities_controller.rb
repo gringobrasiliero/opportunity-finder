@@ -54,10 +54,26 @@ include ApplicationHelper
     end
   end
 
+  def edit
+    @user = current_user
+
+    if params[:opportunity_id]
+      opportunity = Opportunity.find_by(id: params[:opportunity_id])
+      if opportunity.nil?
+        redirect_to opportunities_path, alert: "Opportunity not found."
+      end
+    else
+      @opportunity = Opportunity.find(params[:id])
+authorize! :edit, @opportunity, :message => "Access Denied."
+    end
+  end
+
+
   def update
     @user = current_user
     @opportunity = Opportunity.find(params[:id])
     @opportunity.update(opportunity_params)
+      flash[:message] = "Application Updated"
     redirect_to opportunity_path(@opportunity)
   end
 

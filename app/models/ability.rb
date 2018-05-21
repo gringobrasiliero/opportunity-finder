@@ -4,13 +4,17 @@ class Ability
   def initialize(current_user)
 
 if current_user.opportunity_provider?
-  can :manage, :all
-  cannot [:create, :update, :destroy], [Application]
+  can :manage, Opportunity, user_id: current_user.id
+  can [:create, :edit], Opportunity
+  cannot [:create, :update, :edit, :destroy], [Application]
+
+
 
 else
-  can :manage, :all
-  cannot [:create, :update, :destroy], [Opportunity]
-
+  can :manage, Application, user_id: current_user.id
+can :create, Application
+# can :edit, @application, user_id: current_user.id
+cannot [:create, :update, :edit, :destroy], [Opportunity]
 end
 
 

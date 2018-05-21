@@ -32,7 +32,7 @@ before_action :require_profile
       end
     else
       @application = Application.find(params[:id])
-      authorize! :edit, @application, :message => "Access Denied."
+  authorize! :edit, @application, :message => "Access Denied."
     end
   end
 
@@ -40,13 +40,14 @@ before_action :require_profile
     @user = current_user
     @application = Application.find(params[:id])
     @application.update(application_params)
-    redirect_to application_path(@application)
+      flash[:notice] = "Application Updated"
+    redirect_to applications_path
   end
 
     def show
       @user = current_user
       @application =  Application.find(params[:id])
-      @opportunity = Opportunity.find(params[:id])
+    
     end
 
   def destroy
