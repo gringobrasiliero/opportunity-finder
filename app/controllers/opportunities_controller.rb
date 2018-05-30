@@ -73,6 +73,7 @@ authorize! :edit, @opportunity, :message => "Access Denied."
     @user = current_user
     @opportunity = Opportunity.find(params[:id])
     @opportunity.update(opportunity_params)
+    flash[:message] = "Application Updated"
     redirect_to opportunity_path(@opportunity)
   end
 
