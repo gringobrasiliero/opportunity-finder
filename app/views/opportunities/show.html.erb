@@ -1,6 +1,6 @@
 
 <% if searcher? %>
-  <h1> Apply to this Opportunity </h1>
+  <h1> <%= @opportunity.user.profile.business_name %> </h1>
   <h2> <%= @opportunity.title %> </h2>
   <h3> <%= @opportunity.description %> </h3>
 

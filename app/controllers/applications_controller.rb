@@ -3,6 +3,7 @@ before_action :authenticate_user!
 before_action :require_profile
 
   def new
+    @opportunity = Opportunity.find_by(id: params[:opportunity_id])
     @application = Application.new(opportunity_id: params[:opportunity_id])
     authorize! :new, @application, :message => "Access Denied."
   end
@@ -47,7 +48,7 @@ before_action :require_profile
     def show
       @user = current_user
       @application =  Application.find(params[:id])
-    
+
     end
 
   def destroy
