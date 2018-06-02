@@ -6,6 +6,7 @@ include ApplicationHelper
   def new
     @user = current_user
     @opportunity = Opportunity.new
+    binding.pry
     authorize! :new, @opportunity, :message => "Access Denied."
 
   end

@@ -5,15 +5,18 @@ before_action :require_profile
   def new
     @opportunity = Opportunity.find_by(id: params[:opportunity_id])
     @application = Application.new(opportunity_id: params[:opportunity_id])
+    # binding.pry
     authorize! :new, @application, :message => "Access Denied."
   end
 
   def create
+    # binding.pry
     @application = current_user.applications.new(application_params)
     @user = current_user
     if @application.valid?
       @application.save
       redirect_to applications_path(@application)
+
     else
       # If Application is not valid, redirects to application/new
       render "new"

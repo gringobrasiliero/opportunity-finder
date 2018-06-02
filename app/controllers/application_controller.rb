@@ -10,6 +10,8 @@ class ApplicationController < ActionController::Base
         format.html { redirect_to main_app.root_url, :alert => exception.message }
       end
     end
+
+
   protected
 
 # Requires a profile in order to view sections. Redirects to create profile if no profile.
