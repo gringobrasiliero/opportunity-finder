@@ -36,7 +36,7 @@ include ApplicationHelper
     @opportunity = Opportunity.find(params[:id])
     @user = current_user
     @opportunities = @user.opportunities.all
-
+binding.pry
     if searcher?
       @application = Application.new
     else

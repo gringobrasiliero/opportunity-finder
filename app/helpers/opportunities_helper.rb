@@ -8,4 +8,8 @@ module OpportunitiesHelper
     end
   end
 
+  
+def applied(opportunity)
+  opportunity.applications.count
+end
 end
