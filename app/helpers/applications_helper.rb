@@ -8,8 +8,6 @@ module ApplicationsHelper
   end
 
 
-def created_at(application)
-  application.created_at.strftime("Applied on %A, %b %e, at %l:%M %p")
-end
+
 
 end

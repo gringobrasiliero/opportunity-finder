@@ -7,7 +7,7 @@ class User < ApplicationRecord
   has_many :applications, :dependent => :destroy
 
   has_one :profile, :dependent => :destroy
-
+  accepts_nested_attributes_for :profile
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :uid,
          :omniauthable, omniauth_providers: %i[linkedin]

@@ -1,7 +1,7 @@
 <% @opportunities.each do |opportunity| %>
 
   <h1> <%= link_to opportunity.user.profile.business_name, opportunity_path(opportunity) %> <%= timestamp opportunity%> </h1>
-  <h1> <%= opportunity.applications.count %>
+
   <h2> <%= opportunity.title %> </h2>
   <h2> <%= opportunity.description %> </h2>
 

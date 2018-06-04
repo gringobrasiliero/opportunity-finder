@@ -36,7 +36,7 @@ include ApplicationHelper
     @opportunity = Opportunity.find(params[:id])
     @user = current_user
     @opportunities = @user.opportunities.all
-binding.pry
+
     if searcher?
       @application = Application.new
     else
@@ -76,6 +76,12 @@ authorize! :edit, @opportunity, :message => "Access Denied."
     @opportunity.update(opportunity_params)
     flash[:message] = "Application Updated"
     redirect_to opportunity_path(@opportunity)
+  end
+
+  def destroy
+    @opportunity = Opportunity.find(params[:id])
+    @opportunity.destroy
+    redirect_to opportunities_path
   end
 
   private

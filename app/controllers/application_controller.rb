@@ -24,7 +24,7 @@ class ApplicationController < ActionController::Base
    end
 
   def configure_permitted_parameters #for devise
-    update_attrs = [:id, :opportunity_provider, :provider, :first_name, :last_name, :location, :picture_url, :profession, :positions, :password ]
+    update_attrs = [:id, :opportunity_provider, :provider, :first_name, :last_name, :location, :picture_url, :profession, :positions, :password]
     devise_parameter_sanitizer.permit(:sign_up, keys: update_attrs )
     devise_parameter_sanitizer.permit(:account_update, keys: update_attrs)
   end

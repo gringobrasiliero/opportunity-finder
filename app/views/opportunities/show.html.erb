@@ -13,7 +13,7 @@
 <h2> Opportunity Title: <%= @opportunity.title %> </h2>
 <h3>Description:  <%= @opportunity.description %> </h3>
 <%= button_to 'Delete This Opportunity',
-             application_path(@opportunity),
+             opportunity_path(@opportunity),
                          method: :delete,
                          data: { confirm: 'Are you sure?' } %>
 
