@@ -3,6 +3,7 @@
 <br>
 
 <% @applications.each do |application| %>
+  <h2> Submitted on: <%= link_to application.opportunity, submitted_profile_path(application.id) %>
   <h2>Business Name: <%= link_to application.opportunity.user.profile.business_name, edit_opportunity_application_path(application.opportunity_id, application) %></h2>
   <h3>Opportunity Title: <%= application.opportunity.title %></h3>
   <h3>Opportunity Description: <%= application.opportunity.description %><h3>

@@ -9,7 +9,7 @@ Rails.application.routes.draw do
  get '/auth/linkedin/callback' => 'sessions#create'
 
 get 'profiles/:id/edit', to: 'profiles#edit', as: :edit_profile
-
+get 'applications/:id/submitted', to: 'applications#submitted', as: :submitted_profile
 resources :profiles
 
 resources :applications

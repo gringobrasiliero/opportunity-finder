@@ -63,7 +63,13 @@ before_action :require_profile
   def index
     @user = current_user
     @applications = @user.applications.all
-    end
+  end
+
+  def submitted
+    @user = current_user
+    @application = Application.find(params[:id])
+  end
+
 
   private
 
