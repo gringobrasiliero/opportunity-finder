@@ -78,6 +78,12 @@ authorize! :edit, @opportunity, :message => "Access Denied."
     redirect_to opportunity_path(@opportunity)
   end
 
+  def destroy
+   @opportunity = Opportunity.find(params[:id])
+   @opportunity.destroy
+   redirect_to opportunities_path
+ end 
+
   private
 
   def opportunity_params
