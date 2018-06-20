@@ -1,0 +1,1 @@
+//Submit comments via AJAX
