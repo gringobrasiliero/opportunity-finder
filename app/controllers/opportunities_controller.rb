@@ -29,6 +29,9 @@ include ApplicationHelper
 
     else
       @opportunities = Opportunity.all
+      @opportunity = Opportunity.find(params[:id])
+      @applications = @opportunity.applications
+      render json: @applications, status: 200
     end
   end
 
@@ -82,7 +85,7 @@ authorize! :edit, @opportunity, :message => "Access Denied."
    @opportunity = Opportunity.find(params[:id])
    @opportunity.destroy
    redirect_to opportunities_path
- end 
+ end
 
   private
 
