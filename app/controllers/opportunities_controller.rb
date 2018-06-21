@@ -1,6 +1,7 @@
 class OpportunitiesController < ApplicationController
 before_action :authenticate_user!
 before_action :require_profile
+# before_action :set_opportunity
 include ApplicationHelper
 
   def new
@@ -30,8 +31,7 @@ include ApplicationHelper
     else
       @opportunities = Opportunity.all
       @opportunity = Opportunity.find(params[:id])
-      @applications = @opportunity.applications
-      render json: @applications, status: 200
+
     end
   end
 
@@ -54,6 +54,11 @@ include ApplicationHelper
       end
     else
       @applications = @opportunity.applications
+    end
+
+    respond_to do |format|
+      format.html {render :show}
+      format.json {render :json =>@applications, status: 200}
     end
     end
   end
@@ -87,7 +92,17 @@ authorize! :edit, @opportunity, :message => "Access Denied."
    redirect_to opportunities_path
  end
 
+def opportunity_data
+  @opportunity = Opportunity.find(params[:id])
+  application = @opportunity.applications.find(params[:id])
+    render json: application
+  end
+
   private
+
+  # def set_opportunity
+  #   @opportunity = Opportunity.find(params[:id])
+  # end
 
   def opportunity_params
     params.require(:opportunity).permit(:title, :description, :user_id, application_ids:[], applications_attributes: [ :qualified, :legal, :month_commitment, :reason_for_interest, :user_id, :opportunity_id, :id])

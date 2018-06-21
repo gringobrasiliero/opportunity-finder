@@ -1,11 +1,14 @@
 <% @opportunities.each do |opportunity| %>
 
 
-<div id="opportunitiesIndex">
+<div id="body-<%= opportunity.id %>">
   <h1> <%= link_to opportunity.user.profile.business_name, opportunity_path(opportunity) %> </h1>
   <h2> <%= opportunity.title %> </h2>
   <h2> <%= opportunity.description %> </h2>
-  <button class="js-applicants" data-id="<%= opportunity.id %>">View Applicants</button>
+  <button class="load_applicants" data-id="<%= opportunity.id %>">View Applicants </button>
+
+  <div class= "applications"> </div>
+
 </div>
 <br>
 <% end %>
