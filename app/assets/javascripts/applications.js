@@ -1,12 +1,43 @@
 //Submit comments via AJAX
-$(document).ready(function() {
+ $(function() {
+
+  $("a.load_applications").on("click", function(e){
+
+    $.ajax({
+      method: "GET",
+      url: this.href
+
+    })
+      .success(function(data) {
+        console.log(data)
+      $("div.applications").append(data)
+      });
 
 
-    $("load_applicants").on('click', function(e) {
-  $.ajax({
-    url: this.href,
-    dataType: 'script'
+    alert("Howdy")
+    e.preventDefault();
   })
-e.preventDefault();
 })
-})
+
+
+
+
+
+
+
+
+
+
+
+//
+//
+//     $("a.load_applicants").on('click', function(e) {
+//   $.ajax({
+//     url: this.href,
+//     dataType: 'script'
+//   }).success(function(response) {
+//     $("div.applications").html(response)
+//   })
+// e.preventDefault();
+// })
+// })

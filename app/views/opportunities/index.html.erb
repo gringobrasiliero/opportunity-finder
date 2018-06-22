@@ -5,9 +5,9 @@
   <h1> <%= link_to opportunity.user.profile.business_name, opportunity_path(opportunity) %> </h1>
   <h2> <%= opportunity.title %> </h2>
   <h2> <%= opportunity.description %> </h2>
-  <button class="load_applicants" data-id="<%= opportunity.id %>">View Applicants </button>
+  <%= link_to "Load Applications", opportunity_path(opportunity), :class => "load_applications" %>
 
-  <div class= "applications"> </div>
+  <div class= "applications"></div>
 
 </div>
 <br>
