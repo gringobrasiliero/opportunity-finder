@@ -14,7 +14,7 @@
       });
 
 
-    alert("Howdy")
+    
     e.preventDefault();
   })
 })
