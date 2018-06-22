@@ -1,7 +1,7 @@
 class ApplicationsController < ApplicationController
 before_action :authenticate_user!
 before_action :require_profile
-before_action :set_opportunity
+# before_action :set_opportunity, only: [:index, :show]
   def new
     @opportunity = Opportunity.find_by(id: params[:opportunity_id])
     @application = Application.new(opportunity_id: params[:opportunity_id])
@@ -72,9 +72,9 @@ before_action :set_opportunity
 
 
   private
-def set_opportunity
-  @opportunity = Opportunity.find(params[:opportunity_id])
-end
+# def set_opportunity
+#   @opportunity = Opportunity.find(params[:opportunity_id])
+# end
 
   def application_params
      params.require(:application).permit( :qualified, :legal, :criminal_record, :description_of_criminal_record, :transportation, :month_commitment, :reason_for_interest, :user_id, :opportunity_id, user_attributes:[:id])

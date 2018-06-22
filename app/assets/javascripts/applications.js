@@ -8,7 +8,7 @@
       url: this.href
 
     })
-      .success(function(data) {
+      .done(function(data) {
         console.log(data)
       $("div.applications").append(data)
       });
