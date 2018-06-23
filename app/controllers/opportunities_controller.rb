@@ -94,8 +94,9 @@ authorize! :edit, @opportunity, :message => "Access Denied."
 
 def opportunity_data
   @opportunity= Opportunity.find(params[:id])
-  render json: @opportunity.to_json(only: [:id],
-                                  include: :applications)
+  render json: @opportunity
+  # .to_json(only: [:id],
+  #                                 include: :applications)
 end
 
 def body

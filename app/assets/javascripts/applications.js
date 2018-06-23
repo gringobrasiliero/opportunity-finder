@@ -2,11 +2,11 @@
  $(function() {
 
   $(".load_applications").on("click", function(e){
-    var id = parseInt($(".load_applications").attr("data-id"))
-    $.get("/opportunities/" + id + "/opportunity_data.json")
+    var id = parseInt($(".load_applications").attr("data-id"));
+    $.get("/opportunities/" + id + ".json")
       .done(function(data) {
         console.log(data)
-      $("div.applications").text(data["applications"]["0"]["legal"]);
+      $("div.applications").text(data["opportunity"]["applications"]['0']["legal"]);
 });
     // $.ajax({
     //   method: "GET",
