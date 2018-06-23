@@ -6,8 +6,8 @@
     $.get("/opportunities/" + id + "/opportunity_data.json")
       .done(function(data) {
         console.log(data)
-      $("div.applications").append(data)
-})
+      $("div.applications").text(data["applications"]);
+});
     // $.ajax({
     //   method: "GET",
     //   url: this.href
@@ -19,8 +19,8 @@
     //   });
 
     e.preventDefault();
-  })
-})
+  });
+});
 
 
 

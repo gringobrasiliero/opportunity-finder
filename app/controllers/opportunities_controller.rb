@@ -1,7 +1,7 @@
 class OpportunitiesController < ApplicationController
 before_action :authenticate_user!
 before_action :require_profile
-# before_action :set_opportunity, only: [:show, :edit, :update, :index]
+# before_action :set_opportunity, only: [:show, :edit, :update]
 include ApplicationHelper
 
   def new
@@ -93,8 +93,8 @@ authorize! :edit, @opportunity, :message => "Access Denied."
  end
 
 def opportunity_data
-  opportunity= Opportunity.find(params[:id])
-  render json: opportunity.to_json(only: [:id],
+  @opportunity= Opportunity.find(params[:id])
+  render json: @opportunity.to_json(only: [:id],
                                   include: :applications)
 end
 
