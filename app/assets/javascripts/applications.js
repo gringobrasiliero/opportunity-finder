@@ -6,7 +6,7 @@
     $.get("/opportunities/" + id + "/opportunity_data.json")
       .done(function(data) {
         console.log(data)
-      $("div.applications").text(data["applications"]);
+      $("div.applications").text(data["applications"]["0"]["legal"]);
 });
     // $.ajax({
     //   method: "GET",
