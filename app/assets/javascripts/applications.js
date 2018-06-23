@@ -1,20 +1,23 @@
 //Submit comments via AJAX
  $(function() {
 
-  $("a.load_applications").on("click", function(e){
-
-    $.ajax({
-      method: "GET",
-      url: this.href
-
-    })
+  $(".load_applications").on("click", function(e){
+    var id = parseInt($(".load_applications").attr("data-id"))
+    $.get("/opportunities/" + id + "/opportunity_data.json")
       .done(function(data) {
         console.log(data)
       $("div.applications").append(data)
-      });
+})
+    // $.ajax({
+    //   method: "GET",
+    //   url: this.href
+    //
+    // })
+    //   .done(function(data) {
+    //     console.log(data)
+    //   $("div.applications").append(data)
+    //   });
 
-
-    
     e.preventDefault();
   })
 })
