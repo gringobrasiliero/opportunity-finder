@@ -2,7 +2,7 @@
  $(function() {
 
   $(".load_applications").on("click", function(e){
-    var id = parseInt($(".load_applications").attr("data-id"));
+    var id = $(this).data("id");
     $.get("/opportunities/" + id + ".json")
       .success(function(data) {
         console.log(data)
