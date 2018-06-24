@@ -4,22 +4,30 @@
   $(".load_applications").on("click", function(e){
     var id = $(this).data("id");
     $.get("/opportunities/" + id + ".json")
-      .success(function(data) {
-        console.log(data)
-      $("#oppApps-" + id).append(data["opportunity"]["applications"]['0']["legal"]);
-});
-    // $.ajax({
-    //   method: "GET",
-    //   url: this.href
-    //
-    // })
-    //   .done(function(data) {
-    //     console.log(data)
-    //   $("div.applications").append(data)
-    //   });
+    .success(function(data) {
+      // console.log(data["opportunity"]["applications"])
 
-    e.preventDefault();
-  });
+      var oppApps = data["opportunity"]["applications"]
+
+      oppApps.forEach(function(element) {
+        console.log(element)
+          $("#oppApps-" + id).append(element["legal"])
+      })
+
+    // $("#oppApps-" + id).append(data["opportunity"]["applications"]);
+});
+  // $.ajax({
+  //   method: "GET",
+  //   url: this.href
+  //
+  // })
+  //   .done(function(data) {
+  //     console.log(data)
+  //   $("div.applications").append(data)
+  //   });
+
+  e.preventDefault();
+});
 });
 
 // $(function() {
