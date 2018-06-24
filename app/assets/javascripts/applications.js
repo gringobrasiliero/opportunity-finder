@@ -6,7 +6,7 @@
     $.get("/opportunities/" + id + ".json")
       .success(function(data) {
         console.log(data)
-      $("div.applications").append(data);
+      $("#oppApps-" + id).append(data["opportunity"]["applications"]['0']["legal"]);
 });
     // $.ajax({
     //   method: "GET",
