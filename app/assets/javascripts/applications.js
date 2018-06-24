@@ -5,8 +5,16 @@
     var id = $(this).data("id");
     $.get("/opportunities/" + id + ".json")
       .success(function(data) {
-        console.log(data)
-      $("#oppApps-" + id).append(data["opportunity"]["applications"]['0']["legal"]);
+        // console.log(data["opportunity"]["applications"])
+
+        var oppApps = data["opportunity"]["applications"]
+
+        oppApps.forEach(function(element) {
+          console.log(element)
+            $("#oppApps-" + id).append(element["legal"])
+        })
+
+      // $("#oppApps-" + id).append(data["opportunity"]["applications"]);
 });
     // $.ajax({
     //   method: "GET",
