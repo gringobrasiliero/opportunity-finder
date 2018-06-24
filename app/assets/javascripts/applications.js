@@ -4,9 +4,9 @@
   $(".load_applications").on("click", function(e){
     var id = parseInt($(".load_applications").attr("data-id"));
     $.get("/opportunities/" + id + ".json")
-      .done(function(data) {
+      .success(function(data) {
         console.log(data)
-      $("div.applications").text(data["opportunity"]["applications"]['0']["legal"]);
+      $("div.applications").append(data);
 });
     // $.ajax({
     //   method: "GET",
@@ -21,6 +21,26 @@
     e.preventDefault();
   });
 });
+
+// $(function() {
+//
+//  $("a.load_applications").on("click", function(e){
+//
+//    $.ajax({
+//      method: "GET",
+//      url: this.href
+//
+//    })
+//      .success(function(data) {
+//        console.log(data)
+//      $("div.applications").append(data)
+//      });
+//
+//
+//    alert("Howdy")
+//    e.preventDefault();
+//  })
+// })
 
 
 

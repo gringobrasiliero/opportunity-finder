@@ -108,7 +108,7 @@ end
   private
 
   # def set_opportunity
-  #   @opportunity = Opportunity.find(params[:id])
+  #   @opportunity = Opportunity.find(params[:opportunity_id])
   # end
 
   def opportunity_params

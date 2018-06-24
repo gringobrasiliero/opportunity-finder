@@ -6,8 +6,8 @@
   <h2> <%= opportunity.title %> </h2>
   <h2> <%= opportunity.description %> </h2>
    <a href="" class= "load_applications" data-id="<%=opportunity.id%>">Load Applications</a>
-
-  <div class= "applications"></div>
+<!-- <%= link_to "Load Applications", opportunity_path(opportunity), :class => "load_applications" %> -->
+  <div id= "oppApps-<%=opportunity.id%>"></div>
 
 </div>
 <br>
