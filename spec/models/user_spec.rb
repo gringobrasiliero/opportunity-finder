@@ -5,6 +5,7 @@ RSpec.describe User, :type => :model do
     User.create(
       :email => "zurg@zurg.com",
       :password => "password",
+      :id => 1
 
     )
   }
