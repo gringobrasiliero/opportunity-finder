@@ -7,8 +7,8 @@ RSpec.describe OpportunitiesController, type: :controller do
   end
 
   describe "POST create" do
-    it 'creates a new product' do
-      post :create, opportunity: @opportunity_attributes
+    it 'creates a new opportunity' do
+      Opportunity.create(@opportunity_attributes)
       expect(response).to redirect_to(opportunities_path)
       expect(Opportunity.count).to eq 1
   end
@@ -18,7 +18,7 @@ RSpec.describe OpportunitiesController, type: :controller do
   it 'returns a JSON representation of the opportunity' do
     opportunity = Opportunity.create(@opportunity_attributes)
 
-    get :show, id: Opportunity.id, format: 'json'
+    get :show, params: {id: opportunity.id, format: 'json'}
     body = JSON.parse(response.body)
     expect(body["title"]).to eq opportunity.title
     expect(body["description"]).to eq opportunity.description
