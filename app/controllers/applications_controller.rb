@@ -54,7 +54,7 @@ before_action :require_profile
     @application =  Application.find(params[:id])
     respond_to do |format|
           format.html { render :show }
-          format.json {render json: @opportunity, status: 200}
+          format.json {render json: @application, status: 200}
     # render json: @opportunity, status: 200
     end
     end
