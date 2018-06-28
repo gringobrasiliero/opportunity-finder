@@ -1,6 +1,32 @@
 //Submit comments via AJAX
  $(function() {
 
+
+   $(".new_opportunity").on("click", function(e){
+      $.get("/opportunities/new.json")
+     .success(function(data) {
+       // console.log(data["opportunity"]["applications"])
+       var $div = $("#newOpp")
+       $div.html("") //empties the div
+       $div.append('<h1>This button works. Kinda.</h1>')
+
+   });
+   e.preventDefault();
+   });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   $(".load_applications").on("click", function(e){
     var id = $(this).data("id");
     $.get("/opportunities/" + id + ".json")
@@ -10,9 +36,10 @@
       $div.html("") //empties the div
       var oppApps = data["opportunity"]["applications"]
 
-      oppApps.forEach(function(element) {
-        console.log(element)
-          $div.append(element["legal"])
+      oppApps.forEach(function(json) {
+        console.log(json)
+          $div.append(json["legal"])
+
       })
 });
   e.preventDefault();

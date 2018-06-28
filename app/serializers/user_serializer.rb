@@ -1,5 +1,5 @@
 class UserSerializer < ActiveModel::Serializer
   attributes :id
-# belongs_to :applications
+  belongs_to :application
   has_one :profile
 end

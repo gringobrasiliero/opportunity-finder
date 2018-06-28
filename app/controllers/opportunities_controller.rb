@@ -9,7 +9,6 @@ include ApplicationHelper
     @opportunity = Opportunity.new
 
     authorize! :new, @opportunity, :message => "Access Denied."
-
   end
 
   def create

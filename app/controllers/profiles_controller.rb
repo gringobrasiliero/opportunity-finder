@@ -18,6 +18,10 @@ end
 end
 
   def index
+    @opportunity = Opportunity.find(params[:id])
+    @profiles = @opportunity.applications.user.profile
+
+      @opportunities = User.find(params[:user_id]).opportunities
     @user = current_user
     @profile = @user.profile
   end
@@ -25,6 +29,11 @@ end
   def show
     @user = current_user
     @profile = Profile.find(params[:id])
+    respond_to do |format|
+          format.html { render :show }
+          format.json {render json: @opportunity, status: 200}
+  
+    end
   end
 
   def edit

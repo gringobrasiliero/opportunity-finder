@@ -1,1 +1,18 @@
 <%= render 'form' %>
+
+<script type="text/javascript" charset="utf-8">
+  $(function () {
+    $('form').submit(function(event) {
+      //prevent form from submitting the default way
+      event.preventDefault();
+       var values = $(this).serialize();
+       var oppcreation = $.post('/opportunities', values);
+       oppcreation.done(function(data) {
+          console.log(data);
+            alert("Hijacked Submit button");
+       });
+
+    });
+  });
+
+</script>

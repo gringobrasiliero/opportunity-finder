@@ -1,3 +1,6 @@
+
+<a href="<%=new_opportunity_path%>" class= "new_opportunity">Create a new Opportunity</a>
+<div id="newOpp"></div>
 <% @opportunities.each do |opportunity| %>
 
 
@@ -5,8 +8,8 @@
   <h1> <%= link_to opportunity.user.profile.business_name, opportunity_path(opportunity) %> </h1>
   <h2> <%= opportunity.title %> </h2>
   <h2> <%= opportunity.description %> </h2>
-   <a href="<%=opportunity_path(opportunity)%>" class= "load_applications" data-id="<%=opportunity.id%>">Load Applications</a>
-<!-- <%= link_to "Load Applications", opportunity_path(opportunity), :class => "load_applications" %> -->
+   <a href="<%=opportunity_path(opportunity)%>" class= "load_applications" data-id="<%=opportunity.id%>">View Applicants</a>
+
   <div id= "oppApps-<%=opportunity.id%>"></div>
 
 </div>

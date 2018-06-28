@@ -1,0 +1,6 @@
+
+<% @profiles.each do |profile| %>
+<h1>Name: <%= profile.first_name %> <%= profile.last_name %></h1>
+<h2>Email: <a href= "mailto:<%=profile.user.email%>"> <%=profile.user.email%> </a></h2>
+<h2>Location: <%= profile.location %><br><h2>
+<h2>Profession: <%= profile.profession %><h2><br>
