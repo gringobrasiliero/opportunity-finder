@@ -9,6 +9,11 @@ include ApplicationHelper
     @opportunity = Opportunity.new
 
     authorize! :new, @opportunity, :message => "Access Denied."
+    respond_to do |format|
+          format.html { render :show }
+          format.json {render json: @opportunity, status: 200}
+    # render json: @opportunity, status: 200
+    end
   end
 
   def create
