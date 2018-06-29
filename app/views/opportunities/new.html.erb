@@ -2,17 +2,28 @@
 
 <script type="text/javascript" charset="utf-8">
   $(function () {
-    $('form').submit(function(event) {
+    $('form').on("submit", function(e) {
       //prevent form from submitting the default way
-      event.preventDefault();
-       var values = $(this).serialize();
-       var oppcreation = $.post('/opportunities', values);
-       oppcreation.done(function(data) {
-          console.log(data);
-            alert("Hijacked Submit button");
-       });
+      e.preventDefault();
+      var $form = $(this);
+      var action = $form.attr("action")
+      var params = $form.serialize()
 
-    });
-  });
+      $.ajax({
+        url: action,
+        data: params,
+        dataType: "json",
+        method: "POST"
+      })
+      .success(function(json){
+        console.log(json)
+      })
+      .error(function(response){
+        console.log("Broken", response)
+      })
+       })
+
+    })
+
 
 </script>

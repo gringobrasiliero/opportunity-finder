@@ -10,7 +10,7 @@ include ApplicationHelper
 
     authorize! :new, @opportunity, :message => "Access Denied."
     respond_to do |format|
-          format.html { render :show }
+          format.html { render :new }
           format.json {render json: @opportunity, status: 200}
     # render json: @opportunity, status: 200
     end
@@ -21,7 +21,12 @@ include ApplicationHelper
     @opportunity = @user.opportunities.new(opportunity_params)
     if @opportunity.valid?
       @opportunity.save
-      redirect_to opportunities_path(@opportunity)
+      respond_to do |format|
+            format.html {redirect_to opportunities_path(@opportunity) }
+            format.json {render json: @opportunity}
+      # render json: @opportunity, status: 200
+      end
+
     else
       render 'new'
     end
