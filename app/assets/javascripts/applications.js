@@ -61,10 +61,11 @@ $div.append('<div class="field"><h3>Legal to work in USA: ' + json["legal"] + '<
 $div.append('<div class="field"><h3>Month Commitment: ' + json["month_commitment"] + '</h3></div>')
 $div.append('<div class="field"><h3>Reason for Interest: ' + json["reason_for_interest"] + '</h3></div>')
 // $div.append('<a href="' + id + '" class= "hide_application" data-id="' + id + '">Hide Applications</a>')
+
 });
 // <a href="<%=opportunity_path(opportunity)%>" class= "load_applications" data-id="<%=opportunity.id%>">View Applicants</a>
-
 e.preventDefault();
+
 });
 
 $(".hide_application").on("click", function(e){
