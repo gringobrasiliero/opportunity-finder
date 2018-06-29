@@ -2,17 +2,17 @@
  $(function() {
 
 
-   $(".new_opportunity").on("click", function(e){
-      $.get("/opportunities/new.json")
-     .success(function(data) {
-       // console.log(data["opportunity"]["applications"])
-       var $div = $("#newOpp")
-       $div.html("") //empties the div
-       $div.append('<h1>This button works. Kinda.</h1>')
-
-   });
-   e.preventDefault();
-   });
+   // $(".new_opportunity").on("click", function(e){
+   //    $.get("/opportunities/new.json")
+   //   .success(function(data) {
+   //     // console.log(data["opportunity"]["applications"])
+   //     var $div = $("#newOpp")
+   //     $div.html("") //empties the div
+   //     $div.append('<h1>This button works. Kinda.</h1>')
+   //
+   // });
+   // e.preventDefault();
+   // });
 
 
 
