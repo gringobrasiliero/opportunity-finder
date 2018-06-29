@@ -1,4 +1,4 @@
-
+  $(function () {
 function Item(attributes){
   this.title = attributes.title;
   this.id = attributes.id;
@@ -10,7 +10,7 @@ Item.prototype.renderDiv = function() {
 return Item.template(this)
 }
 
-  $(function () {
+
     $('form').on("submit", function(e) {
       //prevent form from submitting the default way
       e.preventDefault();
