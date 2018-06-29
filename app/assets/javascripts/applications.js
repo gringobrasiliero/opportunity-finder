@@ -14,19 +14,6 @@
    // e.preventDefault();
    // });
 
-
-
-
-
-
-
-
-
-
-
-
-
-
   $(".load_applications").on("click", function(e){
     var id = $(this).data("id");
     $.get("/opportunities/" + id + ".json")
@@ -46,6 +33,8 @@
 });
 
 $(".load_application").on("click", function(e){
+// it works if prevent default is here
+  e.preventDefault();
   var id = $(this).data("id");
   $.get("/applications/" + id + ".json")
   .success(function(json) {
@@ -61,10 +50,9 @@ $div.append('<div class="field"><h3>Legal to work in USA: ' + json["legal"] + '<
 $div.append('<div class="field"><h3>Month Commitment: ' + json["month_commitment"] + '</h3></div>')
 $div.append('<div class="field"><h3>Reason for Interest: ' + json["reason_for_interest"] + '</h3></div>')
 // $div.append('<a href="' + id + '" class= "hide_application" data-id="' + id + '">Hide Applications</a>')
-
 });
 // <a href="<%=opportunity_path(opportunity)%>" class= "load_applications" data-id="<%=opportunity.id%>">View Applicants</a>
-e.preventDefault();
+
 
 });
 

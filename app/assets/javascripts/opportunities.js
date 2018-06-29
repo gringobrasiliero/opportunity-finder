@@ -13,7 +13,7 @@ return Item.template(this)
 
     $('form').on("submit", function(e) {
       //prevent form from submitting the default way
-      e.preventDefault();
+
       var $form = $(this);
       var action = $form.attr("action");
       var params = $form.serialize();
@@ -35,6 +35,8 @@ return Item.template(this)
       .error(function(response){
         console.log("Broken", response)
       })
+      // leave this where it is
+        e.preventDefault();
        })
 
-    })
+    });
