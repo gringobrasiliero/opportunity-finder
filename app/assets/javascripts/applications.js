@@ -2,7 +2,7 @@
  $(function() {
 
 
-   $(".load_opportunity_form").on("click", function(e){
+   $(".load_opportunity_form").click( function(e){
        e.preventDefault();
       $.get("/opportunities/new.json")
      .success(function(data) {
@@ -15,7 +15,7 @@
 
    });
 
-  $(".load_applications").on("click", function(e){
+  $(".load_applications").click(function(e){
     var id = $(this).data("id");
     $.get("/opportunities/" + id + ".json")
     .success(function(data) {
@@ -27,13 +27,13 @@
       oppApps.forEach(function(json) {
         console.log(json)
           $div.append(json["legal"])
-
+$div.append(json.profile.first_name)
       })
 });
   e.preventDefault();
 });
 
-$(".load_application").on("click", function(e){
+$(".load_application").click(function(e){
 // it works if prevent default is here
   e.preventDefault();
   var id = $(this).data("id");
@@ -51,12 +51,14 @@ $div.append('<div class="field"><h3>Legal to work in USA: ' + json["legal"] + '<
 $div.append('<div class="field"><h3>Month Commitment: ' + json["month_commitment"] + '</h3></div>')
 $div.append('<div class="field"><h3>Reason for Interest: ' + json["reason_for_interest"] + '</h3></div>')
 $div.append('<a href="/applications/' + json["id"] + '" class= "hide_application" data-id="' + json["id"] + '">Hide Application</a>')
-});
 
 
 });
 
-$(".hide_application").on("click", function(e){
+
+});
+
+$(".hide_application").click(function(e){
 e.preventDefault();
 
 alert("Howdy");
@@ -66,7 +68,7 @@ alert("Howdy");
     console.log(json)
 
 var $div = $("#applicant-" + id)
-$div.hide() //empties the div
+$div.remove() //empties the div
 });
 
 
