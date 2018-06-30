@@ -40,6 +40,7 @@ $(".load_application").click(function(e){
   $.get("/applications/" + id + ".json")
   .success(function(json) {
 var $div = $("#applicant-" + id)
+$div.show()
 $div.html(""); //empties the div
   console.log(json)
 $("#applicant-" + id).append('<h2>Application</h2>')
@@ -60,15 +61,13 @@ $div.append('<a href="/applications/' + json["id"] + '" class= "hide_application
 
 $(".hide_application").click(function(e){
 e.preventDefault();
-
-alert("Howdy");
   var id = $(this).data("id");
   $.get("/applications/" + id + ".json")
   .success(function(json) {
     console.log(json)
 
 var $div = $("#applicant-" + id)
-$div.remove() //empties the div
+$div.hide() //empties the div
 });
 
 
