@@ -1,13 +1,13 @@
   $(function () {
-function Item(attributes){
+function Opportunity(attributes){
   this.title = attributes.title;
   this.id = attributes.id;
   this.description = attributes.description;
 }
-Item.templateSource = $("#opp-template").html()
-Item.template = Handlebars.compile(Item.templateSource);
-Item.prototype.renderDiv = function() {
-return Item.template(this)
+Opportunity.templateSource = $("#opp-template").html()
+Opportunity.template = Handlebars.compile(Opportunity.templateSource);
+Opportunity.prototype.renderDiv = function() {
+return Opportunity.template(this)
 }
 
 
@@ -25,12 +25,12 @@ return Item.template(this)
         method: "POST"
       })
       .success(function(json){
-        var item = new Item(json);
-        var itemDiv = item.renderDiv()
+        var opportunity = new Opportunity(json);
+        var opportunityDiv = opportunity.renderDiv()
 
         console.log(json)
 
-        $("div.new_opportunity").append(itemDiv)
+        $("div.new_opportunity").append(opportunityDiv)
       })
       .error(function(response){
         console.log("Broken", response)
