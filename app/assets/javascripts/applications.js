@@ -2,17 +2,18 @@
  $(function() {
 
 
-   // $(".new_opportunity").on("click", function(e){
-   //    $.get("/opportunities/new.json")
-   //   .success(function(data) {
-   //     // console.log(data["opportunity"]["applications"])
-   //     var $div = $("#newOpp")
-   //     $div.html("") //empties the div
-   //     $div.append('<h1>This button works. Kinda.</h1>')
-   //
-   // });
-   // e.preventDefault();
-   // });
+   $(".load_opportunity_form").on("click", function(e){
+       e.preventDefault();
+      $.get("/opportunities/new.json")
+     .success(function(data) {
+       // console.log(data["opportunity"]["applications"])
+       var $div = $("#newOpp")
+       $div.html("") //empties the div
+       $div.append('<h1>This button works. Kinda.</h1>')
+
+   });
+
+   });
 
   $(".load_applications").on("click", function(e){
     var id = $(this).data("id");
@@ -39,7 +40,7 @@ $(".load_application").on("click", function(e){
   $.get("/applications/" + id + ".json")
   .success(function(json) {
 var $div = $("#applicant-" + id)
-$div.html("") //empties the div
+$div.html(""); //empties the div
   console.log(json)
 $("#applicant-" + id).append('<h2>Application</h2>')
 $div.append('<div class="field"><h3>Qualified for Position: ' + json["qualified"] + '</h3></div>')
@@ -49,22 +50,26 @@ $div.append('<div class="field"><h3>Description of Criminal Record: ' + json["de
 $div.append('<div class="field"><h3>Legal to work in USA: ' + json["legal"] + '</h3></div>')
 $div.append('<div class="field"><h3>Month Commitment: ' + json["month_commitment"] + '</h3></div>')
 $div.append('<div class="field"><h3>Reason for Interest: ' + json["reason_for_interest"] + '</h3></div>')
-// $div.append('<a href="' + id + '" class= "hide_application" data-id="' + id + '">Hide Applications</a>')
+$div.append('<a href="/applications/' + json["id"] + '" class= "hide_application" data-id="' + json["id"] + '">Hide Application</a>')
 });
-// <a href="<%=opportunity_path(opportunity)%>" class= "load_applications" data-id="<%=opportunity.id%>">View Applicants</a>
 
 
 });
 
 $(".hide_application").on("click", function(e){
+e.preventDefault();
+
+alert("Howdy");
   var id = $(this).data("id");
   $.get("/applications/" + id + ".json")
   .success(function(json) {
+    console.log(json)
+
 var $div = $("#applicant-" + id)
-$div.html("") //empties the div
+$div.hide() //empties the div
 });
 
-e.preventDefault();
+
 });
 
 

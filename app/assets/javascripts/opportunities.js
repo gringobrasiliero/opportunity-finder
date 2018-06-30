@@ -39,4 +39,21 @@ return Item.template(this)
         e.preventDefault();
        })
 
+       $(".load_opportunity_form").on("click", function(e){
+           e.preventDefault();
+          $.get("/opportunities/new.json")
+         .success(function(data) {
+           // console.log(data["opportunity"]["applications"])
+           var $div = $("#newOpp")
+           $div.html("") //empties the div
+           $div.append('<h1>This button works. Kinda.</h1>')
+
+       });
+
+       });
+
+
+
+
+
     });

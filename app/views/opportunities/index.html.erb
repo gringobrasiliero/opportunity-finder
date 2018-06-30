@@ -1,6 +1,9 @@
 
-<a href="<%=new_opportunity_path%>" class= "new_opportunity">Create a new Opportunity</a>
+<a href="<%=new_opportunity_path%>" class= "load_opportunity_form">Create a new Opportunity</a>
 <div id="newOpp"></div>
+
+
+
 <% @opportunities.each do |opportunity| %>
 
 
@@ -15,25 +18,3 @@
 </div>
 <br>
 <% end %>
-
-<!-- WORKING ON HANDLEBARS TEMPLATE FOR NEW OPP FORM -->
-<!-- <script id="new_opportunity_template" type="text/x-handlebars-template">
-  <%= form_for(@opportunity) do |f| %>
-
-  <div class="field">
-    <%= f.label {{title}} %> <br>
-    <%= f.text_field {{title}} %> <br>
-  </div>
-
-  <div class="field">
-    <%= f.label {{description}} %> <br>
-    <%= f.text_field {{description}} %> <br>
-  </div>
-
-  <%= f.hidden_field {{id}} , :value => @user.{{id}}%>
-
-
-    <%= f.submit %>
-
-  <% end %>
-</script> -->
