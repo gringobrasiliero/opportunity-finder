@@ -1,6 +1,8 @@
 //Submit comments via AJAX
  $(function() {
 
+var $button = $(".hide_application")
+$button.hide();
 
    $(".load_opportunity_form").click( function(e){
        e.preventDefault();
@@ -39,7 +41,9 @@ $(".load_application").click(function(e){
   var id = $(this).data("id");
   $.get("/applications/" + id + ".json")
   .success(function(json) {
+var $button = $(".hide_application")
 var $div = $("#applicant-" + id)
+$button.show()
 $div.show()
 $div.html(""); //empties the div
   console.log(json)
@@ -65,7 +69,8 @@ e.preventDefault();
   $.get("/applications/" + id + ".json")
   .success(function(json) {
     console.log(json)
-
+var $button = $(".hide_application")
+$button.hide()
 var $div = $("#applicant-" + id)
 $div.hide() //empties the div
 });
