@@ -13,7 +13,7 @@ return Opportunity.template(this)
 
     $('form').on("submit", function(e) {
       //prevent form from submitting the default way
-
+  e.preventDefault();
       var $form = $(this);
       var action = $form.attr("action");
       var params = $form.serialize();
@@ -35,11 +35,11 @@ return Opportunity.template(this)
       .error(function(response){
         console.log("Broken", response)
       })
-      // leave this where it is
-        e.preventDefault();
-       })
+    
 
-       $(".load_opportunity_form").on("click", function(e){
+      });
+
+       $(".load_opportunity_form").click(function(e){
            e.preventDefault();
           $.get("/opportunities/new.json")
          .success(function(data) {
