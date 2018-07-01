@@ -35,7 +35,7 @@ return Opportunity.template(this)
       .error(function(response){
         console.log("Broken", response)
       })
-    
+
 
       });
 

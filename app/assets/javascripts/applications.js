@@ -41,8 +41,10 @@ $(".load_application").click(function(e){
   var id = $(this).data("id");
   $.get("/applications/" + id + ".json")
   .success(function(json) {
-var $button = $(".hide_application")
+var $button = $("#button-" + id)
 var $div = $("#applicant-" + id)
+var $loadApp = $("#load-application-" + id)
+$loadApp.hide()
 $button.show()
 $div.show()
 $div.html(""); //empties the div
@@ -55,7 +57,7 @@ $div.append('<div class="field"><h3>Description of Criminal Record: ' + json["de
 $div.append('<div class="field"><h3>Legal to work in USA: ' + json["legal"] + '</h3></div>')
 $div.append('<div class="field"><h3>Month Commitment: ' + json["month_commitment"] + '</h3></div>')
 $div.append('<div class="field"><h3>Reason for Interest: ' + json["reason_for_interest"] + '</h3></div>')
-$div.append('<a href="/applications/' + json["id"] + '" class= "hide_application" data-id="' + json["id"] + '">Hide Application</a>')
+// $div.append('<a href="/applications/' + json["id"] + '" class= "hide_application" data-id="' + json["id"] + '">Hide Application</a>')
 
 
 });
@@ -65,11 +67,14 @@ $div.append('<a href="/applications/' + json["id"] + '" class= "hide_application
 
 $(".hide_application").click(function(e){
 e.preventDefault();
+
   var id = $(this).data("id");
   $.get("/applications/" + id + ".json")
   .success(function(json) {
     console.log(json)
-var $button = $(".hide_application")
+var $loadApp = $("#load-application-" + id)
+var $button = $("#button-" + id)
+$loadApp.show()
 $button.hide()
 var $div = $("#applicant-" + id)
 $div.hide() //empties the div

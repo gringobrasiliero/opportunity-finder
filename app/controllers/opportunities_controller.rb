@@ -11,7 +11,7 @@ include ApplicationHelper
     authorize! :new, @opportunity, :message => "Access Denied."
     respond_to do |format|
           format.html { render :new }
-          format.json {render json: @opportunity, status: 200}
+          format.json {render json: @opportunity}
     # render json: @opportunity, status: 200
     end
   end
