@@ -53,7 +53,7 @@
     <h3>Profession: <%=application.profile.profession%></h3>
   </div>
 
-   <a href="<%=application_path(application)%>" class= "load_application" data-id="<%=application.id%>" id='load-application-<%=application.id%>'">Load Application</a>
+   <button class= "load_application" data-id="<%=application.id%>" id='load-application-<%=application.id%>'">Load Application</button>
    <button id="button-<%=application.id%>" class="hide_application" data-id="<%=application.id%>">Hide Application</button>
   <div id= "applicant-<%=application.id%>"></div>
 
