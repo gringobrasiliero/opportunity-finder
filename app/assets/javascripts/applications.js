@@ -25,14 +25,13 @@ $button.hide();
       var $div = $("#oppApps-" + id)
       $div.html("") //empties the div
       var oppApps = data
-
       oppApps.forEach(function(json) {
-
+debugger
         console.log(json)
-          $div.append(json["profile"].first_name)
-            $div.append(json["profile"].last_name)
-              $div.append(json["profile"].picture_url)
-              $div.append(json["profile"].location)
+          $div.append(json["profile"]["first_name"])
+            $div.append(json["profile"]["last_name"])
+              $div.append(json["profile"]["picture_url"])
+              $div.append(json["profile"]["location"])
 // $div.append(json.profile.first_name)
       })
 });
