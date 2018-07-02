@@ -4,7 +4,9 @@ function Opportunity(attributes){
   this.id = attributes.id;
   this.description = attributes.description;
 }
-Opportunity.templateSource = $("#opp-template").html()
+// Opportunity.templateSource = $("opp-template").html()
+Opportunity.templateSource = HandlebarsTemplates['opportunities/new'](Opportunity);
+
 Opportunity.template = Handlebars.compile(Opportunity.templateSource);
 Opportunity.prototype.renderDiv = function() {
 return Opportunity.template(this)
