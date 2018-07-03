@@ -1,6 +1,40 @@
 //Submit comments via AJAX
  $(function() {
 
+   function Application(attributes){
+     this.qualified = attributes.qualified;
+     this.id = attributes.id;
+     this.legal = attributes.legal;
+     this.month_commitment = attributes.month_commitment;
+     this.reason_for_interest = attributes.reason_for_interest;
+     this.transportation = attributes.transportation;
+     this.criminal_record = attributes.criminal_record;
+     }
+
+   // Application.templateSource = $("opp-template").html()
+   Application.templateSource = $("#applicant-profile").html();
+
+   Application.template = Handlebars.compile(Application.templateSource);
+   Application.prototype.renderDiv = function() {
+   return Application.template(this)
+   }
+
+   "
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 var $button = $(".hide_application")
 $button.hide();
 
@@ -26,7 +60,7 @@ $button.hide();
       $div.html("") //empties the div
       var oppApps = data
       oppApps.forEach(function(json) {
-debugger
+
         console.log(json)
           $div.append(json["profile"]["first_name"])
             $div.append(json["profile"]["last_name"])
