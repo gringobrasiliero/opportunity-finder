@@ -24,6 +24,11 @@ end
       @opportunities = User.find(params[:user_id]).opportunities
     @user = current_user
     @profile = @user.profile
+    respond_to do |format|
+          format.html { render :show }
+          format.json {render json: @profiles, status: 200}
+
+    end
   end
 
   def show
@@ -32,7 +37,7 @@ end
     respond_to do |format|
           format.html { render :show }
           format.json {render json: @opportunity, status: 200}
-  
+
     end
   end
 

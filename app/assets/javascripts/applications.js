@@ -58,8 +58,10 @@ $button.hide();
       $div.html("") //empties the div
       var oppApps = data
       oppApps.forEach(function(json) {
-
+        console.log($(".applicant-profile"))
         console.log(json)
+debugger
+        $div.append(Handlebars.compile($("#applicant-profile").html()))
           $div.append(json["profile"]["first_name"])
             $div.append(json["profile"]["last_name"])
               $div.append(json["profile"]["picture_url"])
