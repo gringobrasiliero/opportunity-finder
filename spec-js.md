@@ -2,10 +2,10 @@
 
 Specs:
 - [x] Use jQuery for implementing new requirements
-- [x] Include a show resource rendered using jQuery and an Active Model Serialization JSON backend.
-- [ ] Include an index resource rendered using jQuery and an Active Model Serialization JSON backend.
+- [x] Include a show resource rendered using jQuery and an Active Model Serialization JSON backend. On Opportunities Index, shows shows each application when you click on one of the applicants application button.
+- [X] Include an index resource rendered using jQuery and an Active Model Serialization JSON backend. Opp show page shows each applicant when you click on the button to see who applied.
 - [ ] Include at least one has_many relationship in information rendered via JSON and appended to the DOM.
-- [ ] Use your Rails API and a form to create a resource and render the response without a page refresh.
+- [X] Use your Rails API and a form to create a resource and render the response without a page refresh.
 - [ ] Translate JSON responses into js model objects.
 - [ ] At least one of the js model objects must have at least one method added by your code to the prototype.
 
