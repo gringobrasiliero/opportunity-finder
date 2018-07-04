@@ -9,6 +9,12 @@
      this.reason_for_interest = attributes.reason_for_interest;
      this.transportation = attributes.transportation;
      this.criminal_record = attributes.criminal_record;
+     this.first_name = attributes.profile.first_name;
+     this.last_name = attributes.profile.last_name;
+     this.location = attributes.profile.location;
+     this.picture_url = attributes.profile.picture_url;
+     this.profession = attributes.profile.profession;
+     this.email = attributes.profile.email;
      }
 
    // Application.templateSource = $("opp-template").html()
@@ -17,19 +23,7 @@
    Application.template = Handlebars.compile(Application.templateSource);
    Application.prototype.renderDiv = function() {
    return Application.template(this)
-   }
-
-
-
-
-
-
-
-
-
-
-
-
+ };
 
 
 
@@ -58,10 +52,16 @@ $button.hide();
       $div.html("") //empties the div
       var oppApps = data
       oppApps.forEach(function(json) {
+        var applicationProfile = new Application(json);
+        var applicationDiv = applicationProfile.renderDiv()
+
+debugger
+
         console.log($(".applicant-profile"))
         console.log(json)
-debugger
-        $div.append(Handlebars.compile($("#applicant-profile").html()))
+
+        $div.append(applicationDiv)
+
           $div.append(json["profile"]["first_name"])
             $div.append(json["profile"]["last_name"])
               $div.append(json["profile"]["picture_url"])
