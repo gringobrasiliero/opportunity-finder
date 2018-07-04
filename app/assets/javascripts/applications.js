@@ -17,23 +17,23 @@
 
    }
 
- //  $(function() {
- //   Application.templateSource = $("#applicant-profile").html();
- //
- //   Application.template = Handlebars.compile(Application.templateSource);
- // })
- //   Application.prototype.renderDiv = function() {
- //   return Application.template(this)
- // };
+  $(function() {
+   Application.templateSource = $("#applicant").html();
 
- $(function() {
- Application.appTemplateSource = $("#application-template").html();
-
- Application.appTemplate = Handlebars.compile(Application.appTemplateSource);
-})
- Application.prototype.renderAppDiv = function() {
- return Application.appTemplate(this)
+   Application.template = Handlebars.compile(Application.templateSource);
+ })
+   Application.prototype.renderDiv = function() {
+   return Application.template(this)
  };
+
+//  $(function() {
+//  Application.appTemplateSource = $("#application-template").html();
+//
+//  Application.appTemplate = Handlebars.compile(Application.appTemplateSource);
+// })
+//  Application.prototype.renderAppDiv = function() {
+//  return Application.appTemplate(this)
+//  };
 
 $(function() {
  $(".load_applications").click(function(e){
@@ -92,9 +92,8 @@ $(".load_application").click(function(e){
 var $button = $("#button-" + id)
 var $div = $("#applicant-" + id)
 var $loadApp = $("#load-application-" + id)
-var application = new Application(json);
-var applicationDiv = application.renderAppDiv()
-
+var applicationProfile = new Application(json);
+var applicationDiv = applicationProfile.renderDiv()
 
 
 $loadApp.hide()
