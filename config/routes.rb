@@ -11,6 +11,7 @@ get 'users/:id/opportunities/application_data', to: 'opportunities#application_d
 get 'profiles/:id/edit', to: 'profiles#edit', as: :edit_profile
 get 'applications/:id/submitted', to: 'applications#submitted', as: :submitted_profile
 get 'opportunities/:id/opportunity_data', to: 'opportunities#opportunity_data'
+
 resources :profiles
 
 resources :applications
