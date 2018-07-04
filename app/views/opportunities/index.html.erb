@@ -1,40 +1,34 @@
 <body>
-
-<% @opportunities.each do |opportunity| %>
-
-
-<div id="body-<%= opportunity.id %>">
-  <h1> <%= link_to opportunity.user.profile.business_name, opportunity_path(opportunity) %> </h1>
-  <h2> <%= opportunity.title %> </h2>
-  <h2> <%= opportunity.description %> </h2>
-   <a href="<%=opportunity_path(opportunity)%>" class= "load_applications" data-id="<%=opportunity.id%>">View Applicants</a>
-
-  <div id= "oppApps-<%=opportunity.id%>"></div>
-
-</div>
-<br>
-<% end %>
-
+  <% @opportunities.each do |opportunity| %>
+    <div id="body-<%= opportunity.id %>">
+      <h1> <%= link_to opportunity.user.profile.business_name, opportunity_path(opportunity) %> </h1>
+      <h2> <%= opportunity.title %> </h2>
+      <h2> <%= opportunity.description %> </h2>
+      <a href="<%=opportunity_path(opportunity)%>" class= "load_applications" data-id="<%=opportunity.id%>">View Applicants</a>
+      <div id= "oppApps-<%=opportunity.id%>"></div>
+    </div>
+    <br>
+  <% end %>
 </body>
+
+
 <script id="applicant" type="text/x-handlebars-template">
   <div id="oppApps-{{id}}">
     <section>
-    <div class="photo">
-      <img src="{{picture_url}}">
-    </div>
-    <div class = "Application">
-      <div class="field">
-          <h2>Name: {{name}} </h2>
-
+      <div class="photo">
+        <img src="{{picture_url}}">
       </div>
-
-      <div class="field">
-        <h3>Location: {{location}}</h3>
+      <div class = "Application">
+          <div class="field">
+            <h2>Name: {{name}} </h2>
+          </div>
+        <div class="field">
+          <h3>Location: {{location}}</h3>
+        </div>
+        <div class="field">
+          <h3>Profession: {{profession}}</h3>
+        </div>
+          <br>
       </div>
-
-      <div class="field">
-        <h3>Profession: {{profession}}</h3>
-      </div>
-      <br>
-</div>
+    </section>
 </script>
