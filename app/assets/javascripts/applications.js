@@ -1,5 +1,5 @@
 //Submit comments via AJAX
- $(function() {
+
 
    function Application(attributes){
      this.qualified = attributes.qualified;
@@ -14,63 +14,74 @@
      this.location = attributes.profile.location;
      this.picture_url = attributes.profile.picture_url;
      this.profession = attributes.profile.profession;
-     this.email = attributes.profile.email;
-     }
 
-   // Application.templateSource = $("opp-template").html()
-   Application.templateSource = $("#applicant-profile").html();
+   }
 
-   Application.template = Handlebars.compile(Application.templateSource);
-   Application.prototype.renderDiv = function() {
-   return Application.template(this)
+ //  $(function() {
+ //   Application.templateSource = $("#applicant-profile").html();
+ //
+ //   Application.template = Handlebars.compile(Application.templateSource);
+ // })
+ //   Application.prototype.renderDiv = function() {
+ //   return Application.template(this)
+ // };
+
+ $(function() {
+ Application.appTemplateSource = $("#application-template").html();
+
+ Application.appTemplate = Handlebars.compile(Application.appTemplateSource);
+})
+ Application.prototype.renderAppDiv = function() {
+ return Application.appTemplate(this)
  };
 
+$(function() {
+ $(".load_applications").click(function(e){
+   var id = $(this).data("id");
+   $.get("/opportunities/" + id + ".json")
+   .success(function(data) {
+     // console.log(data["opportunity"]["applications"])
+     var $div = $("#oppApps-" + id)
+     $div.html("") //empties the div
+     var oppApps = data
+     oppApps.forEach(function(json) {
+       var applicationProfile = new Application(json);
+       var applicationDiv = applicationProfile.renderDiv()
 
+       console.log($(".applicant-profile"))
+       console.log(json)
 
-var $button = $(".hide_application")
-$button.hide();
-
-   $(".load_opportunity_form").click( function(e){
-       e.preventDefault();
-      $.get("/opportunities/new.json")
-     .success(function(data) {
-       // console.log(data["opportunity"]["applications"])
-       var $div = $("#newOpp")
-       $div.html("") //empties the div
-       $div.append('<h1>This button works. Kinda.</h1>')
-
-   });
-
-   });
-
-  $(".load_applications").click(function(e){
-    var id = $(this).data("id");
-    $.get("/opportunities/" + id + ".json")
-    .success(function(data) {
-      // console.log(data["opportunity"]["applications"])
-      var $div = $("#oppApps-" + id)
-      $div.html("") //empties the div
-      var oppApps = data
-      oppApps.forEach(function(json) {
-        var applicationProfile = new Application(json);
-        var applicationDiv = applicationProfile.renderDiv()
-
-debugger
-
-        console.log($(".applicant-profile"))
-        console.log(json)
-
-        $div.append(applicationDiv)
-
-          $div.append(json["profile"]["first_name"])
-            $div.append(json["profile"]["last_name"])
-              $div.append(json["profile"]["picture_url"])
-              $div.append(json["profile"]["location"])
-// $div.append(json.profile.first_name)
-      })
+       $div.append(applicationDiv)
+             $div.append(json["profile"]["profession"])
+     })
 });
-  e.preventDefault();
+ e.preventDefault();
 });
+})
+
+$(function() {
+$(".load_opportunity_form").click( function(e){
+    e.preventDefault();
+   $.get("/opportunities/new.json")
+  .success(function(data) {
+    // console.log(data["opportunity"]["applications"])
+    var $div = $("#newOpp")
+    $div.html("") //empties the div
+    $div.append('<h1>This button works. Kinda.</h1>')
+
+});
+
+});
+})
+
+
+
+
+
+$(function() {
+  alert("JIII");
+  var $button = $(".hide_application");
+  $button.hide();
 
 $(".load_application").click(function(e){
 // it works if prevent default is here
@@ -81,27 +92,23 @@ $(".load_application").click(function(e){
 var $button = $("#button-" + id)
 var $div = $("#applicant-" + id)
 var $loadApp = $("#load-application-" + id)
+var application = new Application(json);
+var applicationDiv = application.renderAppDiv()
+
+
+
 $loadApp.hide()
 $button.show()
 $div.show()
 $div.html(""); //empties the div
   console.log(json)
-$("#applicant-" + id).append('<h2>Application</h2>')
-$div.append('<div class="field"><h3>Qualified for Position: ' + json["qualified"] + '</h3></div>')
-$div.append('<div class="field"><h3>Reliable Transportation: ' + json["transportation"] + '</h3></div>')
-$div.append('<div class="field"><h3>Criminal Record: ' + json["criminal_record"] + '</h3></div>')
-$div.append('<div class="field"><h3>Description of Criminal Record: ' + json["description_of_criminal_record"] + '</h3></div>')
-$div.append('<div class="field"><h3>Legal to work in USA: ' + json["legal"] + '</h3></div>')
-$div.append('<div class="field"><h3>Month Commitment: ' + json["month_commitment"] + '</h3></div>')
-$div.append('<div class="field"><h3>Reason for Interest: ' + json["reason_for_interest"] + '</h3></div>')
-// $div.append('<a href="/applications/' + json["id"] + '" class= "hide_application" data-id="' + json["id"] + '">Hide Application</a>')
-
-
+    $div.append(applicationDiv)
 });
 
 
 });
-
+})
+$(function() {
 $(".hide_application").click(function(e){
 e.preventDefault();
 
@@ -119,7 +126,7 @@ $div.hide() //empties the div
 
 
 });
-
+})
 
 // End of function
-});
+// });
