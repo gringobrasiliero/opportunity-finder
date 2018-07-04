@@ -7,7 +7,10 @@ this.location = attributes.location;
 this.picture_url = attributes.picture_url;
 this.profession = attributes.profession;
 this.email = attributes.email;
+this.name = function() {
+  return attributes.first_name + " " + attributes.last_name
 }
+};
 
 $(function () {
 Profile.templateSource = $("#applicant").html();
@@ -16,6 +19,7 @@ Profile.template = Handlebars.compile(Profile.templateSource);
 Profile.prototype.renderDiv = function() {
 return Profile.template(this)
 }
+
 
 $(function() {
  $(".load_applications").click(function(e){
@@ -34,7 +38,7 @@ $(function() {
        console.log(json)
 debugger
        $div.append(applicationDiv)
-      
+
      })
 });
  e.preventDefault();
