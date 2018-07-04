@@ -1,4 +1,4 @@
-$(function () {
+
 function Profile(attributes){
 this.first_name = attributes.first_name;
 this.id = attributes.id;
@@ -9,52 +9,34 @@ this.profession = attributes.profession;
 this.email = attributes.email;
 }
 
-// Profile.templateSource = $("opp-template").html()
-Profile.templateSource = $("#applicant-profile").html();
+$(function () {
+Profile.templateSource = $("#applicant").html();
 Profile.template = Handlebars.compile(Profile.templateSource);
-Profile.prototype.renderProfileDiv = function() {
+})
+Profile.prototype.renderDiv = function() {
 return Profile.template(this)
 }
 
+$(function() {
+ $(".load_applications").click(function(e){
+   var id = $(this).data("id");
+   $.get("/opportunities/" + id + ".json")
+   .success(function(data) {
+     // console.log(data["opportunity"]["applications"])
+     var $div = $("#oppApps-" + id)
+     $div.html("") //empties the div
+     var oppApps = data
+     oppApps.forEach(function(json) {
+       var applicationProfile = new Profile(json["profile"]);
+       var applicationDiv = applicationProfile.renderDiv()
 
-// $(".load_applications").click(function(e){
-//   alert("HOWDY")
-// e.preventDefault();
-//   var id = $(this).data("id");
-//   $.get("/opportunities/" + id + ".json")
-//   .success(function(data) {
-//     // console.log(data["opportunity"]["applications"])
-//
-//     var $div = $("#oppApps-" + id)
-//
-//
-//     $div.html("") //empties the div
-//     var oppApps = data
-//     oppApps.forEach(function(json) {
-//   var profile = Profile(json);
-//     var $profileDiv = profile.renderProfileDiv()
-//       console.log(json)
-//     $div.append($profileDiv)
-//
-//         $div.append(json["profile"]["first_name"])
-//           $div.append(json["profile"]["last_name"])
-//             $div.append(json["profile"]["picture_url"])
-//             $div.append(json["profile"]["location"])
-// // $div.append(json.profile.first_name)
-//     })
-// });
-//
-// });
-
-// This works in console
- // $("#oppApps-" + 1).append(Handlebars.compile($("#applicant-profile").html())
-
-
-
-
-
-
-
-
-
-    });
+       console.log($("#applicant"))
+       console.log(json)
+debugger
+       $div.append(applicationDiv)
+      
+     })
+});
+ e.preventDefault();
+});
+})

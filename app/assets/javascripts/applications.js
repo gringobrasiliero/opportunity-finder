@@ -9,13 +9,7 @@
      this.reason_for_interest = attributes.reason_for_interest;
      this.transportation = attributes.transportation;
      this.criminal_record = attributes.criminal_record;
-     this.first_name = attributes.profile.first_name;
-     this.last_name = attributes.profile.last_name;
-     this.location = attributes.profile.location;
-     this.picture_url = attributes.profile.picture_url;
-     this.profession = attributes.profile.profession;
-
-   }
+     }
 
   $(function() {
    Application.templateSource = $("#applicant").html();
@@ -26,45 +20,12 @@
    return Application.template(this)
  };
 
-//  $(function() {
-//  Application.appTemplateSource = $("#application-template").html();
-//
-//  Application.appTemplate = Handlebars.compile(Application.appTemplateSource);
-// })
-//  Application.prototype.renderAppDiv = function() {
-//  return Application.appTemplate(this)
-//  };
-
-$(function() {
- $(".load_applications").click(function(e){
-   var id = $(this).data("id");
-   $.get("/opportunities/" + id + ".json")
-   .success(function(data) {
-     // console.log(data["opportunity"]["applications"])
-     var $div = $("#oppApps-" + id)
-     $div.html("") //empties the div
-     var oppApps = data
-     oppApps.forEach(function(json) {
-       var applicationProfile = new Application(json);
-       var applicationDiv = applicationProfile.renderDiv()
-
-       console.log($(".applicant-profile"))
-       console.log(json)
-
-       $div.append(applicationDiv)
-             $div.append(json["profile"]["profession"])
-     })
-});
- e.preventDefault();
-});
-})
 
 $(function() {
 $(".load_opportunity_form").click( function(e){
     e.preventDefault();
    $.get("/opportunities/new.json")
   .success(function(data) {
-    // console.log(data["opportunity"]["applications"])
     var $div = $("#newOpp")
     $div.html("") //empties the div
     $div.append('<h1>This button works. Kinda.</h1>')
@@ -79,7 +40,7 @@ $(".load_opportunity_form").click( function(e){
 
 
 $(function() {
-  alert("JIII");
+
   var $button = $(".hide_application");
   $button.hide();
 
