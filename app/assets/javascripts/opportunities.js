@@ -1,21 +1,23 @@
-  $(function () {
+
 function Opportunity(attributes){
   this.title = attributes.title;
   this.id = attributes.id;
   this.description = attributes.description;
 }
 
-// Opportunity.templateSource = $("opp-template").html()
-Opportunity.templateSource = $("#opp-template").html();
-
+  $(function () {
+Opportunity.templateSource = $("#applicant").html();
 Opportunity.template = Handlebars.compile(Opportunity.templateSource);
+})
 Opportunity.prototype.renderDiv = function() {
 return Opportunity.template(this)
-}
+};
 
+  $(function () {
 
     $('form').on("submit", function(e) {
-      //prevent form from submitting the default way
+
+
   e.preventDefault();
       var $form = $(this);
       var action = $form.attr("action");
@@ -38,10 +40,10 @@ return Opportunity.template(this)
       .error(function(response){
         console.log("Broken", response)
       })
-
-
       });
+})
 
+$(function () {
        $(".load_opportunity_form").click(function(e){
            e.preventDefault();
           $.get("/opportunities/new.json")
