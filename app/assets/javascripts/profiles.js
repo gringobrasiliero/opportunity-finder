@@ -36,7 +36,7 @@ $(function() {
 
        console.log($("#applicant"))
        console.log(json)
-debugger
+
        $div.append(applicationDiv)
 
      })

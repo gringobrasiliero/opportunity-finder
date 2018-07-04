@@ -26,7 +26,7 @@ $(function() {
   $button.hide();
 
 $(".load_application").click(function(e){
-// it works if prevent default is here
+
   e.preventDefault();
   var id = $(this).data("id");
   $.get("/applications/" + id + ".json")
