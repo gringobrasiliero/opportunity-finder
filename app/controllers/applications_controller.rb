@@ -1,16 +1,12 @@
 class ApplicationsController < ApplicationController
 before_action :authenticate_user!
 before_action :require_profile
-# before_action :set_opportunity, only: [:index, :show]
-  def new
+
+def new
     @opportunity = Opportunity.find_by(id: params[:opportunity_id])
     @application = Application.new(opportunity_id: params[:opportunity_id])
     authorize! :new, @application, :message => "Access Denied."
-    respond_to do |format|
-          format.html { render :show }
-          format.json {render json: @application, status: 200}
 
-    end
   end
 
   def create
@@ -77,7 +73,7 @@ before_action :require_profile
     @user = current_user
     @applications = @user.applications.all
     respond_to do |format|
-          format.html { render :show }
+          format.html { render :index }
           format.json {render json: @applications, status: 200}
 
     end
@@ -90,9 +86,6 @@ before_action :require_profile
 
 
   private
-# def set_opportunity
-#   @opportunity = Opportunity.find(params[:opportunity_id])
-# end
 
   def application_params
      params.require(:application).permit( :qualified, :legal, :criminal_record, :description_of_criminal_record, :transportation, :month_commitment, :reason_for_interest, :user_id, :opportunity_id, user_attributes:[:id])

@@ -12,7 +12,6 @@ include ApplicationHelper
     respond_to do |format|
           format.html { render :new }
           format.json {render json: @opportunity}
-    # render json: @opportunity, status: 200
     end
   end
 
@@ -23,8 +22,7 @@ include ApplicationHelper
       @opportunity.save
       respond_to do |format|
             format.html {redirect_to opportunities_path(@opportunity) }
-            format.json {render json: @opportunity}
-      # render json: @opportunity, status: 200
+            format.json {render json: @opportunity, status: 201}
       end
 
     else
@@ -39,7 +37,6 @@ include ApplicationHelper
 
     else
       @opportunities = Opportunity.all
-
     end
 
   end
@@ -66,9 +63,9 @@ include ApplicationHelper
     end
     end
     respond_to do |format|
-          format.html { render :show }
+          format.html {  }
           format.json {render json: @applications }
-    # render json: @opportunity, status: 200
+
     end
   end
 
@@ -101,24 +98,7 @@ authorize! :edit, @opportunity, :message => "Access Denied."
    redirect_to opportunities_path
  end
 
-def opportunity_data
-  @opportunity= Opportunity.find(params[:id])
-  render json: @opportunity
-  # .to_json(only: [:id],
-  #                                 include: :applications)
-end
-
-def body
-    opportunity= Opportunity.find(params[:id])
-  render json: OpportunitySerializer.serialize(opportunity)
-end
-
-
   private
-
-  # def set_opportunity
-  #   @opportunity = Opportunity.find(params[:opportunity_id])
-  # end
 
   def opportunity_params
     params.require(:opportunity).permit(:title, :description, :user_id, application_ids:[], applications_attributes: [ :qualified, :legal, :month_commitment, :reason_for_interest, :user_id, :opportunity_id, :id])
