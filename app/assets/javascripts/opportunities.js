@@ -14,11 +14,14 @@ Opportunity.prototype.renderDiv = function() {
   return Opportunity.template(this)
 };
 
-$(function () {
-  $('form').on("submit", function(e) {
+$(function() {
+  $('form').click("submit", function(e) {
+    // debugger
     e.preventDefault();
     var $form = $(this);
+
     var action = $form.attr("action");
+
     var params = $form.serialize();
 
     $.ajax({
@@ -32,12 +35,20 @@ $(function () {
       var opportunityDiv = opportunity.renderDiv()
       console.log(json)
       $("div.new_opportunity").append(opportunityDiv)
+          $("form")[0].reset();
+
     })
     .error(function(response){
     console.log("Broken", response)
     })
+
   });
+
+
 })
+
+
+
 
 $(function () {
   $(".load_opportunity_form").click(function(e){
