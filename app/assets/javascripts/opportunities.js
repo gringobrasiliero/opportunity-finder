@@ -34,6 +34,7 @@ $(function() {
       var opportunity = new Opportunity(json);
       var opportunityDiv = opportunity.renderDiv()
       console.log(json)
+      alert("New Opportunity Created!")
       $("div.new_opportunity").append(opportunityDiv)
           $("form")[0].reset();
 
