@@ -3,8 +3,7 @@
   <h2> <%= @opportunity.title %> </h2>
   <h3> <%= @opportunity.description %> </h3>
 
-  <%= button_to 'Apply to this Opportunity', new_opportunity_application_path(@opportunity), method: :get%>
-
+  <a href="<%=new_opportunity_application_path(@opportunity)%>"><button class="btn">Apply to this Opportunity</button></a>
 
 <%end%>
 

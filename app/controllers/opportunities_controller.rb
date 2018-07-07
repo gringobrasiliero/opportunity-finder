@@ -63,7 +63,7 @@ include ApplicationHelper
     end
     end
     respond_to do |format|
-          format.html {  }
+          format.html { render :show }
           format.json {render json: @applications }
 
     end
