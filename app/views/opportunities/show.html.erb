@@ -17,11 +17,19 @@
 
 <h1> Applications </h1>
   <div>
-
     <%= form_tag( opportunity_path(@opportunity), method: "get") do %>
-        <h3>Filter Applications By:  <%= select_tag "filter", options_for_select(["Best Qualified", "Most Recent", "Oldest"]), include_blank: true %>
-      <%= submit_tag "Filter" %></h3>
   </div>
+
+<div>
+   <strong>Filter Applications: </strong>
+  <select name="filter" id="filter">
+    <option value="" label=" "></option>
+    <option value="Best Qualified">Best Qualified</option>
+    <option value="Most Recent">Most Recent</option>
+    <option value="Oldest">Oldest</option></select>
+    <input type="submit" name="commit" value="Filter" data-disable-with="Filter">
+</div>
+<br>
 <% end %>
 
 <% @applications.each do |application|%>
