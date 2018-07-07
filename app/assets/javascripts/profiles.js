@@ -1,5 +1,5 @@
 
-function Profile(attributes){
+function Profile(attributes){ //Model Object
   this.first_name = attributes.first_name;
   this.id = attributes.id;
   this.last_name = attributes.last_name;
@@ -14,7 +14,7 @@ function Profile(attributes){
 
 $(function () {
   Profile.templateSource = $("#applicant").html();
-  Profile.template = Handlebars.compile(Profile.templateSource);
+  Profile.template = Handlebars.compile(Profile.templateSource); //Handlebars template
 })
 
 Profile.prototype.renderDiv = function() {
@@ -27,13 +27,13 @@ $(function() {
   $button.hide();
   $(".load_applicants").click(function(e){
     var id = $(this).data("id");
-    $.get("/opportunities/" + id + ".json")
+    $.get("/opportunities/" + id + ".json") //AJAX
     .success(function(data) {
       var $div = $("#oppApps-" + id)
       $div.html("") //empties the div
       var oppApps = data
       oppApps.forEach(function(json) {
-        var applicationProfile = new Profile(json["profile"]);
+        var applicationProfile = new Profile(json["profile"]); //creates model object
         var applicationDiv = applicationProfile.renderDiv()
           var $button = $("#button-" + id)
           var $loadPro = $("#load-applicant-" + id)
@@ -41,7 +41,7 @@ $(function() {
           $button.show()
         console.log($("#applicant"))
         console.log(json)
-        $div.append(applicationDiv)
+        $div.append(applicationDiv) //renders div
       })
     });
     e.preventDefault();
