@@ -1,7 +1,56 @@
+<div class = "Container">
+<section>
+<div class="photo">
+  <img src="<%=@application.profile.picture_url %>">
+</div>
+<div class = "Application">
+  <div class="field">
+    <h2>Name: <%=@application.profile.first_name%> <%=@application.profile.last_name%> </h2>
+  </div>
 
-<%= render partial: 'form', locals: {identifier: @application.opportunity} %>
+  <div class="field">
+    <h3>Email:
+      <a href= "mailto:<%=@application.user.email%>"> <%=@application.user.email%> </a>
+    </h3>
 
-<%= link_to 'Delete',
-             application_path(@application),
-                         method: :delete,
-                         data: { confirm: 'Are you sure?' } %>
+  </div>
+
+
+  <div class="field">
+    <h3>Location: <%=@application.profile.location%></h3>
+  </div>
+
+  <div class="field">
+    <h3>Profession: <%=@application.profile.profession%></h3>
+  </div>
+
+<h2> Application </h2>
+
+  <div class="field">
+    <h3>Qualified for Position: <%=@application.qualified%></h3>
+  </div>
+
+  <div class="field">
+    <h3>Reliable Transportation: <%=@application.transportation%></h3>
+  </div>
+
+  <div class="field">
+    <h3>Has a Criminal Record: <%=@application.criminal_record%></h3>
+  </div>
+
+  <div class="field">
+    <h3>Description of Criminal Record: <%=@application.description_of_criminal_record%></h3>
+  </div>
+
+  <div class="field">
+    <h3>Legally allowed to work: <%=@application.legal%></h3>
+  </div>
+
+  <div class="field">
+    <h3>Month Commitment: <%=@application.month_commitment%></h3>
+  </div>
+
+  <div class="field">
+    <h3>Reason for Interest: <%=@application.reason_for_interest%></h3>
+  </div>
+</section>

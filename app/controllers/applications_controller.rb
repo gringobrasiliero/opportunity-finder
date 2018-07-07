@@ -2,11 +2,11 @@ class ApplicationsController < ApplicationController
 before_action :authenticate_user!
 before_action :require_profile
 
-  def new
+def new
     @opportunity = Opportunity.find_by(id: params[:opportunity_id])
     @application = Application.new(opportunity_id: params[:opportunity_id])
-    binding.pry
     authorize! :new, @application, :message => "Access Denied."
+
   end
 
   def create
@@ -16,7 +16,11 @@ before_action :require_profile
     @user = current_user
     if @application.valid?
       @application.save
-      redirect_to applications_path(@application)
+      respond_to do |format|
+            format.html { render :show }
+            format.json {render json: @application, status: 200}
+
+      end
 
     else
       # If Application is not valid, redirects to application/new
@@ -52,6 +56,11 @@ before_action :require_profile
   def show
     @user = current_user
     @application =  Application.find(params[:id])
+    respond_to do |format|
+          format.html { }
+          format.json {render json: @application, status: 200}
+
+    end
     end
 
   def destroy
@@ -63,6 +72,11 @@ before_action :require_profile
   def index
     @user = current_user
     @applications = @user.applications.all
+    respond_to do |format|
+          format.html { render :index }
+          format.json {render json: @applications, status: 200}
+
+    end
   end
 
   def submitted

@@ -1,14 +1,18 @@
 class OpportunitiesController < ApplicationController
 before_action :authenticate_user!
 before_action :require_profile
+# before_action :set_opportunity, only: [:show, :edit, :update]
 include ApplicationHelper
 
   def new
     @user = current_user
     @opportunity = Opportunity.new
-    binding.pry
-    authorize! :new, @opportunity, :message => "Access Denied."
 
+    authorize! :new, @opportunity, :message => "Access Denied."
+    respond_to do |format|
+          format.html { render :new }
+          format.json {render json: @opportunity}
+    end
   end
 
   def create
@@ -16,7 +20,11 @@ include ApplicationHelper
     @opportunity = @user.opportunities.new(opportunity_params)
     if @opportunity.valid?
       @opportunity.save
-      redirect_to opportunities_path(@opportunity)
+      respond_to do |format|
+            format.html {redirect_to opportunities_path(@opportunity) }
+            format.json {render json: @opportunity, status: 201}
+      end
+
     else
       render 'new'
     end
@@ -30,6 +38,7 @@ include ApplicationHelper
     else
       @opportunities = Opportunity.all
     end
+
   end
 
   def show
@@ -52,6 +61,11 @@ include ApplicationHelper
     else
       @applications = @opportunity.applications
     end
+    end
+    respond_to do |format|
+          format.html { render :show }
+          format.json {render json: @applications }
+
     end
   end
 
@@ -82,12 +96,12 @@ authorize! :edit, @opportunity, :message => "Access Denied."
    @opportunity = Opportunity.find(params[:id])
    @opportunity.destroy
    redirect_to opportunities_path
- end 
+ end
 
   private
 
   def opportunity_params
-    params.require(:opportunity).permit(:title, :description, :user_id, application_ids:[], applications_attributes: [ :qualified, :legal, :month_commitment, :reason_for_interest, :user_id, :opportunity_id, :id])
+    params.require(:opportunity).permit(:title, :description, :user_id, application_ids:[], applications_attributes: [ :qualified, :description_of_criminal_record, :legal, :month_commitment, :reason_for_interest, :user_id, :opportunity_id, :id])
   end
 
 end

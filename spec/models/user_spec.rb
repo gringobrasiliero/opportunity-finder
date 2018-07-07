@@ -5,29 +5,50 @@ RSpec.describe User, :type => :model do
     User.create(
       :email => "zurg@zurg.com",
       :password => "password",
+      :id => 1,
+
 
     )
   }
 
+  let(:opportunity) {
+    Opportunity.create(
+      :user_id => user.id,
+      :title => "Defeat Buzz",
+      :description => "Buzzzzzzzzzzzz",
+      :id => 1
+    )
+  }
+
+
+
   let(:app_one) {
     Application.create(
+    :id => 1,
     :user_id => user.id,
     :opportunity_id => opportunity.id,
     :qualified => true,
     :legal => false,
     :month_commitment => 6,
-    :reason_for_interest => "Defeat him"
+    :reason_for_interest => "Defeat him",
+    :criminal_record => true,
+    :description_of_criminal_record => "N/A"
+
+
     )
   }
 
   let(:app_two) {
     Application.create(
+    :id => 2,
     :user_id => user.id,
     :opportunity_id => opportunity.id,
     :qualified => false,
     :legal => true,
     :month_commitment => 6,
-    :reason_for_interest => "Defeat him nowwww"
+    :reason_for_interest => "Defeat him nowwww",
+    :criminal_record => true,
+    :description_of_criminal_record => "N/A"
     )
   }
 
@@ -46,9 +67,13 @@ RSpec.describe User, :type => :model do
    end
 
 it "has one profile" do
-  profile = Profile.create(:user_id => user.id, :first_name => "Zurg", :last_name => "theDestroyer")
+  profile = user.build_profile(profile)
   expect(user.profile).to eq(profile)
 end
+
+
+
+
 
 it "has many opportunites" do
   first_op = Opportunity.create(:user_id => user.id, :title => "Defeat Buzz", :description => "Buzzzzzzzzzzzz")
@@ -58,10 +83,12 @@ it "has many opportunites" do
 end
 
 it "has many applications" do
-  first_app = Application.create( :user_id => user.id, :qualified => true, :legal => false, :month_commitment => 6, :reason_for_interest => "Defeat him")
-  second_app = Application.create( :user_id => user.id, :qualified => false, :legal => true, :month_commitment => 1, :reason_for_interest => "Defeat him fast")
-   expect(user.applications.first).to eq(first_app)
-  expect(user.applications.last).to eq(second_app)
+application = Application.create
+user.applications << application
+user.save
+
+   expect(user.applications.first).to eq(application)
+
 
 
   end

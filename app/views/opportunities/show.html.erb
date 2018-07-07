@@ -1,11 +1,9 @@
-
 <% if searcher? %>
   <h1> <%= @opportunity.user.profile.business_name %> </h1>
   <h2> <%= @opportunity.title %> </h2>
   <h3> <%= @opportunity.description %> </h3>
 
-  <%= button_to 'Apply to this Opportunity', new_opportunity_application_path(@opportunity), method: :get%>
-
+  <a href="<%=new_opportunity_application_path(@opportunity)%>"><button class="btn">Apply to this Opportunity</button></a>
 
 <%end%>
 
@@ -19,19 +17,29 @@
 
 <h1> Applications </h1>
   <div>
-
     <%= form_tag( opportunity_path(@opportunity), method: "get") do %>
-        <h3>Filter Applications By:  <%= select_tag "filter", options_for_select(["Best Qualified", "Most Recent", "Oldest"]), include_blank: true %>
-      <%= submit_tag "Filter" %></h3>
   </div>
+
+<div>
+   <strong>Filter Applications: </strong>
+  <select name="filter" id="filter">
+    <option value="" label=" "></option>
+    <option value="Best Qualified">Best Qualified</option>
+    <option value="Most Recent">Most Recent</option>
+    <option value="Oldest">Oldest</option></select>
+    <input type="submit" name="commit" value="Filter" data-disable-with="Filter">
+</div>
+<br>
 <% end %>
 
 <% @applications.each do |application|%>
 <div class = "Container">
 <section>
+  <% if provider? %>
 <div class="photo">
   <img src="<%=application.profile.picture_url %>">
 </div>
+<%end%>
 <div class = "Application">
   <div class="field">
     <h2>Name: <%=application.profile.first_name%> <%=application.profile.last_name%> </h2>
@@ -53,38 +61,49 @@
     <h3>Profession: <%=application.profile.profession%></h3>
   </div>
 
-<h2> Application </h2>
+   <button class= "load_application" data-id="<%=application.id%>" id='load-application-<%=application.id%>'>Load Application</button>
+   <button id="button-<%=application.id%>" class="hide_application" data-id="<%=application.id%>">Hide Application</button>
+  <div id= "applicant-<%=application.id%>"></div>
 
-  <div class="field">
-    <h3>Qualified for Position: <%=application.qualified%></h3>
-  </div>
 
-  <div class="field">
-    <h3>Reliable Transportation: <%=application.transportation%></h3>
-  </div>
-
-  <div class="field">
-    <h3>Has a Criminal Record: <%=application.criminal_record%></h3>
-  </div>
-
-  <div class="field">
-    <h3>Description of Criminal Record: <%=application.description_of_criminal_record%></h3>
-  </div>
-
-  <div class="field">
-    <h3>Legally allowed to work: <%=application.legal%></h3>
-  </div>
-
-  <div class="field">
-    <h3>Month Commitment: <%=application.month_commitment%></h3>
-  </div>
-
-  <div class="field">
-    <h3>Reason for Interest: <%=application.reason_for_interest%></h3>
-  </div>
 </section>
 </div>
 </div>
   <br>
   <% end %>
 <% end %>
+
+<script id="applicant" type="text/x-handlebars-template">
+<section>
+<h2> Application </h2>
+
+  <div class="field">
+    <h3>Qualified for Position: {{qualified}}</h3>
+  </div>
+
+  <div class="field">
+    <h3>Reliable Transportation: {{transportation}}</h3>
+  </div>
+
+  <div class="field">
+    <h3>Has a Criminal Record: {{criminal_record}}</h3>
+  </div>
+
+  <div class="field">
+    <h3>Description of Criminal Record: {{description_of_criminal_record}}</h3>
+  </div>
+
+  <div class="field">
+    <h3>Legally allowed to work: {{legal}}</h3>
+  </div>
+
+  <div class="field">
+    <h3>Month Commitment: {{month_commitment}}</h3>
+  </div>
+
+  <div class="field">
+    <h3>Reason for Interest: {{reason_for_interest}}</h3>
+  </div>
+</section>
+</script>
+<%= javascript_include_tag 'application' %>

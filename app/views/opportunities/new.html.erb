@@ -1,1 +1,15 @@
-<%= render 'form' %>
+<body>
+  <%= render 'form' %>
+  <div class= "new_opportunity"></div>
+
+
+
+  <script id="applicant" type="text/x-handlebars-template">
+    <div id="body-{{id}}">
+      <h2>Opportunity Title:  {{title}} </h2>
+      <h2>Opportunity Description: {{description}} </h2>
+    </div>
+  </script>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+</body>

@@ -18,7 +18,10 @@ body {
   background-color: grey;
 }
 
+#opportunitiesIndex {
+border: solid;
 
+}
 .topnav {
   list-style-type: none;
   margin: 0;

@@ -32,6 +32,7 @@ ActiveRecord::Migration.maintain_test_schema!
 
 RSpec.configure do |config|
 
+
   config.before(:suite) do
       DatabaseCleaner.clean_with(:truncation)
     end
@@ -49,7 +50,8 @@ RSpec.configure do |config|
       DatabaseCleaner.clean
     end
     config.include Capybara::DSL
-    
+    config.include Devise::Test::ControllerHelpers, type: :controller
+
 
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
