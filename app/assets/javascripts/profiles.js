@@ -23,7 +23,9 @@ Profile.prototype.renderDiv = function() {
 
 
 $(function() {
-  $(".load_applications").click(function(e){
+  var $button = $(".hide_applicant");
+  $button.hide();
+  $(".load_applicants").click(function(e){
     var id = $(this).data("id");
     $.get("/opportunities/" + id + ".json")
     .success(function(data) {
@@ -33,12 +35,32 @@ $(function() {
       oppApps.forEach(function(json) {
         var applicationProfile = new Profile(json["profile"]);
         var applicationDiv = applicationProfile.renderDiv()
-
+          var $button = $("#button-" + id)
+          var $loadPro = $("#load-applicant-" + id)
+          $loadPro.hide()
+          $button.show()
         console.log($("#applicant"))
         console.log(json)
         $div.append(applicationDiv)
       })
     });
     e.preventDefault();
+  });
+})
+
+$(function() {
+  $(".hide_applicant").click(function(e){
+    e.preventDefault();
+
+    var id = $(this).data("id");
+    $.get("/opportunities/" + id + ".json")
+    .success(function(json) {
+      var $loadPro = $("#load-applicant-" + id)
+      var $button = $("#button-" + id)
+      $loadPro.show()
+      $button.hide()
+      var $div = $("#oppApps-" + id)
+      $div.hide() //empties the div
+    });
   });
 })

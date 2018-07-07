@@ -4,7 +4,9 @@
       <h1> <%= link_to opportunity.user.profile.business_name, opportunity_path(opportunity) %> </h1>
       <h2> <%= opportunity.title %> </h2>
       <h2> <%= opportunity.description %> </h2>
-      <a href="<%=opportunity_path(opportunity)%>" class= "load_applications" data-id="<%=opportunity.id%>">View Applicants</a>
+      <button class= "load_applicants" data-id="<%=opportunity.id%>" id='load-applicant-<%=opportunity.id%>'>View Applicants</button>
+      <button id="button-<%=opportunity.id%>" class="hide_applicant" data-id="<%=opportunity.id%>">Hide Applicants</button>
+
       <div id= "oppApps-<%=opportunity.id%>"></div>
     </div>
     <br>
