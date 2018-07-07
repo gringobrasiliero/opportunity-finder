@@ -101,7 +101,7 @@ authorize! :edit, @opportunity, :message => "Access Denied."
   private
 
   def opportunity_params
-    params.require(:opportunity).permit(:title, :description, :user_id, application_ids:[], applications_attributes: [ :qualified, :legal, :month_commitment, :reason_for_interest, :user_id, :opportunity_id, :id])
+    params.require(:opportunity).permit(:title, :description, :user_id, application_ids:[], applications_attributes: [ :qualified, :description_of_criminal_record, :legal, :month_commitment, :reason_for_interest, :user_id, :opportunity_id, :id])
   end
 
 end

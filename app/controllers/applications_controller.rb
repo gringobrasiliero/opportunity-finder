@@ -57,7 +57,7 @@ def new
     @user = current_user
     @application =  Application.find(params[:id])
     respond_to do |format|
-          format.html { render :show }
+          format.html { }
           format.json {render json: @application, status: 200}
 
     end

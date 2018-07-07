@@ -8,6 +8,7 @@ function Application(attributes){
   this.reason_for_interest = attributes.reason_for_interest;
   this.transportation = attributes.transportation;
   this.criminal_record = attributes.criminal_record;
+  this.description_of_criminal_record = attributes.description_of_criminal_record;
   }
 
 $(function() {
