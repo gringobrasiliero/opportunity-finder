@@ -60,7 +60,7 @@ $(function() {
       $loadPro.show()
       $button.hide()
       var $div = $("#oppApps-" + id)
-      $div.hide() //empties the div
+      $div.html(""); //empties the div
     });
   });
 })
