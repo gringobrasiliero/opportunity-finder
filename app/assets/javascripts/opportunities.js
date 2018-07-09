@@ -11,7 +11,9 @@ $(function () {
 })
 
 Opportunity.prototype.renderDiv = function() {
+
   return Opportunity.template(this)
+
 };
 
 $(function() {
@@ -50,15 +52,32 @@ $(function() {
 
 
 
-
 $(function () {
-  $(".load_opportunity_form").click(function(e){
+var click_count = 0
+  $(".next_opportunity").on("click", function(e){
+
+    var id = $(this).data("id");
+    var new_id = id + click_count
+      $.get("/opportunities/" + new_id + ".json")
+      .success(function(json) {
+        var $div = $("#opportunity")
+        $div.html("")
+        var nextOpportunity = new Opportunity(json);
+          console.log(nextOpportunity)
+         //creates model object
+        var opportunityDiv = nextOpportunity.renderDiv()
+
+        click_count+=1
+
+
+        $div.append(opportunityDiv)
+
+    console.log(id)
     e.preventDefault();
-    $.get("/opportunities/new.json")
-    .success(function(data) {
-    var $div = $("#newOpp")
-    $div.html("") //empties the div
-    $div.append('<h1>This button works. Kinda.</h1>')
-    });
+  })
+  .error(function(response){
+    click_count = 0
+  console.log("Broken", response)
+  })
   });
 });
