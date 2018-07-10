@@ -54,7 +54,8 @@ $(function() {
 
 $(function () {
 var click_count = 0
-  $(".next_opportunity").on("click", function(e){
+  $(".next_opportunity").on("click", function (e){
+
 
     var id = $(this).data("id");
     var new_id = id + click_count
@@ -62,16 +63,37 @@ var click_count = 0
       .success(function(json) {
         var $div = $("#opportunity")
         $div.html("")
-        var nextOpportunity = new Opportunity(json);
-          console.log(nextOpportunity)
+        var $nextOpportunity = new Opportunity(json);
+          console.log($nextOpportunity)
          //creates model object
-        var opportunityDiv = nextOpportunity.renderDiv()
-
+        var opportunityDiv = $nextOpportunity.renderDiv()
         click_count+=1
-
-
         $div.append(opportunityDiv)
+    console.log(id)
+    e.preventDefault();
+  })
+  .error(function(response){
+    click_count = 0
+  console.log("Broken", response)
+  })
+  });
+});
 
+$(function () {
+var click_count = 0
+  $(".prev_opportunity").on("click", function (e){
+    var id = $(this).data("id");
+    var new_id = id - click_count
+      $.get("/opportunities/" + new_id + ".json")
+      .success(function(json) {
+        var $div = $("#opportunity")
+        $div.html("")
+        var $nextOpportunity = new Opportunity(json);
+          console.log($nextOpportunity)
+         //creates model object
+        var opportunityDiv = $nextOpportunity.renderDiv()
+        click_count-=1
+        $div.append(opportunityDiv)
     console.log(id)
     e.preventDefault();
   })
