@@ -1,4 +1,8 @@
 <body>
+  <button class= "create_form_opp">Create Opportunity</button>
+  <div id="fred"></div>
+
+
   <% @opportunities.each do |opportunity| %>
     <div id="body-<%= opportunity.id %>">
       <h1> <%= link_to opportunity.user.profile.business_name, opportunity_path(opportunity) %> </h1>
