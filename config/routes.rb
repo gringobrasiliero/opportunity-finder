@@ -13,7 +13,7 @@ get 'profiles/:id/edit', to: 'profiles#edit', as: :edit_profile
 get 'applications/:id/submitted', to: 'applications#submitted', as: :submitted_profile
 get 'opportunities/:id/opportunity_data', to: 'opportunities#opportunity_data'
 
-get 'opportunities/add_form_field' to: 'opportunities#add_form_field'
+get 'opportunities/add_form_field', to: 'opportunities#add_form_field'
 resources :profiles
 
 resources :applications
