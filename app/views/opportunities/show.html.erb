@@ -1,9 +1,5 @@
 <% if searcher? %>
-  <h1> <%= @opportunity.user.profile.business_name %> </h1>
-  <h2> <%= @opportunity.title %> </h2>
-  <h3> <%= @opportunity.description %> </h3>
-
-  <a href="<%=new_opportunity_application_path(@opportunity)%>"><button class="btn">Apply to this Opportunity</button></a>
+<%= render 'seeker_show' %>
 
 <%end%>
 
