@@ -1,7 +1,7 @@
 <body>
-  
- <%= button_to "Create Opportunity", new_opportunity_path, :class => "create_form_opp" %>
-  <div id="fred" class= "fred"></div>
+<br>
+ <%= link_to "<button><strong>Create Opportunity</strong></button>".html_safe, new_opportunity_path, :class => "create_form_opp" %>
+  <div id="opp-form" class= "opp-form"></div>
 
 <div class= "new_opportunity"></div>
   <% @opportunities.each do |opportunity| %>

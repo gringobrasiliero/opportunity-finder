@@ -105,7 +105,7 @@ var click_count = 0
 });
 
 $(function() {
-  $('.fred').on("submit", function(e) {
+  $('.opp-form').on("submit", function(e) {
     // debugger
     e.preventDefault();
     var $form = $(this).find('form');
