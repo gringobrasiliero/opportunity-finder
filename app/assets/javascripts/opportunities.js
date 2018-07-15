@@ -82,14 +82,14 @@ var click_count = 0
         click_count+=1
     var id = $(this).data("id");
     var new_id = id - click_count
-    debugger
+  
       $.get("/opportunities/" + new_id + ".json")
       .success(function(json) {
         var $div = $("#opportunity")
         $div.html("")
         var $nextOpportunity = new Opportunity(json);
           console.log($nextOpportunity)
-    
+
         var opportunityDiv = $nextOpportunity.renderDiv()
 
         $div.append(opportunityDiv)
