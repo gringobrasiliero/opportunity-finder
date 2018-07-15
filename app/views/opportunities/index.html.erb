@@ -1,4 +1,9 @@
 <body>
+<br>
+ <%= link_to "<button><strong>Create Opportunity</strong></button>".html_safe, new_opportunity_path, :class => "create_form_opp" %>
+  <div id="opp-form" class= "opp-form"></div>
+
+<div class= "new_opportunity"></div>
   <% @opportunities.each do |opportunity| %>
     <div id="body-<%= opportunity.id %>">
       <h1> <%= link_to opportunity.user.profile.business_name, opportunity_path(opportunity) %> </h1>
@@ -12,6 +17,7 @@
     <br>
   <% end %>
     <%= javascript_include_tag 'application' %>
+
 </body>
 
 
@@ -34,4 +40,3 @@
           <br>
       </div>
     </section>
-</script>

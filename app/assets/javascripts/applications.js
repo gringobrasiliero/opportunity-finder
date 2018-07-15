@@ -20,6 +20,8 @@ Application.prototype.renderDiv = function() {
   return Application.template(this)
   };
 
+
+// Load Application
 $(function() {
   var $button = $(".hide_application");
   $button.hide();
@@ -47,6 +49,8 @@ $(function() {
 });
 })
 
+
+// Hide Application 
 $(function() {
   $(".hide_application").click(function(e){
     e.preventDefault();

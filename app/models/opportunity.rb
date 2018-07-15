@@ -5,5 +5,6 @@ class Opportunity < ApplicationRecord
   belongs_to :user
   has_many :applications, :dependent => :destroy
   has_many :users, :through => :applications
+  has_one :profile, :through => :user
 
 end

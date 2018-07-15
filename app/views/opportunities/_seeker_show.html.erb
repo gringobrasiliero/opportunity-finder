@@ -1,0 +1,28 @@
+
+<br>
+<button class= "prev_opportunity" data-id="<%=@opportunity.id%>"id=''>Previous</button>
+<button class= "next_opportunity" data-id="<%=@opportunity.id%>"id=''>Next</button>
+
+
+<div id= "opportunity">
+<h1> <%= @opportunity.user.profile.business_name %> </h1>
+<h2> <%= @opportunity.title %> </h2>
+<h3> <%= @opportunity.description %> </h3>
+
+<a href="<%=new_opportunity_application_path(@opportunity)%>"><button class="btn">Apply to this Opportunity</button></a>
+
+
+
+<script id="applicant" type="text/x-handlebars-template">
+
+  <h1> <%= @opportunity.user.profile.business_name %> </h1>
+  <h2>  {{title}} </h2>
+  <h3>  {{description}} </h3>
+
+  <a href="{{id}} /applications/new"><button class="btn">Apply to this Opportunity</button></a>
+
+
+
+</script>
+<%= javascript_include_tag 'application' %>
+</div>

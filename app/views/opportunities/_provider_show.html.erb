@@ -1,0 +1,101 @@
+<% if provider? %>
+<h2> Opportunity Title: <%= @opportunity.title %> </h2>
+<h3>Description:  <%= @opportunity.description %> </h3>
+<%= button_to 'Delete This Opportunity',
+             opportunity_path(@opportunity),
+                         method: :delete,
+                         data: { confirm: 'Are you sure?' } %>
+
+<h1> Applications </h1>
+  <div>
+    <%= form_tag( opportunity_path(@opportunity), method: "get") do %>
+  </div>
+
+<div>
+   <strong>Filter Applications: </strong>
+  <select name="filter" id="filter">
+    <option value="" label=" "></option>
+    <option value="Best Qualified">Best Qualified</option>
+    <option value="Most Recent">Most Recent</option>
+    <option value="Oldest">Oldest</option></select>
+    <input class="sort" type="submit" name="commit" value="Filter" data-disable-with="Filter">
+</div>
+<br>
+<% end %>
+
+<% @applications.each do |application|%>
+
+<div class = "Container">
+<section>
+  <% if provider? %>
+<div class="photo">
+  <img src="<%=application.profile.picture_url %>">
+</div>
+<%end%>
+<div class = "Application">
+  <div class="field">
+    <h2>Name: <%=application.profile.first_name%> <%=application.profile.last_name%> </h2>
+  </div>
+
+  <div class="field">
+    <h3>Email:
+      <a href= "mailto:<%=application.user.email%>"> <%=application.user.email%> </a>
+    </h3>
+
+  </div>
+
+
+  <div class="field">
+    <h3>Location: <%=application.profile.location%></h3>
+  </div>
+
+  <div class="field">
+    <h3>Profession: <%=application.profile.profession%></h3>
+  </div>
+
+   <button class= "load_application" data-id="<%=application.id%>" id='load-application-<%=application.id%>'>Load Application</button>
+   <button id="button-<%=application.id%>" class="hide_application" data-id="<%=application.id%>">Hide Application</button>
+  <div id= "applicant-<%=application.id%>"></div>
+
+
+</section>
+</div>
+</div>
+  <br>
+  <% end %>
+<% end %>
+
+<script id="applicant" type="text/x-handlebars-template">
+<section>
+<h2> Application </h2>
+
+  <div class="field">
+    <h3>Qualified for Position: {{qualified}}</h3>
+  </div>
+
+  <div class="field">
+    <h3>Reliable Transportation: {{transportation}}</h3>
+  </div>
+
+  <div class="field">
+    <h3>Has a Criminal Record: {{criminal_record}}</h3>
+  </div>
+
+  <div class="field">
+    <h3>Description of Criminal Record: {{description_of_criminal_record}}</h3>
+  </div>
+
+  <div class="field">
+    <h3>Legally allowed to work: {{legal}}</h3>
+  </div>
+
+  <div class="field">
+    <h3>Month Commitment: {{month_commitment}}</h3>
+  </div>
+
+  <div class="field">
+    <h3>Reason for Interest: {{reason_for_interest}}</h3>
+  </div>
+</section>
+</script>
+<%= javascript_include_tag 'application' %>

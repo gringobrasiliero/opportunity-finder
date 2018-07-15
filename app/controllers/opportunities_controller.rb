@@ -12,6 +12,7 @@ include ApplicationHelper
     respond_to do |format|
           format.html { render :new }
           format.json {render json: @opportunity}
+          format.js {render 'new.js', :layout => false}
     end
   end
 
@@ -38,8 +39,21 @@ include ApplicationHelper
     else
       @opportunities = Opportunity.all
     end
-
+    respond_to do |format|
+          format.html { }
+          format.js {render 'new.js', :layout => false}
+    end
   end
+
+
+def seeker_show
+  @opportunity = Opportunity.find(params[:id])
+  @user = current_user
+  @opportunities = @user.opportunities.all
+  @application = Application.new
+end
+
+
 
   def show
     @opportunity = Opportunity.find(params[:id])
@@ -64,8 +78,11 @@ include ApplicationHelper
     end
     respond_to do |format|
           format.html { render :show }
+          if provider?
           format.json {render json: @applications }
-
+        else
+          format.json {render json: @opportunity }
+        end
     end
   end
 
@@ -83,6 +100,17 @@ authorize! :edit, @opportunity, :message => "Access Denied."
     end
   end
 
+
+def add_form_field
+  @user = current_user
+  @opportunity = Opportunity.new
+
+  authorize! :new, @opportunity, :message => "Access Denied."
+  respond_to do |format|
+        format.html { render :new }
+        format.json {render json: @opportunity}
+  end
+end
 
   def update
     @user = current_user
