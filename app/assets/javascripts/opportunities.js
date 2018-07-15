@@ -18,7 +18,7 @@ Opportunity.prototype.renderDiv = function() {
 
 // New opp on opp/new
 $(function() {
-  $('form').on("submit", function(e) {
+  $('form#new_opportunity').on("submit", function(e) {
     e.preventDefault();
     var $form = $(this);
 
@@ -82,7 +82,7 @@ var click_count = 0
         click_count+=1
     var id = $(this).data("id");
     var new_id = id - click_count
-  
+
       $.get("/opportunities/" + new_id + ".json")
       .success(function(json) {
         var $div = $("#opportunity")
