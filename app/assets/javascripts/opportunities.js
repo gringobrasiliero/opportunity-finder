@@ -16,6 +16,7 @@ Opportunity.prototype.renderDiv = function() {
 
 };
 
+// New opp on opp/new
 $(function() {
   $('form').on("submit", function(e) {
     // debugger
@@ -51,7 +52,7 @@ $(function() {
 })
 
 
-
+// Shows next Opportunity
 $(function () {
 var click_count = 0
   $(".next_opportunity").on("click", function (e){
@@ -79,6 +80,7 @@ var click_count = 0
   });
 });
 
+// Previous Opportunity
 $(function () {
 var click_count = 0
     var id = $(this).data("id");
@@ -104,6 +106,7 @@ var click_count = 0
   });
 });
 
+// Create New Opportunity
 $(function() {
   $('.opp-form').on("submit", function(e) {
     // debugger
@@ -132,7 +135,7 @@ debugger
       $("div.new_opportunity").append(`<h2>${json["description"]}</h2>`)
       $("div.new_opportunity").append("<br>")
           $("form")[0].reset();
-
+      $("div.opp-form").html("");
     })
     .error(function(response){
     console.log("Broken", response)
@@ -143,7 +146,7 @@ debugger
 
 })
 
-
+// Renders new opportunity form
 $(function () {
 $(".create_form_opp").on("click", function(e){
   $.ajax({
