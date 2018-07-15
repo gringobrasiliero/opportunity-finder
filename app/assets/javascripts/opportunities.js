@@ -19,7 +19,6 @@ Opportunity.prototype.renderDiv = function() {
 // New opp on opp/new
 $(function() {
   $('form').on("submit", function(e) {
-    // debugger
     e.preventDefault();
     var $form = $(this);
 
@@ -28,7 +27,7 @@ $(function() {
     var params = $form.serialize();
 
     $.ajax({
-      url: action,
+      url: action, /*opportunities*/
       data: params,
       dataType: "json",
       method: "POST"
@@ -40,15 +39,11 @@ $(function() {
       alert("New Opportunity Created!")
       $("div.new_opportunity").append(opportunityDiv)
           $("form")[0].reset();
-
     })
     .error(function(response){
     console.log("Broken", response)
     })
-
   });
-
-
 })
 
 
@@ -56,8 +51,7 @@ $(function() {
 $(function () {
 var click_count = 0
   $(".next_opportunity").on("click", function (e){
-
-
+    click_count+=1
     var id = $(this).data("id");
     var new_id = id + click_count
       $.get("/opportunities/" + new_id + ".json")
@@ -66,9 +60,9 @@ var click_count = 0
         $div.html("")
         var $nextOpportunity = new Opportunity(json);
           console.log($nextOpportunity)
-         //creates model object
+
         var opportunityDiv = $nextOpportunity.renderDiv()
-        click_count+=1
+
         $div.append(opportunityDiv)
     console.log(id)
     e.preventDefault();
@@ -83,18 +77,21 @@ var click_count = 0
 // Previous Opportunity
 $(function () {
 var click_count = 0
-    var id = $(this).data("id");
+
     $(".prev_opportunity").on("click", function (e){
+        click_count+=1
+    var id = $(this).data("id");
     var new_id = id - click_count
+    debugger
       $.get("/opportunities/" + new_id + ".json")
       .success(function(json) {
         var $div = $("#opportunity")
         $div.html("")
         var $nextOpportunity = new Opportunity(json);
           console.log($nextOpportunity)
-         //creates model object
+    
         var opportunityDiv = $nextOpportunity.renderDiv()
-        click_count-=1
+
         $div.append(opportunityDiv)
     console.log(id)
     e.preventDefault();
@@ -109,7 +106,7 @@ var click_count = 0
 // Create New Opportunity
 $(function() {
   $('.opp-form').on("submit", function(e) {
-    // debugger
+
     e.preventDefault();
     var $form = $(this).find('form');
 
@@ -124,10 +121,6 @@ $(function() {
       method: "POST"
     })
     .success(function(json){
-      var opportunity = new Opportunity(json);
-debugger
-      var opportunityDiv = opportunity.renderDiv()
-
       console.log(json)
       alert("New Opportunity Created!")
       $("div.new_opportunity").append(`<h1><a href="/opportunities/${json["id"]}">${json["profile"]["business_name"]}</a></h1>`)
