@@ -35,7 +35,7 @@ $(function() {
        oppApps.sort(function(a, b){
         if(a.profile.location < b.profile.location) return -1;
         if(a.profile.location > b.profile.location) return 1;
-        
+
         return 0;
       })
 
