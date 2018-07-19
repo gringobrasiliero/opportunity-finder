@@ -113,7 +113,7 @@ $(function() {
     var action = $form.attr("action");
 
     var params = $form.serialize();
-
+debugger
     $.ajax({
       url: action,
       data: params,

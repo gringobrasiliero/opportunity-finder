@@ -1,10 +1,10 @@
 
 function Profile(attributes){ //Model Object
-  this.first_name = attributes.first_name;
+  this.firstName = attributes.first_name;
   this.id = attributes.id;
-  this.last_name = attributes.last_name;
+  this.lastName = attributes.last_name;
   this.location = attributes.location;
-  this.picture_url = attributes.picture_url;
+  this.pictureUrl = attributes.picture_url;
   this.profession = attributes.profession;
   this.email = attributes.email;
   this.name = function() {
@@ -32,7 +32,16 @@ $(function() {
       var $div = $("#oppApps-" + id)
       $div.html("") //empties the div
       var oppApps = data
+       oppApps.sort(function(a, b){
+        if(a.profile.location < b.profile.location) return -1;
+        if(a.profile.location > b.profile.location) return 1;
+
+        return 0;
+      })
+
       oppApps.forEach(function(json) {
+
+
         var applicationProfile = new Profile(json["profile"]); //creates model object
         var applicationDiv = applicationProfile.renderDiv()
           var $button = $("#button-" + id)
