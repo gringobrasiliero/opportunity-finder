@@ -1,6 +1,6 @@
 
-
-function Application(attributes){
+class Application {
+constructor(attributes){
   this.qualified = attributes.qualified;
   this.id = attributes.id;
   this.legal = attributes.legal;
@@ -11,14 +11,17 @@ function Application(attributes){
   this.description_of_criminal_record = attributes.description_of_criminal_record;
   }
 
+  renderDiv() {
+    return Application.template(this)
+    };
+
+} //end of Class
 $(function() {
   Application.templateSource = $("#applicant").html();
   Application.template = Handlebars.compile(Application.templateSource);
  })
 
-Application.prototype.renderDiv = function() {
-  return Application.template(this)
-  };
+
 
 
 // Load Application
@@ -50,7 +53,7 @@ $(function() {
 })
 
 
-// Hide Application 
+// Hide Application
 $(function() {
   $(".hide_application").click(function(e){
     e.preventDefault();
