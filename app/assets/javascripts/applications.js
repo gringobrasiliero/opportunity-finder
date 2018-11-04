@@ -9,17 +9,14 @@ constructor(attributes){
   this.transportation = attributes.transportation;
   this.criminal_record = attributes.criminal_record;
   this.description_of_criminal_record = attributes.description_of_criminal_record;
+
   }
 
   renderDiv() {
     return Application.template(this)
     };
-
 } //end of Class
-$(function() {
-  Application.templateSource = $("#applicant").html();
-  Application.template = Handlebars.compile(Application.templateSource);
- })
+
 
 
 
@@ -30,7 +27,8 @@ $(function() {
   $button.hide();
 
   $(".load_application").click(function(e){
-
+    Application.templateSource = $("#applicant").html();
+    Application.template = Handlebars.compile(Application.templateSource);
   e.preventDefault();
   var id = $(this).data("id");
   $.get("/applications/" + id + ".json")

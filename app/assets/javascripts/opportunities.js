@@ -1,24 +1,24 @@
 
-function Opportunity(attributes){
+class Opportunity {
+constructor(attributes){
   this.title = attributes.title;
   this.id = attributes.id;
   this.description = attributes.description;
 }
 
-$(function () {
-  Opportunity.templateSource = $("#applicant").html();
-  Opportunity.template = Handlebars.compile(Opportunity.templateSource);
-})
-
-Opportunity.prototype.renderDiv = function() {
-
+renderDiv() {
   return Opportunity.template(this)
-
 };
+
+} //End of Class
+
+
 
 // New opp on opp/new
 $(function() {
   $('form#new_opportunity').on("submit", function(e) {
+    Opportunity.templateSource = $("#applicant").html();
+    Opportunity.template = Handlebars.compile(Opportunity.templateSource);
     e.preventDefault();
     var $form = $(this);
 
@@ -34,7 +34,7 @@ $(function() {
     })
     .success(function(json){
       var opportunity = new Opportunity(json);
-      var opportunityDiv = opportunity.renderDiv()
+      var opportunityDiv = Opportunity.renderDiv()
       console.log(json)
       alert("New Opportunity Created!")
       $("div.new_opportunity").append(opportunityDiv)
@@ -49,8 +49,12 @@ $(function() {
 
 // Shows next Opportunity
 $(function () {
-var click_count = 0
+var click_count = 0;
+
+Opportunity.templateSource = $("#applicant").html();
+Opportunity.template = Handlebars.compile(Opportunity.templateSource);
   $(".next_opportunity").on("click", function (e){
+
     click_count+=1
     var id = $(this).data("id");
     var new_id = id + click_count
@@ -76,10 +80,11 @@ var click_count = 0
 
 // Previous Opportunity
 $(function () {
-var click_count = 0
-
+var click_count = 0;
+Opportunity.templateSource = $("#applicant").html();
+Opportunity.template = Handlebars.compile(Opportunity.templateSource);
     $(".prev_opportunity").on("click", function (e){
-        click_count+=1
+        click_count-=1
     var id = $(this).data("id");
     var new_id = id - click_count
 
@@ -87,10 +92,10 @@ var click_count = 0
       .success(function(json) {
         var $div = $("#opportunity")
         $div.html("")
-        var $nextOpportunity = new Opportunity(json);
-          console.log($nextOpportunity)
+        var $prevOpportunity = new Opportunity(json);
+          console.log($prevOpportunity)
 
-        var opportunityDiv = $nextOpportunity.renderDiv()
+        var opportunityDiv = $prevOpportunity.renderDiv()
 
         $div.append(opportunityDiv)
     console.log(id)
