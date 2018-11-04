@@ -8,3 +8,4 @@ def fullName()
   "#{application.profile.first_name} #{application.profile.last_name}"
 
 end
+end
