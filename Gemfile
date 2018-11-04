@@ -7,6 +7,7 @@ git_source(:github) do |repo_name|
 end
 
 
+gem 'rails_12factor'
 
 gem 'handlebars_assets'
 gem 'jquery-rails'
