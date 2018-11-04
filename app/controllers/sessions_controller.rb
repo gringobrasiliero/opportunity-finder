@@ -5,7 +5,7 @@ class SessionsController < ApplicationController
   def create
     linkedin
     end
-  end
+
 
   def destroy
     reset_session
